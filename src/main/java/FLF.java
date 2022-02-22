@@ -36,6 +36,16 @@ public class FLF {
     private Achse achse02;
     private Achse achse03;
     private Achse achse04;
+    private SideLight rightSide1;
+    private SideLight rightSide2;
+    private SideLight rightSide3;
+    private SideLight rightSide4;
+    private SideLight rightSide5;
+    private SideLight leftSide1;
+    private SideLight leftSide2;
+    private SideLight leftSide3;
+    private SideLight leftSide4;
+    private SideLight leftSide5;
 
     public FLF(Builder builder){
         scheinwerfer01 = builder.scheinwerfer01;//VORNELINKS
@@ -70,6 +80,16 @@ public class FLF {
         achse02 = builder.achse01; //VORNE
         achse03 = builder.achse02; //HINTEN
         achse04 = builder.achse02; //HINTEN
+        rightSide1 = builder.sideLightRight;
+        rightSide2 = builder.sideLightRight;
+        rightSide3 = builder.sideLightRight;
+        rightSide4 = builder.sideLightRight;
+        rightSide5 = builder.sideLightRight;
+        leftSide1 = builder.sideLightLeft;
+        leftSide2 = builder.sideLightLeft;
+        leftSide3 = builder.sideLightLeft;
+        leftSide4 = builder.sideLightLeft;
+        leftSide5 = builder.sideLightLeft;
     }
 
     public static class Builder{
@@ -91,6 +111,8 @@ public class FLF {
         private Kabine kabine;
         private Achse achse01;
         private Achse achse02;
+        private SideLight sideLightRight;
+        private SideLight sideLightLeft;
 
 
         public Builder(){
@@ -111,6 +133,8 @@ public class FLF {
             this.kabine = new Kabine();
             this.achse01 = new Achse(Achsen.Position.VORNE);
             this.achse02 = new Achse(Achsen.Position.HINTEN);
+            this.sideLightLeft = new SideLight(Position.LINKS);
+            this.sideLightRight = new SideLight(Position.RECHTS);
         }
     }
 }
