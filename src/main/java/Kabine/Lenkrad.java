@@ -1,8 +1,11 @@
 package Kabine;
 
+import Controls.CentralUnit;
+
 public class Lenkrad {
 
     private int lenkWinkel;
+    private CentralUnit unit;
 
     public Lenkrad(){
         this.lenkWinkel = 0;
@@ -10,16 +13,11 @@ public class Lenkrad {
 
     public void turnRight(int winkel){
         lenkWinkel = lenkWinkel + winkel;
-        if (lenkWinkel > 180){
-            lenkWinkel = lenkWinkel - 360;
-        }
+        unit.turn(lenkWinkel);
     }
 
     public void turnleft(int winkel){
         lenkWinkel = lenkWinkel - winkel;
-        if (lenkWinkel < -180){
-            lenkWinkel = lenkWinkel + 360;
-        }
     }
 
     public int getLenkWinkel() {

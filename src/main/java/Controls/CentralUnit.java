@@ -7,46 +7,46 @@ import Kabine.*;
 import Lichter.*;
 
 public class CentralUnit {
-    private Tacho tacho;
-    private Achse frontAxis;
-    private SideLight rightSide1;
-    private SideLight rightSide2;
-    private SideLight rightSide3;
-    private SideLight rightSide4;
-    private SideLight rightSide5;
-    private SideLight leftSide1;
-    private SideLight leftSide2;
-    private SideLight leftSide3;
-    private SideLight leftSide4;
-    private SideLight leftSide5;
-    private Scheinwerfer scheinwerfer01;
-    private Scheinwerfer scheinwerfer02;
-    private Scheinwerfer scheinwerfer03;
-    private Scheinwerfer scheinwerfer04;
-    private Scheinwerfer scheinwerfer05;
-    private Scheinwerfer scheinwerfer06;
-    private Scheinwerfer scheinwerfer07;
-    private Scheinwerfer scheinwerfer08;
-    private Scheinwerfer scheinwerfer09;
-    private Scheinwerfer scheinwerfer10;
-    private Fahrtrichtungsanzeiger fahrtrichtungsanzeiger01;
-    private Fahrtrichtungsanzeiger fahrtrichtungsanzeiger02;
-    private Fahrtrichtungsanzeiger fahrtrichtungsanzeiger03;
-    private Fahrtrichtungsanzeiger fahrtrichtungsanzeiger04;
-    private Bremslicht bremslicht01;
-    private Bremslicht bremslicht02;
-    private Blaulicht blaulicht01;
-    private Blaulicht blaulicht02;
-    private Blaulicht blaulicht03;
-    private Blaulicht blaulicht04;
-    private Blaulicht blaulicht05;
-    private Blaulicht blaulicht06;
-    private Blaulicht blaulicht07;
-    private Blaulicht blaulicht08;
-    private Blaulicht blaulicht09;
-    private Blaulicht blaulicht10;
-    private Warnlicht warnlicht;
-    private Elektromotor motor;
+    private final Tacho tacho;
+    private final Achse frontAxis;
+    private final SideLight rightSide1;
+    private final SideLight rightSide2;
+    private final SideLight rightSide3;
+    private final SideLight rightSide4;
+    private final SideLight rightSide5;
+    private final SideLight leftSide1;
+    private final SideLight leftSide2;
+    private final SideLight leftSide3;
+    private final SideLight leftSide4;
+    private final SideLight leftSide5;
+    private final Scheinwerfer scheinwerfer01;
+    private final Scheinwerfer scheinwerfer02;
+    private final Scheinwerfer scheinwerfer03;
+    private final Scheinwerfer scheinwerfer04;
+    private final Scheinwerfer scheinwerfer05;
+    private final Scheinwerfer scheinwerfer06;
+    private final Scheinwerfer scheinwerfer07;
+    private final Scheinwerfer scheinwerfer08;
+    private final Scheinwerfer scheinwerfer09;
+    private final Scheinwerfer scheinwerfer10;
+    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger01;
+    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger02;
+    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger03;
+    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger04;
+    private final Bremslicht bremslicht01;
+    private final Bremslicht bremslicht02;
+    private final Blaulicht blaulicht01;
+    private final Blaulicht blaulicht02;
+    private final Blaulicht blaulicht03;
+    private final Blaulicht blaulicht04;
+    private final Blaulicht blaulicht05;
+    private final Blaulicht blaulicht06;
+    private final Blaulicht blaulicht07;
+    private final Blaulicht blaulicht08;
+    private final Blaulicht blaulicht09;
+    private final Blaulicht blaulicht10;
+    private final Warnlicht warnlicht;
+    private final Elektromotor motor;
 
     public CentralUnit(){
         tacho = new Tacho();
@@ -92,9 +92,13 @@ public class CentralUnit {
     }
 
     public void brake(int amount){
+        bremslicht01.On();
+        bremslicht02.On();
         for(int i = 0; i < amount; i++){
             tacho.lowerSpeed();
         }
+        bremslicht01.Off();
+        bremslicht02.Off();
         System.out.println("The speed is now " + tacho.getSpeed() + " km/h.");
     }
 
@@ -107,12 +111,30 @@ public class CentralUnit {
 
     public void turn(int winkel){
         frontAxis.turn(winkel);
+        if(winkel < 0){
+            fahrtrichtungsanzeiger01.On();
+            fahrtrichtungsanzeiger03.On();
+            fahrtrichtungsanzeiger02.Off();
+            fahrtrichtungsanzeiger04.Off();
+            System.out.println("Turn left");
+        } else if(winkel > 0){
+            fahrtrichtungsanzeiger01.Off();
+            fahrtrichtungsanzeiger03.Off();
+            fahrtrichtungsanzeiger02.On();
+            fahrtrichtungsanzeiger04.On();
+            System.out.println("Turn right");
+        } else {
+            fahrtrichtungsanzeiger01.Off();
+            fahrtrichtungsanzeiger03.Off();
+            fahrtrichtungsanzeiger02.Off();
+            fahrtrichtungsanzeiger04.Off();
+            System.out.println("Straight");
+        }
         System.out.println("The steering degree is " + frontAxis.getLenkWinkel() + "°.");
     }
 
     public boolean flipLever(int leverId, boolean state){
-        int option = leverId;
-        switch(option){
+        switch(leverId){
             case 1:
                 if(state){
                     System.out.println("Motor off");
@@ -187,7 +209,7 @@ public class CentralUnit {
                     scheinwerfer10.Off();
                     System.out.println("rooflight off");
                     return false;
-                } else {;
+                } else {
                     scheinwerfer07.On();
                     scheinwerfer08.On();
                     scheinwerfer09.On();
