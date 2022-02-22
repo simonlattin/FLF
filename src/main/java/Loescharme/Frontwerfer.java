@@ -5,10 +5,14 @@ public class Frontwerfer {
     private final int maxCapacity;
     private int turnAngle;
     private int outputAmount;
+    private final Mischanlage mischanlage;
+    private int mixingRatio;
 
-    public Frontwerfer(){
+    public Frontwerfer(Mischanlage mischanlage){
         this.maxCapacity = 3500;
         this.turnAngle = 0;
+        this.mischanlage = mischanlage;
+        this.mixingRatio = 0;
     }
 
     public void setTurnAngle(int turnAngle) {
@@ -17,6 +21,11 @@ public class Frontwerfer {
 
     public void setOutputAmount(int outputAmount) {
         this.outputAmount = outputAmount;
+    }
+
+    public void setMixingRatio(int ratio){
+        this.mischanlage.setMixingRatio(ratio);
+        this.mixingRatio = ratio;
     }
 
     public int getTurnAngle() {
@@ -29,5 +38,9 @@ public class Frontwerfer {
 
     public int getOutputAmount() {
         return outputAmount;
+    }
+
+    public int getMixingRatio() {
+        return mixingRatio;
     }
 }

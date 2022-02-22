@@ -1,5 +1,7 @@
 package Kabine;
 
+import Loescharme.*;
+
 public class Kabine {
 
     private Bustuer tuerLinks;
@@ -24,8 +26,8 @@ public class Kabine {
         this.sitzplatz02 = new Sitzplatz(Position.VORNERECHTS);
         this.sitzplatz03 = new Sitzplatz(Position.HINTENLINKS);
         this.sitzplatz04 = new Sitzplatz(Position.HINTENRECHTS);
-        this.joystick01 = new Joystick();
-        this.joystick02 = new Joystick();
+        this.joystick01 = new JoystickFrontwerfer(new Frontwerfer(new Mischanlage(new Tank(Tankart.WASSER),new Tank(Tankart.SCHAUMPULVER))));//Löscharm anpassen
+        this.joystick02 = new JoystickDachloescharm(new Dachloescharm(new Mischanlage(new Tank(Tankart.WASSER),new Tank(Tankart.SCHAUMPULVER))));//Löscharm anpassen
         this.bedienpanel = new Bedienpanel();
         this.lenkrad = new Lenkrad();
         this.restenergieanzeige = new Restenergieanzeige();
