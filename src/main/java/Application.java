@@ -7,12 +7,11 @@ import java.util.Arrays;
 public class Application {
 
     public static void main(String... args){
-        Tank tank = new Tank(Tankart.WASSER);
-        System.out.println(tank.getAvailableUnits());
-        tank.takeOut(2000);
-        System.out.println(tank.getAvailableUnits());
-        tank.fill(1000);
-        System.out.println(tank.getAvailableUnits());
+        int a = 200;
+        int b = 3;
+
+        double c = (double) a * ((double)b / 100);
+        System.out.println(c);
         }
 
 }
