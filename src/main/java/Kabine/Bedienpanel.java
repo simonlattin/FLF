@@ -2,71 +2,47 @@ package Kabine;
 
 public class Bedienpanel {
 
-    private Schalter elektromotor;
-    private Schalter warnlicht;
-    private Schalter blaulicht;
-    private Schalter frontleuchten;
-    private Schalter dachscheinwerfer;
-    private Schalter seitenleuchten;
+    private ElektromotorSchalter elektromotor;
+    private WarnlichtSchalter warnlicht;
+    private BlaulichtSchalter blaulicht;
+    private FrontleuchtenSchalter frontleuchten;
+    private DachscheinerferSchalter dachscheinwerfer;
+    private SeitenleuchtenSchalter seitenleuchten;
     private Drehknopf frontwerfer;
     private Drehknopf dachloescharm;
 
     public Bedienpanel(){
         this.elektromotor = new ElektromotorSchalter();
         this.warnlicht = new WarnlichtSchalter();
-        this.blaulicht = new Schalter();
-        this.frontleuchten = new Schalter();
-        this.dachscheinwerfer = new Schalter();
-        this.seitenleuchten = new Schalter();
+        this.blaulicht = new BlaulichtSchalter();
+        this.frontleuchten = new FrontleuchtenSchalter();
+        this.dachscheinwerfer = new DachscheinerferSchalter();
+        this.seitenleuchten = new SeitenleuchtenSchalter();
         this.frontwerfer = new Drehknopf(DrehknopfFunktion.FRONTWERFER);
         this.dachloescharm = new Drehknopf(DrehknopfFunktion.DACHLOESCHARM);
     }
 
-    public void motorAn(){
-        this.elektromotor.On();
+    public void motorFlip(){
+        this.elektromotor.flip();
     }
 
-    public void motorAus(){
-        this.elektromotor.Off();
+    public void warnlichtFlip(){
+        this.warnlicht.flip();
     }
 
-    public void warnlichtAn(){
-        this.warnlicht.On();
+    public void blaulichFlip(){
+        this.blaulicht.flip();
     }
 
-    public void warnlichtAus(){
-        this.warnlicht.Off();
+    public void frontleuchtenFlip(){
+        this.frontleuchten.flip();
     }
 
-    public void blaulichAn(){
-        this.blaulicht.On();
+    public void dachscheinwerferFlip(){
+        this.dachscheinwerfer.flip();
     }
 
-    public void blaulichAus(){
-        this.blaulicht.Off();
-    }
-
-    public void frontleuchtenAn(){
-        this.frontleuchten.On();
-    }
-
-    public void frontleuchtenAus(){
-        this.frontleuchten.Off();
-    }
-
-    public void dachscheinwerferAn(){
-        this.dachscheinwerfer.On();
-    }
-
-    public void dachscheinwerferAus(){
-        this.dachscheinwerfer.Off();
-    }
-
-    public void seitenleuchtenAn(){
-        this.seitenleuchten.On();
-    }
-
-    public void seitenleuchtenAus(){
-        this.seitenleuchten.Off();
+    public void seitenleuchtenFlip(){
+        this.seitenleuchten.flip();
     }
 }
