@@ -11,15 +11,8 @@ public class Application {
         System.out.println(tank.getAvailableUnits());
         tank.takeOut(2000);
         System.out.println(tank.getAvailableUnits());
-        int f = 0;
-//        for (int i = 0; i < 50; i++) {
-//            for (int j = 0; j < 25; j++) {
-//                for (int k = 0; k < 10; k++) {
-//                    f++;
-//                    System.out.println(Integer.toString(f) + tank.getCapacity()[i][j][k]);
-//                    }
-//                }
-//            }
+        tank.fill(1000);
+        System.out.println(tank.getAvailableUnits());
         }
 
 }
