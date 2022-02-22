@@ -6,7 +6,7 @@ public class Blaulicht {
     private LED led02;
     private LED led03;
     private LED led04;
-    private Position position;
+    private final Position position;
 
     public Blaulicht(Groesse groesse, Position position){
 
@@ -24,6 +24,28 @@ public class Blaulicht {
                 this.led02 = new LED();
             }
             case KLEIN -> this.led01 = new LED();
+        }
+    }
+
+    public void On(){
+        led01.On();
+        if(led02 != null) {
+            led02.On();
+        }
+        if(led03 != null) {
+            led03.On();
+            led04.On();
+        }
+    }
+
+    public void Off(){
+        led01.Off();
+        if(led02 != null) {
+            led02.Off();
+        }
+        if(led03 != null) {
+            led03.Off();
+            led04.Off();
         }
     }
 }

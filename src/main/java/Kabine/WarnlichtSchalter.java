@@ -6,10 +6,12 @@ public class WarnlichtSchalter extends Schalter{
     private Warnlicht warningLight;
 
     public void flip(){
-        if(state == true){
+        if(state){
             state = false;
+            warningLight.Off();
         } else {
             state = true;
+            warningLight.On();
         }
     }
 }
