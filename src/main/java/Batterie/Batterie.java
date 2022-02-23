@@ -39,7 +39,7 @@ public class Batterie {
                 }
             }
         }
-        int loadedCellsBeforeCharge = (int) loadedCells;
+        int loadedCellsBeforeCharge = loadedCells;
 
         for (int i = 99; i >= 0; i--) {
             for (int j = 9; j >= 0; j--) {
@@ -191,6 +191,7 @@ public class Batterie {
             this.overload = 0;
         }
         this.percentageFullCell = this.loadedCells / 100000;
+        System.out.println(loadedCells);
     }
 
     public void takeOut(int energy) {
@@ -213,7 +214,7 @@ public class Batterie {
                 }
             }
         }
-        int LoadedCellsBeforeTakeOut = (int) this.loadedCells;
+        int LoadedCellsBeforeTakeOut = this.loadedCells;
 
         for (int i = 0; i < 100; i++) {
             for (int j = 0; j < 10; j++) {
@@ -384,6 +385,7 @@ public class Batterie {
             this.overloadTakeOut = 0;
         }
         this.percentageFullCell = this.loadedCells / 100000;
+        System.out.println(loadedCells);
     }
 
     public int getLoadedCells() {

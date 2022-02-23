@@ -10,7 +10,9 @@ public class Application {
     public static void main(String... args){
         CentralUnit unit = new CentralUnit();
         unit.speedUp(6);
+        unit.drive();
         unit.speedUp(3);
+        unit.drive();
         unit.brake(5);
         unit.turn(30);
         unit.turn(0);

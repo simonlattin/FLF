@@ -46,7 +46,8 @@ public class CentralUnit {
     private final Blaulicht blaulicht09;
     private final Blaulicht blaulicht10;
     private final Warnlicht warnlicht;
-    private final Elektromotor motor;
+    private final Elektromotor motor1;
+    private final Elektromotor motor2;
 
     public CentralUnit(){
         tacho = new Tacho();
@@ -88,7 +89,8 @@ public class CentralUnit {
         blaulicht09 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENLINKS);
         blaulicht10 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENLINKS);
         warnlicht = new Warnlicht();
-        motor = new Elektromotor();
+        motor1 = new Elektromotor(tacho);
+        motor2 = new Elektromotor(tacho);
     }
 
     public void brake(int amount){
@@ -107,6 +109,12 @@ public class CentralUnit {
             tacho.speedUp();
         }
         System.out.println("The speed is now " + tacho.getSpeed() + " km/h.");
+    }
+
+    public void drive(){
+        System.out.println("Driving one iteration");
+        motor1.drive();
+        motor2.drive();
     }
 
     public void turn(int winkel){
@@ -137,9 +145,13 @@ public class CentralUnit {
         switch(leverId){
             case 1:
                 if(state){
+                    motor1.turnOn();
+                    motor2.turnOn();
                     System.out.println("Motor off");
                     return false;
                 } else {
+                    motor1.turnOff();
+                    motor2.turnOff();
                     System.out.println("Motor on");
                     return true;
                 }
