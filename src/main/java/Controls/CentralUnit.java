@@ -1,14 +1,14 @@
 package Controls;
 
-import Achsen.Achse;
-import Achsen.Position;
-import Antrieb.Elektromotor;
-import Kabine.*;
-import Lichter.*;
+import Axes.Axis;
+import Axes.Position;
+import Drive.ElectricMotor;
+import Cabin.*;
+import Lights.*;
 
 public class CentralUnit {
-    private final Tacho tacho;
-    private final Achse frontAxis;
+    private final SpeedDisplay speedDisplay;
+    private final Axis frontAxis;
     private final SideLight rightSide1;
     private final SideLight rightSide2;
     private final SideLight rightSide3;
@@ -19,96 +19,96 @@ public class CentralUnit {
     private final SideLight leftSide3;
     private final SideLight leftSide4;
     private final SideLight leftSide5;
-    private final Scheinwerfer scheinwerfer01;
-    private final Scheinwerfer scheinwerfer02;
-    private final Scheinwerfer scheinwerfer03;
-    private final Scheinwerfer scheinwerfer04;
-    private final Scheinwerfer scheinwerfer05;
-    private final Scheinwerfer scheinwerfer06;
-    private final Scheinwerfer scheinwerfer07;
-    private final Scheinwerfer scheinwerfer08;
-    private final Scheinwerfer scheinwerfer09;
-    private final Scheinwerfer scheinwerfer10;
-    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger01;
-    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger02;
-    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger03;
-    private final Fahrtrichtungsanzeiger fahrtrichtungsanzeiger04;
-    private final Bremslicht bremslicht01;
-    private final Bremslicht bremslicht02;
-    private final Blaulicht blaulicht01;
-    private final Blaulicht blaulicht02;
-    private final Blaulicht blaulicht03;
-    private final Blaulicht blaulicht04;
-    private final Blaulicht blaulicht05;
-    private final Blaulicht blaulicht06;
-    private final Blaulicht blaulicht07;
-    private final Blaulicht blaulicht08;
-    private final Blaulicht blaulicht09;
-    private final Blaulicht blaulicht10;
-    private final Warnlicht warnlicht;
-    private final Elektromotor motor1;
-    private final Elektromotor motor2;
+    private final Spotlight spotlight01;
+    private final Spotlight spotlight02;
+    private final Spotlight spotlight03;
+    private final Spotlight spotlight04;
+    private final Spotlight spotlight05;
+    private final Spotlight spotlight06;
+    private final Spotlight spotlight07;
+    private final Spotlight spotlight08;
+    private final Spotlight spotlight09;
+    private final Spotlight spotlight10;
+    private final Indicator indicator01;
+    private final Indicator indicator02;
+    private final Indicator indicator03;
+    private final Indicator indicator04;
+    private final BreakLight breakLight01;
+    private final BreakLight breakLight02;
+    private final BlueLight blueLight01;
+    private final BlueLight blueLight02;
+    private final BlueLight blueLight03;
+    private final BlueLight blueLight04;
+    private final BlueLight blueLight05;
+    private final BlueLight blueLight06;
+    private final BlueLight blueLight07;
+    private final BlueLight blueLight08;
+    private final BlueLight blueLight09;
+    private final BlueLight blueLight10;
+    private final WarningLight warningLight;
+    private final ElectricMotor motor1;
+    private final ElectricMotor motor2;
 
     public CentralUnit(){
-        tacho = new Tacho();
-        frontAxis = new Achse(Position.VORNE);
-        rightSide1 = new SideLight(Lichter.Position.RECHTS);
-        rightSide2 = new SideLight(Lichter.Position.RECHTS);
-        rightSide3 = new SideLight(Lichter.Position.RECHTS);
-        rightSide4 = new SideLight(Lichter.Position.RECHTS);
-        rightSide5 = new SideLight(Lichter.Position.RECHTS);
-        leftSide1 = new SideLight(Lichter.Position.LINKS);
-        leftSide2 = new SideLight(Lichter.Position.LINKS);
-        leftSide3 = new SideLight(Lichter.Position.LINKS);
-        leftSide4 = new SideLight(Lichter.Position.LINKS);
-        leftSide5 = new SideLight(Lichter.Position.LINKS);
-        scheinwerfer01 = new Scheinwerfer(Lichter.Position.VORNELINKS);
-        scheinwerfer02 = new Scheinwerfer(Lichter.Position.VORNELINKS);
-        scheinwerfer03 = new Scheinwerfer(Lichter.Position.VORNELINKS);
-        scheinwerfer04 = new Scheinwerfer(Lichter.Position.VORNERECHTS);
-        scheinwerfer05 = new Scheinwerfer(Lichter.Position.VORNERECHTS);
-        scheinwerfer06 = new Scheinwerfer(Lichter.Position.VORNERECHTS);
-        scheinwerfer07 = new Scheinwerfer(Lichter.Position.DACH);
-        scheinwerfer08 = new Scheinwerfer(Lichter.Position.DACH);
-        scheinwerfer09 = new Scheinwerfer(Lichter.Position.DACH);
-        scheinwerfer10 = new Scheinwerfer(Lichter.Position.DACH);
-        fahrtrichtungsanzeiger01 = new Fahrtrichtungsanzeiger(Lichter.Position.VORNELINKS);
-        fahrtrichtungsanzeiger02 = new Fahrtrichtungsanzeiger(Lichter.Position.VORNERECHTS);
-        fahrtrichtungsanzeiger03 = new Fahrtrichtungsanzeiger(Lichter.Position.HINTENLINKS);
-        fahrtrichtungsanzeiger04 = new Fahrtrichtungsanzeiger(Lichter.Position.HINTENRECHTS);
-        bremslicht01 = new Bremslicht(Lichter.Position.HINTENLINKS);
-        bremslicht02 = new Bremslicht(Lichter.Position.HINTENRECHTS);
-        blaulicht01 = new Blaulicht(Groesse.KLEIN, Lichter.Position.VORNE);
-        blaulicht02 = new Blaulicht(Groesse.KLEIN, Lichter.Position.VORNE);
-        blaulicht03 = new Blaulicht(Groesse.GROSS, Lichter.Position.DACH);
-        blaulicht04 = new Blaulicht(Groesse.GROSS, Lichter.Position.DACH);
-        blaulicht05 = new Blaulicht(Groesse.GROSS, Lichter.Position.DACH);
-        blaulicht06 = new Blaulicht(Groesse.GROSS, Lichter.Position.DACH);
-        blaulicht07 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENRECHTS);
-        blaulicht08 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENRECHTS);
-        blaulicht09 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENLINKS);
-        blaulicht10 = new Blaulicht(Groesse.MITTEL, Lichter.Position.HINTENLINKS);
-        warnlicht = new Warnlicht();
-        motor1 = new Elektromotor(tacho);
-        motor2 = new Elektromotor(tacho);
+        speedDisplay = new SpeedDisplay();
+        frontAxis = new Axis(Position.VORNE);
+        rightSide1 = new SideLight(Lights.Position.RECHTS);
+        rightSide2 = new SideLight(Lights.Position.RECHTS);
+        rightSide3 = new SideLight(Lights.Position.RECHTS);
+        rightSide4 = new SideLight(Lights.Position.RECHTS);
+        rightSide5 = new SideLight(Lights.Position.RECHTS);
+        leftSide1 = new SideLight(Lights.Position.LINKS);
+        leftSide2 = new SideLight(Lights.Position.LINKS);
+        leftSide3 = new SideLight(Lights.Position.LINKS);
+        leftSide4 = new SideLight(Lights.Position.LINKS);
+        leftSide5 = new SideLight(Lights.Position.LINKS);
+        spotlight01 = new Spotlight(Lights.Position.VORNELINKS);
+        spotlight02 = new Spotlight(Lights.Position.VORNELINKS);
+        spotlight03 = new Spotlight(Lights.Position.VORNELINKS);
+        spotlight04 = new Spotlight(Lights.Position.VORNERECHTS);
+        spotlight05 = new Spotlight(Lights.Position.VORNERECHTS);
+        spotlight06 = new Spotlight(Lights.Position.VORNERECHTS);
+        spotlight07 = new Spotlight(Lights.Position.DACH);
+        spotlight08 = new Spotlight(Lights.Position.DACH);
+        spotlight09 = new Spotlight(Lights.Position.DACH);
+        spotlight10 = new Spotlight(Lights.Position.DACH);
+        indicator01 = new Indicator(Lights.Position.VORNELINKS);
+        indicator02 = new Indicator(Lights.Position.VORNERECHTS);
+        indicator03 = new Indicator(Lights.Position.HINTENLINKS);
+        indicator04 = new Indicator(Lights.Position.HINTENRECHTS);
+        breakLight01 = new BreakLight(Lights.Position.HINTENLINKS);
+        breakLight02 = new BreakLight(Lights.Position.HINTENRECHTS);
+        blueLight01 = new BlueLight(Size.KLEIN, Lights.Position.VORNE);
+        blueLight02 = new BlueLight(Size.KLEIN, Lights.Position.VORNE);
+        blueLight03 = new BlueLight(Size.GROSS, Lights.Position.DACH);
+        blueLight04 = new BlueLight(Size.GROSS, Lights.Position.DACH);
+        blueLight05 = new BlueLight(Size.GROSS, Lights.Position.DACH);
+        blueLight06 = new BlueLight(Size.GROSS, Lights.Position.DACH);
+        blueLight07 = new BlueLight(Size.MITTEL, Lights.Position.HINTENRECHTS);
+        blueLight08 = new BlueLight(Size.MITTEL, Lights.Position.HINTENRECHTS);
+        blueLight09 = new BlueLight(Size.MITTEL, Lights.Position.HINTENLINKS);
+        blueLight10 = new BlueLight(Size.MITTEL, Lights.Position.HINTENLINKS);
+        warningLight = new WarningLight();
+        motor1 = new ElectricMotor(speedDisplay);
+        motor2 = new ElectricMotor(speedDisplay);
     }
 
     public void brake(int amount){
-        bremslicht01.On();
-        bremslicht02.On();
+        breakLight01.On();
+        breakLight02.On();
         for(int i = 0; i < amount; i++){
-            tacho.lowerSpeed();
+            speedDisplay.lowerSpeed();
         }
-        bremslicht01.Off();
-        bremslicht02.Off();
-        System.out.println("The speed is now " + tacho.getSpeed() + " km/h.");
+        breakLight01.Off();
+        breakLight02.Off();
+        System.out.println("The speed is now " + speedDisplay.getSpeed() + " km/h.");
     }
 
     public void speedUp(int amount){
         for(int i = 0; i < amount; i++){
-            tacho.speedUp();
+            speedDisplay.speedUp();
         }
-        System.out.println("The speed is now " + tacho.getSpeed() + " km/h.");
+        System.out.println("The speed is now " + speedDisplay.getSpeed() + " km/h.");
     }
 
     public void drive(){
@@ -120,22 +120,22 @@ public class CentralUnit {
     public void turn(int winkel){
         frontAxis.turn(winkel);
         if(winkel < 0){
-            fahrtrichtungsanzeiger01.On();
-            fahrtrichtungsanzeiger03.On();
-            fahrtrichtungsanzeiger02.Off();
-            fahrtrichtungsanzeiger04.Off();
+            indicator01.On();
+            indicator03.On();
+            indicator02.Off();
+            indicator04.Off();
             System.out.println("Turn left");
         } else if(winkel > 0){
-            fahrtrichtungsanzeiger01.Off();
-            fahrtrichtungsanzeiger03.Off();
-            fahrtrichtungsanzeiger02.On();
-            fahrtrichtungsanzeiger04.On();
+            indicator01.Off();
+            indicator03.Off();
+            indicator02.On();
+            indicator04.On();
             System.out.println("Turn right");
         } else {
-            fahrtrichtungsanzeiger01.Off();
-            fahrtrichtungsanzeiger03.Off();
-            fahrtrichtungsanzeiger02.Off();
-            fahrtrichtungsanzeiger04.Off();
+            indicator01.Off();
+            indicator03.Off();
+            indicator02.Off();
+            indicator04.Off();
             System.out.println("Straight");
         }
         System.out.println("The steering degree is " + frontAxis.getLenkWinkel() + "°.");
@@ -157,75 +157,75 @@ public class CentralUnit {
                 }
             case 2:
                 if(state){
-                    warnlicht.Off();
+                    warningLight.Off();
                     System.out.println("warning light off");
                     return false;
                 } else {
-                    warnlicht.On();
+                    warningLight.On();
                     System.out.println("warning light on");
                     return true;
                 }
             case 3:
                 if(state){
-                    blaulicht01.Off();
-                    blaulicht02.Off();
-                    blaulicht03.Off();
-                    blaulicht04.Off();
-                    blaulicht05.Off();
-                    blaulicht06.Off();
-                    blaulicht07.Off();
-                    blaulicht08.Off();
-                    blaulicht09.Off();
-                    blaulicht10.Off();
+                    blueLight01.Off();
+                    blueLight02.Off();
+                    blueLight03.Off();
+                    blueLight04.Off();
+                    blueLight05.Off();
+                    blueLight06.Off();
+                    blueLight07.Off();
+                    blueLight08.Off();
+                    blueLight09.Off();
+                    blueLight10.Off();
                     System.out.println("blue light off");
                     return false;
                 } else {
-                    blaulicht01.On();
-                    blaulicht02.On();
-                    blaulicht03.On();
-                    blaulicht04.On();
-                    blaulicht05.On();
-                    blaulicht06.On();
-                    blaulicht07.On();
-                    blaulicht08.On();
-                    blaulicht09.On();
-                    blaulicht10.On();
+                    blueLight01.On();
+                    blueLight02.On();
+                    blueLight03.On();
+                    blueLight04.On();
+                    blueLight05.On();
+                    blueLight06.On();
+                    blueLight07.On();
+                    blueLight08.On();
+                    blueLight09.On();
+                    blueLight10.On();
                     System.out.println("blue light on");
                     return true;
                 }
             case 4:
                 if(state){
-                    scheinwerfer01.Off();
-                    scheinwerfer02.Off();
-                    scheinwerfer03.Off();
-                    scheinwerfer04.Off();
-                    scheinwerfer05.Off();
-                    scheinwerfer06.Off();
+                    spotlight01.Off();
+                    spotlight02.Off();
+                    spotlight03.Off();
+                    spotlight04.Off();
+                    spotlight05.Off();
+                    spotlight06.Off();
                     System.out.println("spotlight off");
                     return false;
                 } else {
-                    scheinwerfer01.On();
-                    scheinwerfer02.On();
-                    scheinwerfer03.On();
-                    scheinwerfer04.On();
-                    scheinwerfer05.On();
-                    scheinwerfer06.On();
+                    spotlight01.On();
+                    spotlight02.On();
+                    spotlight03.On();
+                    spotlight04.On();
+                    spotlight05.On();
+                    spotlight06.On();
                     System.out.println("spotlight on");
                     return true;
                 }
             case 5:
                 if(state){
-                    scheinwerfer07.Off();
-                    scheinwerfer08.Off();
-                    scheinwerfer09.Off();
-                    scheinwerfer10.Off();
+                    spotlight07.Off();
+                    spotlight08.Off();
+                    spotlight09.Off();
+                    spotlight10.Off();
                     System.out.println("rooflight off");
                     return false;
                 } else {
-                    scheinwerfer07.On();
-                    scheinwerfer08.On();
-                    scheinwerfer09.On();
-                    scheinwerfer10.On();
+                    spotlight07.On();
+                    spotlight08.On();
+                    spotlight09.On();
+                    spotlight10.On();
                     System.out.println("rooflight on");
                     return true;
                 }

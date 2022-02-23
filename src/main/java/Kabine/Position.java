@@ -1,5 +1,0 @@
-package Kabine;
-
-public enum Position {
-    LINKS, RECHTS, VORNELINKS, VORNERECHTS, HINTENLINKS, HINTENRECHTS
-}

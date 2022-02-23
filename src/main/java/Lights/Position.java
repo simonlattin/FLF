@@ -1,0 +1,5 @@
+package Lights;
+
+public enum Position {
+    VORNELINKS,VORNERECHTS, HINTENLINKS, HINTENRECHTS, DACH, LINKS, RECHTS, VORNE
+}

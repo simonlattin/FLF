@@ -1,9 +1,4 @@
-import Batterie.Batterie;
 import Controls.CentralUnit;
-import Loescharme.Tank;
-import Loescharme.Tankart;
-
-import java.util.Arrays;
 
 public class Application {
 
