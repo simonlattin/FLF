@@ -14,9 +14,13 @@ public class Application {
         unit.speedUp(3);
         unit.drive();
         unit.brake(5);
+        unit.drive();
         unit.turn(30);
+        unit.drive();
         unit.turn(0);
+        unit.drive();
         unit.turn(-30);
+        unit.drive();
     }
 
 }
