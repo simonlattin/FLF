@@ -1,11 +1,11 @@
 package Cabin;
 
-public class Sitzplatz {
+public class Seat {
 
     private final Respirator respirator;
     private final Position position;
 
-    public Sitzplatz(Position position){
+    public Seat(Position position){
         this.respirator = new Respirator();
         this.position = position;
     }

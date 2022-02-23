@@ -1,5 +1,5 @@
 package Cabin;
 
 public enum TurnKnobFunction {
-    FRONTWERFER, DACHLOESCHARM
+    FRONTEXTINGUISHER, ROOFEXTINGUISHER
 }

@@ -12,18 +12,18 @@ public class JoystickFrontExtinguisher extends Joystick{
 
     public void pushLeftButton(){
         this.leftButton.press();
-        if (!isAktive){
-            this.isAktive = true;
+        if (!isActive){
+            this.isActive = true;
             frontExtinguisher.setTurnAngle(90);
         } else {
-            this.isAktive = false;
+            this.isActive = false;
             frontExtinguisher.setTurnAngle(0);
         }
     }
 
     public void pushRightButton(){
         this.rightButton.press();
-        if (!isAktive){
+        if (!isActive){
             int i = 0;
         } else {
             if (frontExtinguisher.getMixingRatio() == 0){
@@ -42,7 +42,7 @@ public class JoystickFrontExtinguisher extends Joystick{
 
     }
 
-    public void pushTaster(){ //TODO
+    public void pushCaliper(){
         this.caliper.press();
     }
 }

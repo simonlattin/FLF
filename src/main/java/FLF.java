@@ -116,25 +116,25 @@ public class FLF {
 
 
         public Builder(){
-            this.spotlight01 = new Spotlight(Position.VORNELINKS);
-            this.spotlight02 = new Spotlight(Position.DACH);
-            this.spotlight03 = new Spotlight(Position.VORNERECHTS);
-            this.indicator01 = new Indicator(Position.VORNELINKS);
-            this.indicator02 = new Indicator(Position.VORNERECHTS);
-            this.indicator03 = new Indicator(Position.HINTENLINKS);
-            this.indicator04 = new Indicator(Position.HINTENRECHTS);
-            this.breakLight01 = new BreakLight(Position.HINTENLINKS);
-            this.breakLight02 = new BreakLight(Position.HINTENRECHTS);
-            this.blueLight01 = new BlueLight(Size.KLEIN, Position.VORNE);
-            this.blueLight02 = new BlueLight(Size.GROSS, Position.DACH);
-            this.blueLight03 = new BlueLight(Size.MITTEL, Position.HINTENRECHTS);
-            this.blueLight04 = new BlueLight(Size.MITTEL, Position.HINTENLINKS);
+            this.spotlight01 = new Spotlight(Position.FRONTLEFT);
+            this.spotlight02 = new Spotlight(Position.ROOF);
+            this.spotlight03 = new Spotlight(Position.FRONTRIGHT);
+            this.indicator01 = new Indicator(Position.FRONTLEFT);
+            this.indicator02 = new Indicator(Position.FRONTRIGHT);
+            this.indicator03 = new Indicator(Position.BACKLEFT);
+            this.indicator04 = new Indicator(Position.BACKRIGHT);
+            this.breakLight01 = new BreakLight(Position.BACKLEFT);
+            this.breakLight02 = new BreakLight(Position.BACKRIGHT);
+            this.blueLight01 = new BlueLight(Size.SMALL, Position.FRONT);
+            this.blueLight02 = new BlueLight(Size.BIG, Position.ROOF);
+            this.blueLight03 = new BlueLight(Size.MEDIUM, Position.BACKRIGHT);
+            this.blueLight04 = new BlueLight(Size.MEDIUM, Position.BACKLEFT);
             this.warningLight = new WarningLight();
             this.cabin = new Cabin();
-            this.axis01 = new Axis(Axes.Position.VORNE);
-            this.axis02 = new Axis(Axes.Position.HINTEN);
-            this.sideLightLeft = new SideLight(Position.LINKS);
-            this.sideLightRight = new SideLight(Position.RECHTS);
+            this.axis01 = new Axis(Axes.Position.FRONT);
+            this.axis02 = new Axis(Axes.Position.BACK);
+            this.sideLightLeft = new SideLight(Position.LEFT);
+            this.sideLightRight = new SideLight(Position.RIGHT);
         }
     }
 }

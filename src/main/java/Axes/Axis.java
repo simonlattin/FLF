@@ -11,60 +11,60 @@ public class Axis {
     private final BrakeDisc brakeDisc05;
     private final BrakeDisc brakeDisc06;
     private final Position position;
-    private int lenkWinkel;
+    private int steeringDegree;
 
     public Axis(Position position){
         this.position = position;
-        this.tire01 = new Tire(Position.LINKS);
-        this.tire02 = new Tire(Position.RECHTS);
-        this.brakeDisc01 = new BrakeDisc(Position.LINKS);
-        this.brakeDisc02 = new BrakeDisc(Position.LINKS);
-        this.brakeDisc03 = new BrakeDisc(Position.LINKS);
-        this.brakeDisc04 = new BrakeDisc(Position.RECHTS);
-        this.brakeDisc05 = new BrakeDisc(Position.RECHTS);
-        this.brakeDisc06 = new BrakeDisc(Position.RECHTS);
-        if (this.position == Position.VORNE){
-            this.lenkWinkel = 0;
+        this.tire01 = new Tire(Position.LEFT);
+        this.tire02 = new Tire(Position.RIGHT);
+        this.brakeDisc01 = new BrakeDisc(Position.LEFT);
+        this.brakeDisc02 = new BrakeDisc(Position.LEFT);
+        this.brakeDisc03 = new BrakeDisc(Position.LEFT);
+        this.brakeDisc04 = new BrakeDisc(Position.RIGHT);
+        this.brakeDisc05 = new BrakeDisc(Position.RIGHT);
+        this.brakeDisc06 = new BrakeDisc(Position.RIGHT);
+        if (this.position == Position.FRONT){
+            this.steeringDegree = 0;
         }
     }
 
-    public BrakeDisc getBremsscheibe01() {
+    public BrakeDisc getBrakeDisc01() {
         return brakeDisc01;
     }
 
-    public BrakeDisc getBremsscheibe02() {
+    public BrakeDisc getBrakeDisc02() {
         return brakeDisc02;
     }
 
-    public BrakeDisc getBremsscheibe03() {
+    public BrakeDisc getBrakeDisc03() {
         return brakeDisc03;
     }
 
-    public BrakeDisc getBremsscheibe04() {
+    public BrakeDisc getBrakeDisc04() {
         return brakeDisc04;
     }
 
-    public BrakeDisc getBremsscheibe05() {
+    public BrakeDisc getBrakeDisc05() {
         return brakeDisc05;
     }
 
-    public BrakeDisc getBremsscheibe06() {
+    public BrakeDisc getBrakeDisc06() {
         return brakeDisc06;
     }
 
-    public Tire getReifen02() {
+    public Tire getTire02() {
         return tire02;
     }
 
-    public Tire getReifen01() {
+    public Tire getTire01() {
         return tire01;
     }
 
-    public int getLenkWinkel() {
-        return lenkWinkel;
+    public int getSteeringDegree() {
+        return steeringDegree;
     }
 
-    public void turn(int lenkWinkel){
-        this.lenkWinkel = this.lenkWinkel + lenkWinkel;
+    public void turn(int steeringDegree){
+        this.steeringDegree = this.steeringDegree + steeringDegree;
     }
 }

@@ -2,7 +2,7 @@ package Cabin;
 
 import Lights.WarningLight;
 
-public class WarnlichtLever extends Lever {
+public class WarningLightLever extends Lever {
     private WarningLight warningLight;
 
     public void flip(){

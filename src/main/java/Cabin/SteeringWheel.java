@@ -4,23 +4,23 @@ import Controls.CentralUnit;
 
 public class SteeringWheel {
 
-    private int lenkWinkel;
+    private int steeringDegree;
     private CentralUnit unit;
 
     public SteeringWheel(){
-        this.lenkWinkel = 0;
+        this.steeringDegree = 0;
     }
 
     public void turnRight(int winkel){
-        lenkWinkel = lenkWinkel + winkel;
-        unit.turn(lenkWinkel);
+        steeringDegree = steeringDegree + winkel;
+        unit.turn(steeringDegree);
     }
 
     public void turnleft(int winkel){
-        lenkWinkel = lenkWinkel - winkel;
+        steeringDegree = steeringDegree - winkel;
     }
 
     public int getLenkWinkel() {
-        return lenkWinkel;
+        return steeringDegree;
     }
 }

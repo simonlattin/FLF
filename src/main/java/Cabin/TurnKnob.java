@@ -2,64 +2,64 @@ package Cabin;
 
 public class TurnKnob {
 
-    private char stufe;
-    private int stufe1;
+    private char state;
+    private int amount;
     private final TurnKnobFunction turnKnobFunction;
 
     public TurnKnob(TurnKnobFunction turnKnobFunction){
         this.turnKnobFunction = turnKnobFunction;
     }
 
-    public int turn(char stufe){
-        if (this.turnKnobFunction == TurnKnobFunction.DACHLOESCHARM){
-            switch (stufe) {
+    public int turn(char state){
+        if (this.turnKnobFunction == TurnKnobFunction.ROOFEXTINGUISHER){
+            switch (state) {
                 case 'A' -> {
-                    this.stufe1 = 1;
+                    this.amount = 500;
                     break;
                 }
                 case 'B' -> {
-                    this.stufe1 = 2;
+                    this.amount = 1000;
                     break;
                 }
                 case 'C' -> {
-                    this.stufe1 = 3;
+                    this.amount = 2500;
                     break;
                 }
             }
         }
-        if (this.turnKnobFunction == TurnKnobFunction.FRONTWERFER){
-            switch (stufe) {
+        if (this.turnKnobFunction == TurnKnobFunction.FRONTEXTINGUISHER){
+            switch (state) {
                 case '1' -> {
-                    this.stufe1 = 1;
+                    this.amount = 500;
                     break;
                 }
                 case '2' -> {
-                    this.stufe1 = 2;
+                    this.amount = 1000;
                     break;
                 }
                 case '3' -> {
-                    this.stufe1 = 3;
+                    this.amount = 1500;
                     break;
                 }
                 case '4' -> {
-                    this.stufe1 = 4;
+                    this.amount = 2000;
                     break;
                 }
                 case '5' -> {
-                    this.stufe1 = 5;
+                    this.amount = 2500;
                     break;
                 }
                 case '6' -> {
-                    this.stufe1 = 6;
+                    this.amount = 3000;
                     break;
                 }
                 case '7' -> {
-                    this.stufe1 = 7;
+                    this.amount = 3500;
                     break;
                 }
             }
         }
-        return stufe1;
+        return amount;
     }
 
     public TurnKnobFunction getDrehknopfFunktion() {

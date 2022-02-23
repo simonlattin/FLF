@@ -11,19 +11,18 @@ public class JoystickRoofExtinguisher extends Joystick{
     }
 
     public void pushLeftButton(){
-        if (!isAktive){
-            this.isAktive = true;
+        if (!isActive){
+            this.isActive = true;
             roofExtinguisher.extendFirstSegment();
             roofExtinguisher.extendSecondSegment();
         } else {
             roofExtinguisher.retractSecondSegment();
             roofExtinguisher.retractFirstSegment();
-            this.isAktive = false;
+            this.isActive = false;
         }
     }
-
     public void pushRightButton(){
-        if (!isAktive){
+        if (!isActive){
             int i = 0;
         } else {
             if (roofExtinguisher.getMixingRatio() == 0){
@@ -41,7 +40,7 @@ public class JoystickRoofExtinguisher extends Joystick{
         }
     }
 
-    public void pushTaster(){ //TODO
+    public void pushCaliper(){
         this.caliper.press();
     }
 }

@@ -2,7 +2,7 @@ package Cabin;
 
 import Controls.CentralUnit;
 
-public class SeitenleuchtenLever extends Lever {
+public class SideLightsLever extends Lever {
     private CentralUnit unit;
 
     public void flip() {

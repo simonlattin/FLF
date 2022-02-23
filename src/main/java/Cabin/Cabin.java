@@ -4,12 +4,12 @@ import Extinguisher.*;
 
 public class Cabin {
 
-    private final BusDoor tuerLinks;
-    private final BusDoor tuerRechts;
-    private final Sitzplatz sitzplatz01;
-    private final Sitzplatz sitzplatz02;
-    private final Sitzplatz sitzplatz03;
-    private final Sitzplatz sitzplatz04;
+    private final BusDoor doorLeft;
+    private final BusDoor doorRight;
+    private final Seat seat01;
+    private final Seat seat02;
+    private final Seat seat03;
+    private final Seat seat04;
     private final Joystick joystick01;
     private final Joystick joystick02;
     private final ControlPanel controlPanel;
@@ -20,14 +20,14 @@ public class Cabin {
     private final GasPedal gaspedal;
 
     public Cabin(){
-        this.tuerLinks =  new BusDoor(Position.LINKS);
-        this.tuerRechts = new BusDoor(Position.RECHTS);
-        this.sitzplatz01 = new Sitzplatz(Position.VORNELINKS);
-        this.sitzplatz02 = new Sitzplatz(Position.VORNERECHTS);
-        this.sitzplatz03 = new Sitzplatz(Position.HINTENLINKS);
-        this.sitzplatz04 = new Sitzplatz(Position.HINTENRECHTS);
-        this.joystick01 = new JoystickFrontExtinguisher(new FrontExtinguisher(new MixingUnit(new Tank(TankKind.WASSER),new Tank(TankKind.SCHAUMPULVER))));//Löscharm anpassen
-        this.joystick02 = new JoystickRoofExtinguisher(new RoofExtinguisher(new MixingUnit(new Tank(TankKind.WASSER),new Tank(TankKind.SCHAUMPULVER))));//Löscharm anpassen
+        this.doorLeft =  new BusDoor(Position.LEFT);
+        this.doorRight = new BusDoor(Position.RIGHT);
+        this.seat01 = new Seat(Position.FRONTLEFT);
+        this.seat02 = new Seat(Position.FRONTRIGHT);
+        this.seat03 = new Seat(Position.BACKLEFT);
+        this.seat04 = new Seat(Position.BACKRIGHT);
+        this.joystick01 = new JoystickFrontExtinguisher(new FrontExtinguisher(new MixingUnit(new Tank(TankKind.WATER),new Tank(TankKind.FOAM))));//Löscharm anpassen
+        this.joystick02 = new JoystickRoofExtinguisher(new RoofExtinguisher(new MixingUnit(new Tank(TankKind.WATER),new Tank(TankKind.FOAM))));//Löscharm anpassen
         this.controlPanel = new ControlPanel();
         this.steeringWheel = new SteeringWheel();
         this.energyDisplay = new EnergyDisplay();

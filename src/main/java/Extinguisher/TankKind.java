@@ -1,5 +1,5 @@
 package Extinguisher;
 
 public enum TankKind {
-    WASSER, SCHAUMPULVER
+    WATER, FOAM
 }
