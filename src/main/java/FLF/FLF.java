@@ -396,6 +396,32 @@ public class FLF {
         this.motor02.turnOn();
     }
     
+    public void turnOnBlueLight() {
+        this.blueLight01.On();
+        this.blueLight02.On();
+        this.blueLight03.On();
+        this.blueLight04.On();
+        this.blueLight05.On();
+        this.blueLight06.On();
+        this.blueLight07.On();
+        this.blueLight08.On();
+        this.blueLight09.On();
+        this.blueLight10.On();
+    }
+
+    public void turnOffBlueLight() {
+        this.blueLight01.Off();
+        this.blueLight02.Off();
+        this.blueLight03.Off();
+        this.blueLight04.Off();
+        this.blueLight05.Off();
+        this.blueLight06.Off();
+        this.blueLight07.Off();
+        this.blueLight08.Off();
+        this.blueLight09.Off();
+        this.blueLight10.Off();
+    }
+    
     public void turnOnFrontLight() {
         this.spotlight01.On();
         this.spotlight02.On();
@@ -426,6 +452,32 @@ public class FLF {
         this.spotlight08.Off();
         this.spotlight09.Off();
         this.spotlight10.Off();
+    }
+    
+    public void turnOnSideLights() {
+        this.leftSide1.On();
+        this.leftSide2.On();
+        this.leftSide3.On();
+        this.leftSide4.On();
+        this.leftSide5.On();
+        this.rightSide1.On();
+        this.rightSide2.On();
+        this.rightSide3.On();
+        this.rightSide4.On();
+        this.rightSide5.On();
+    }
+
+    public void turnOffSideLights() {
+        this.leftSide1.Off();
+        this.leftSide2.Off();
+        this.leftSide3.Off();
+        this.leftSide4.Off();
+        this.leftSide5.Off();
+        this.rightSide1.Off();
+        this.rightSide2.Off();
+        this.rightSide3.Off();
+        this.rightSide4.Off();
+        this.rightSide5.Off();
     }
 
     public void speedUp(int amount) {
@@ -463,5 +515,28 @@ public class FLF {
         this.warningLight.On();
         this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
         this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
+    }
+    
+    public void operationDrive() {
+        engineOn();
+        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
+        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
+        turnOnRoofLight();
+        turnOnFrontLight();
+        this.warningLight.On();
+        turnOnBlueLight();
+        this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
+        this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
+    }
+    
+    public void tankVehicle() {
+        engineOn();
+        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
+        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
+        turnOnRoofLight();
+        turnOnFrontLight();
+        this.warningLight.On();
+        turnOnBlueLight();
+        turnOnSideLights();
     }
 }
