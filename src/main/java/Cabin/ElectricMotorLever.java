@@ -1,11 +1,11 @@
 package Cabin;
 
-import Drive.ElectricMotor;
+import Controls.CentralUnit;
 
 public class ElectricMotorLever extends Lever {
-    private ElectricMotor motor;
+    private CentralUnit unit;
 
     public void flip(){
-
+        state = unit.flipLever(1,state);
     }
 }

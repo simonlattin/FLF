@@ -1,17 +1,11 @@
 package Cabin;
 
-import Lights.WarningLight;
+import Controls.CentralUnit;
 
 public class WarningLightLever extends Lever {
-    private WarningLight warningLight;
+    private CentralUnit unit;
 
     public void flip(){
-        if(state){
-            state = false;
-            warningLight.Off();
-        } else {
-            state = true;
-            warningLight.On();
-        }
+        state = unit.flipLever(2,state);
     }
 }

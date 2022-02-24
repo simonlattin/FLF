@@ -6,7 +6,7 @@ public class ControlPanel {
     private final WarningLightLever warnlicht;
     private final BlueLightLever blaulicht;
     private final FrontlightsLever frontleuchten;
-    private final RoofHeadlights dachscheinwerfer;
+    private final RoofHeadlightsLever dachscheinwerfer;
     private final SideLightsLever seitenleuchten;
     private final TurnKnob frontwerfer;
     private final TurnKnob dachloescharm;
@@ -16,7 +16,7 @@ public class ControlPanel {
         this.warnlicht = new WarningLightLever();
         this.blaulicht = new BlueLightLever();
         this.frontleuchten = new FrontlightsLever();
-        this.dachscheinwerfer = new RoofHeadlights();
+        this.dachscheinwerfer = new RoofHeadlightsLever();
         this.seitenleuchten = new SideLightsLever();
         this.frontwerfer = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
         this.dachloescharm = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);

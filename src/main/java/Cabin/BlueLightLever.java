@@ -1,17 +1,11 @@
 package Cabin;
 
-import Lights.BlueLight;
+import Controls.CentralUnit;
 
 public class BlueLightLever extends Lever {
-    private BlueLight blueLight;
+    private CentralUnit unit;
 
     public void flip(){
-        if(state){
-            state = false;
-            blueLight.Off();
-        } else {
-            state = true;
-            blueLight.On();
-        }
+        state = unit.flipLever(3,state);
     }
 }

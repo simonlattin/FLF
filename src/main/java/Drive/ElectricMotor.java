@@ -21,9 +21,13 @@ public class ElectricMotor {
     }
 
     public void drive(){
-        int speed = speedDisplay.getSpeed();
-        int energy = speed * 25 / 2;
-        BatteryManagement.instance.takeOut(energy);
+        if(isOn) {
+            int speed = speedDisplay.getSpeed();
+            int energy = speed * 25 / 2;
+            BatteryManagement.instance.takeOut(energy);
+        } else {
+            System.out.println("The motor is switched off");
+        }
     }
 
     public boolean isOn() {
