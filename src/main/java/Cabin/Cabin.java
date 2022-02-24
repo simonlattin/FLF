@@ -19,6 +19,10 @@ public class Cabin {
     private final BrakePedal brakePedal;
     private final GasPedal gaspedal;
     private final CentralUnit centralUnit;
+    private final DoorButton innerLeft;
+    private final DoorButton innerRight;
+    private final DoorButton outerLeft;
+    private final DoorButton outerRight;
 
     public Cabin(CabinBuilder builder){
         this.doorLeft =  builder.doorLeft;
@@ -36,6 +40,10 @@ public class Cabin {
         this.seat02 = builder.seat02;
         this.seat03 = builder.seat03;
         this.seat04 = builder.seat04;
+        this.innerLeft = builder.innerLeft;
+        this.innerRight = builder.innerRight;
+        this.outerLeft = builder.outerLeft;
+        this.outerRight = builder.outerRight;
     }
 
     public BusDoor getDoorLeft() {
@@ -110,6 +118,10 @@ public class Cabin {
         private Seat seat02;
         private Seat seat03;
         private Seat seat04;
+        private DoorButton innerLeft;
+        private DoorButton innerRight;
+        private DoorButton outerLeft;
+        private DoorButton outerRight;
 
         public CabinBuilder withCentralUnit(CentralUnit getCentralUnit){
                 doorLeft = new BusDoor(Position.LEFT);
@@ -127,6 +139,10 @@ public class Cabin {
                 seat02 = new Operatorseat(Position.FRONTRIGHT, controlPanel, joystickRoof);
                 seat03 = new Backseat(Position.BACKLEFT);
                 seat04 = new Backseat(Position.BACKRIGHT);
+                innerLeft = new DoorButton(Position.INNERLEFT,doorLeft);
+                innerRight = new DoorButton(Position.INNERRIGHT,doorRight);
+                outerLeft = new DoorButton(Position.OUTERLEFT,doorLeft);
+                outerRight = new DoorButton(Position.OUTERRIGHT,doorRight);
                 return this;
             }
         }
