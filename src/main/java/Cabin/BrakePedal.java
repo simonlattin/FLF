@@ -2,14 +2,14 @@ package Cabin;
 
 import Controls.CentralUnit;
 
-public class BreakPedal {
+public class BrakePedal {
     private final CentralUnit centralUnit;
 
-    public BreakPedal(CentralUnit centralUnit){
+    public BrakePedal(CentralUnit centralUnit){
         this.centralUnit = centralUnit;
     }
 
-    public void StepOnBrake() {
+    public void brake() {
         centralUnit.brake();
     }
 }

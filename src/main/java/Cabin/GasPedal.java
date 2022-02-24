@@ -9,7 +9,7 @@ public class GasPedal {
         this.centralUnit = centralUnit;
     }
 
-    public void StepOnGas(){
+    public void accelerate(){
         centralUnit.speedUp();
     }
 }

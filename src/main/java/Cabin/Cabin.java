@@ -1,7 +1,6 @@
 package Cabin;
 
 import Controls.CentralUnit;
-import Extinguisher.*;
 
 public class Cabin {
 
@@ -17,26 +16,26 @@ public class Cabin {
     private final SteeringWheel steeringWheel;
     private final EnergyDisplay energyDisplay;
     private final SpeedDisplay speedDisplay;
-    private final BreakPedal breakPedal;
+    private final BrakePedal brakePedal;
     private final GasPedal gaspedal;
     private final CentralUnit centralUnit;
 
-    public Cabin(CentralUnit centralUnit){
-        this.doorLeft =  new BusDoor(Position.LEFT);
-        this.doorRight = new BusDoor(Position.RIGHT);
-        this.seat01 = new Seat(Position.FRONTLEFT);
-        this.seat02 = new Seat(Position.FRONTRIGHT);
-        this.seat03 = new Seat(Position.BACKLEFT);
-        this.seat04 = new Seat(Position.BACKRIGHT);
-        this.joystickFront = new JoystickFrontExtinguisher();//Löscharm anpassen
-        this.joystickRoof = new JoystickRoofExtinguisher();//Löscharm anpassen
-        this.centralUnit = centralUnit;
-        this.controlPanel = new ControlPanel(centralUnit);
-        this.steeringWheel = new SteeringWheel(centralUnit);
-        this.energyDisplay = new EnergyDisplay();
-        this.speedDisplay = new SpeedDisplay();
-        this.breakPedal = new BreakPedal(centralUnit);
-        this.gaspedal = new GasPedal(centralUnit);
+    public Cabin(CabinBuilder builder){
+        this.doorLeft =  builder.doorLeft;
+        this.doorRight = builder.doorRight;
+        this.joystickFront = builder.joystickFront;
+        this.joystickRoof = builder.joystickRoof;
+        this.centralUnit = builder.centralUnit;
+        this.controlPanel = builder.controlPanel;
+        this.steeringWheel = builder.steeringWheel;
+        this.energyDisplay = builder.energyDisplay;
+        this.speedDisplay = builder.speedDisplay;
+        this.brakePedal = builder.brakePedal;
+        this.gaspedal = builder.gaspedal;
+        this.seat01 = builder.seat01;
+        this.seat02 = builder.seat02;
+        this.seat03 = builder.seat03;
+        this.seat04 = builder.seat04;
     }
 
     public BusDoor getDoorLeft() {
@@ -87,11 +86,49 @@ public class Cabin {
         return speedDisplay;
     }
 
-    public BreakPedal getBreakPedal() {
-        return breakPedal;
+    public BrakePedal getBreakPedal() {
+        return brakePedal;
     }
 
     public GasPedal getGaspedal() {
         return gaspedal;
     }
-}
+
+    public static class CabinBuilder{
+        private BusDoor doorLeft;
+        private BusDoor doorRight;
+        private Joystick joystickFront;
+        private Joystick joystickRoof;
+        private ControlPanel controlPanel;
+        private SteeringWheel steeringWheel;
+        private EnergyDisplay energyDisplay;
+        private SpeedDisplay speedDisplay;
+        private BrakePedal brakePedal;
+        private GasPedal gaspedal;
+        private CentralUnit centralUnit;
+        private Seat seat01;
+        private Seat seat02;
+        private Seat seat03;
+        private Seat seat04;
+
+        public CabinBuilder withCentralUnit(CentralUnit getCentralUnit){
+                doorLeft = new BusDoor(Position.LEFT);
+                doorRight = new BusDoor(Position.RIGHT);
+                joystickFront = new JoystickFrontExtinguisher();
+                joystickRoof = new JoystickRoofExtinguisher();
+                controlPanel = new ControlPanel(getCentralUnit);
+                steeringWheel = new SteeringWheel(getCentralUnit);
+                energyDisplay = new EnergyDisplay();
+                speedDisplay = new SpeedDisplay();
+                brakePedal = new BrakePedal(getCentralUnit);
+                gaspedal = new GasPedal(getCentralUnit);
+                centralUnit = getCentralUnit;
+                seat01 = new Driverseat(Position.FRONTLEFT, gaspedal, brakePedal, steeringWheel);
+                seat02 = new Operatorseat(Position.FRONTRIGHT);
+                seat03 = new Backseat(Position.BACKLEFT);
+                seat04 = new Backseat(Position.BACKRIGHT);
+                return this;
+            }
+        }
+    }
+

@@ -12,16 +12,12 @@ public class SteeringWheel {
         this.centralUnit = centralUnit;
     }
 
-    public void turnRight(int winkel){
-        steeringDegree = steeringDegree + winkel;
+    public void turn(int degree){
+        steeringDegree = steeringDegree + degree;
         centralUnit.turn(steeringDegree);
     }
 
-    public void turnleft(int winkel){
-        steeringDegree = steeringDegree - winkel;
-    }
-
-    public int getLenkWinkel() {
+    public int getSteeringDegree() {
         return steeringDegree;
     }
 }

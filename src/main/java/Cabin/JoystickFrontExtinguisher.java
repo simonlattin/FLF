@@ -4,8 +4,6 @@ import Extinguisher.FrontExtinguisher;
 
 public class JoystickFrontExtinguisher extends Joystick{
 
-
-
     public JoystickFrontExtinguisher(){
 
     }

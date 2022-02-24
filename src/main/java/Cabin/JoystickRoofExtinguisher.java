@@ -4,7 +4,6 @@ import Extinguisher.RoofExtinguisher;
 
 public class JoystickRoofExtinguisher extends Joystick{
 
-
     public JoystickRoofExtinguisher(){
 
     }
