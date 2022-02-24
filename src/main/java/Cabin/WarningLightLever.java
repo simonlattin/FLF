@@ -3,9 +3,13 @@ package Cabin;
 import Controls.CentralUnit;
 
 public class WarningLightLever extends Lever {
-    private CentralUnit unit;
+    private final CentralUnit centralUnit;
+
+    public WarningLightLever(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
+    }
 
     public void flip(){
-        state = unit.flipLever(2,state);
+        state = centralUnit.flipLever(2,state);
     }
 }

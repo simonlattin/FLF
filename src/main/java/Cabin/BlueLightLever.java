@@ -3,9 +3,13 @@ package Cabin;
 import Controls.CentralUnit;
 
 public class BlueLightLever extends Lever {
-    private CentralUnit unit;
+    private final CentralUnit centralUnit;
+
+    public BlueLightLever(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
+    }
 
     public void flip(){
-        state = unit.flipLever(3,state);
+        state = centralUnit.flipLever(3,state);
     }
 }
