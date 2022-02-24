@@ -15,12 +15,12 @@ public class ControlPanel {
     private final CentralUnit centralUnit;
 
     public ControlPanel(CentralUnit centralUnit){
-        this.electricMotorLever = new ElectricMotorLever();
-        this.warningLightLever = new WarningLightLever();
-        this.blueLightLever = new BlueLightLever();
-        this.frontlightsLever = new FrontlightsLever();
-        this.roofHeadLightsLever = new RoofHeadlightsLever();
-        this.sideLightsLever = new SideLightsLever();
+        this.electricMotorLever = new ElectricMotorLever(centralUnit);
+        this.warningLightLever = new WarningLightLever(centralUnit);
+        this.blueLightLever = new BlueLightLever(centralUnit);
+        this.frontlightsLever = new FrontlightsLever(centralUnit);
+        this.roofHeadLightsLever = new RoofHeadlightsLever(centralUnit);
+        this.sideLightsLever = new SideLightsLever(centralUnit);
         this.frontExtinguisherKnob = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
         this.roofExtinguisherKnob = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
         this.centralUnit = centralUnit;

@@ -3,9 +3,13 @@ package Cabin;
 import Controls.CentralUnit;
 
 public class RoofHeadlightsLever extends Lever {
-    private CentralUnit unit;
+    private final CentralUnit centralUnit;
+
+    public RoofHeadlightsLever(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
+    }
 
     public void flip() {
-        state = unit.flipLever(5,state);
+        state = centralUnit.flipLever(5,state);
     }
 }

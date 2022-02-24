@@ -1,13 +1,16 @@
 package Cabin;
 
 import Controls.CentralUnit;
-import Lights.Spotlight;
 
 public class FrontlightsLever extends Lever {
-    private CentralUnit unit;
+    private final CentralUnit centralUnit;
+
+    public FrontlightsLever(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
+    }
 
     public void flip(){
-        state = unit.flipLever(4,state);
+        state = centralUnit.flipLever(4,state);
     }
 }
 
