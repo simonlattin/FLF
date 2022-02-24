@@ -65,6 +65,7 @@ public class Axis {
     }
 
     public void turn(int steeringDegree){
+        System.out.println("a"+this.steeringDegree);
         this.steeringDegree = this.steeringDegree + steeringDegree;
     }
 }

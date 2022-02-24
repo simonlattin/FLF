@@ -43,6 +43,7 @@ public class CentralUnit {
     public void turn(int winkel){
         flf.getAxis01().turn(winkel);
         flf.getAxis02().turn(winkel);
+        System.out.println("w"+winkel);
         if(winkel < 0){
             flf.getIndicator01().On();
             flf.getIndicator03().On();

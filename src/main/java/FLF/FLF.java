@@ -424,13 +424,13 @@ public class FLF {
 
     public void speedUp(int amount) {
         for (int i = 0; i < amount; i++) {
-            this.cabin.getGaspedal().StepOnGas();
+            this.cabin.getGaspedal().accelerate();
         }
     }
 
     public void speedDown(int amount){
         for (int i = 0; i < amount; i++) {
-            this.cabin.getBreakPedal().StepOnBrake();
+            this.cabin.getBreakPedal().brake();
         }
     }
 
@@ -454,5 +454,7 @@ public class FLF {
         //Fahrer, Operator hinsetzen
         turnOnFrontLight();
         this.warningLight.On();
+        this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
+        this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
     }
 }
