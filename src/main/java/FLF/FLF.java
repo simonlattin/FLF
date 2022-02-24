@@ -91,9 +91,9 @@ public class FLF {
         centralUnit = builder.centralUnit;
         cabin = builder.cabin;
         axis01 = builder.axis01; //VORNE
-        axis02 = builder.axis01; //VORNE
-        axis03 = builder.axis02; //HINTEN
-        axis04 = builder.axis02; //HINTEN
+        axis02 = builder.axis02; //VORNE
+        axis03 = builder.axis03; //HINTEN
+        axis04 = builder.axis04; //HINTEN
         rightSide1 = builder.sideLightRight;
         rightSide2 = builder.sideLightRight;
         rightSide3 = builder.sideLightRight;
@@ -340,6 +340,8 @@ public class FLF {
         private final Cabin cabin;
         private final Axis axis01;
         private final Axis axis02;
+        private final Axis axis03;
+        private final Axis axis04;
         private final SideLight sideLightRight;
         private final SideLight sideLightLeft;
         private final ElectricMotor motor;
@@ -369,7 +371,9 @@ public class FLF {
             this.centralUnit = new CentralUnit();
             this.cabin = new Cabin(new Cabin.CabinBuilder().withCentralUnit(centralUnit));
             this.axis01 = new Axis(Axes.Position.FRONT);
-            this.axis02 = new Axis(Axes.Position.BACK);
+            this.axis02 = new Axis(Axes.Position.FRONT);
+            this.axis03 = new Axis(Axes.Position.BACK);
+            this.axis04 = new Axis(Axes.Position.BACK);
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
             this.motor = new ElectricMotor(this.cabin.getSpeedDisplay());

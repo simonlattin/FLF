@@ -14,8 +14,8 @@ public class ControlDrive {
         Assertions.assertTrue(flf.getMotor01().isOn()); //Motor an
         Assertions.assertTrue(flf.getMotor02().isOn()); //Motor an
 
-//        Assertions.assertNotNull(flf.getCabin().getSeat01().getFirefighter());//Sitzplatz besetzt
-//        Assertions.assertNotNull(flf.getCabin().getSeat02().getFirefighter());//Sitzplatz besetzt
+        Assertions.assertNotNull(flf.getCabin().getSeat01().getFirefighter());//Sitzplatz besetzt
+        Assertions.assertNotNull(flf.getCabin().getSeat02().getFirefighter());//Sitzplatz besetzt
         Assertions.assertNull(flf.getCabin().getSeat03().getFirefighter());//Sitzplatz besetzt
         Assertions.assertNull(flf.getCabin().getSeat04().getFirefighter());//Sitzplatz besetzt
 
@@ -80,7 +80,7 @@ public class ControlDrive {
         flf.drive();
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(0, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree()); //5 Interationen konstant geradeaus
+        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree()); //5 Iterationen konstant geradeaus
 
         flf.steer(-5);
         flf.drive();
@@ -90,7 +90,7 @@ public class ControlDrive {
         flf.drive();
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(-5, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(-5, flf.getAxis02().getSteeringDegree());//5 Interationen konstant mit 5° nach links
+        Assertions.assertEquals(-5, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant mit 5° nach links
 
         flf.steer(5);
         flf.drive();
@@ -100,7 +100,7 @@ public class ControlDrive {
         flf.drive();
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(0, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree());//5 Interationen konstant geradeaus
+        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant geradeaus
 
         flf.steer(5);
         flf.drive();
@@ -110,9 +110,9 @@ public class ControlDrive {
         flf.drive();
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(5, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(5, flf.getAxis02().getSteeringDegree());//5 Interationen konstant mit 5° nach rechts
+        Assertions.assertEquals(5, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant mit 5° nach rechts
 
-        flf.speedUp(7);
+        flf.speedDown(7);
         Assertions.assertEquals(0, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(386000, BatteryManagement.instance.getLoadedCells());
     }

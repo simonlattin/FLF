@@ -15,7 +15,7 @@ public class SteeringWheel {
     public void turn(int degree){
         steeringDegree = steeringDegree + degree;
         System.out.println("sg:"+steeringDegree);
-        centralUnit.turn(steeringDegree);
+        centralUnit.turn(degree);
     }
 
     public int getSteeringDegree() {
