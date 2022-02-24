@@ -7,6 +7,7 @@ public class BlueLight {
     private LED led03;
     private LED led04;
     private final Position position;
+    private boolean isOn;
 
     public BlueLight(Size size, Position position){
 
@@ -28,6 +29,7 @@ public class BlueLight {
     }
 
     public void On(){
+        this.isOn = true;
         led01.On();
         if(led02 != null) {
             led02.On();
@@ -39,6 +41,7 @@ public class BlueLight {
     }
 
     public void Off(){
+        this.isOn = false;
         led01.Off();
         if(led02 != null) {
             led02.Off();
@@ -47,5 +50,9 @@ public class BlueLight {
             led03.Off();
             led04.Off();
         }
+    }
+
+    public boolean isOn() {
+        return isOn;
     }
 }

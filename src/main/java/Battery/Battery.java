@@ -190,7 +190,7 @@ public class Battery {
         } else {
             this.overload = 0;
         }
-        this.percentageFullCell = this.loadedCells / 100000;
+        this.percentageFullCell = 100 * this.loadedCells / 100000;
         System.out.println(loadedCells);
     }
 
@@ -384,7 +384,7 @@ public class Battery {
         } else {
             this.overloadTakeOut = 0;
         }
-        this.percentageFullCell = this.loadedCells / 100000;
+        this.percentageFullCell = (100 * this.loadedCells) / 100000;
         System.out.println(loadedCells);
     }
 
@@ -400,7 +400,7 @@ public class Battery {
         return overloadTakeOut;
     }
 
-    public int getPercentageFullCell() {
+    public int getPercentageFull() {
         return percentageFullCell;
     }
 
