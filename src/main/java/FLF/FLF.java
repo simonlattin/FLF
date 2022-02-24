@@ -88,6 +88,7 @@ public class FLF {
         blueLight09 = builder.blueLight04; //Hinten Links
         blueLight10 = builder.blueLight04; //Hinten Links
         warningLight = builder.warningLight;
+        centralUnit = builder.centralUnit;
         cabin = builder.cabin;
         axis01 = builder.axis01; //VORNE
         axis02 = builder.axis01; //VORNE
@@ -105,7 +106,6 @@ public class FLF {
         leftSide5 = builder.sideLightLeft;
         motor01 = builder.motor;
         motor02 = builder.motor;
-        centralUnit = builder.centralUnit;
         waterTank = builder.waterTank;
         foamTank = builder.foamTank;
         mixingUnit = builder.mixingUnit;
@@ -366,13 +366,13 @@ public class FLF {
             this.blueLight03 = new BlueLight(Size.MEDIUM, Position.BACKRIGHT);
             this.blueLight04 = new BlueLight(Size.MEDIUM, Position.BACKLEFT);
             this.warningLight = new WarningLight();
-            this.cabin = new Cabin();
+            this.centralUnit = new CentralUnit();
+            this.cabin = new Cabin(centralUnit);
             this.axis01 = new Axis(Axes.Position.FRONT);
             this.axis02 = new Axis(Axes.Position.BACK);
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
             this.motor = new ElectricMotor(this.cabin.getSpeedDisplay());
-            this.centralUnit = new CentralUnit();
             this.waterTank = new Tank(TankKind.WATER);
             this.foamTank = new Tank(TankKind.FOAM);
             this.mixingUnit = new MixingUnit();

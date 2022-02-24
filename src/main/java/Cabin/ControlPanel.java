@@ -1,48 +1,52 @@
 package Cabin;
 
+import Controls.CentralUnit;
+
 public class ControlPanel {
 
-    private final ElectricMotorLever elektromotor;
-    private final WarningLightLever warnlicht;
-    private final BlueLightLever blaulicht;
-    private final FrontlightsLever frontleuchten;
-    private final RoofHeadlightsLever dachscheinwerfer;
-    private final SideLightsLever seitenleuchten;
-    private final TurnKnob frontwerfer;
-    private final TurnKnob dachloescharm;
+    private final ElectricMotorLever electricMotorLever;
+    private final WarningLightLever warningLightLever;
+    private final BlueLightLever blueLightLever;
+    private final FrontlightsLever frontlightsLever;
+    private final RoofHeadlightsLever roofHeadLightsLever;
+    private final SideLightsLever sideLightsLever;
+    private final TurnKnob frontExtinguisherKnob;
+    private final TurnKnob roofExtinguisherKnob;
+    private final CentralUnit centralUnit;
 
-    public ControlPanel(){
-        this.elektromotor = new ElectricMotorLever();
-        this.warnlicht = new WarningLightLever();
-        this.blaulicht = new BlueLightLever();
-        this.frontleuchten = new FrontlightsLever();
-        this.dachscheinwerfer = new RoofHeadlightsLever();
-        this.seitenleuchten = new SideLightsLever();
-        this.frontwerfer = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
-        this.dachloescharm = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
+    public ControlPanel(CentralUnit centralUnit){
+        this.electricMotorLever = new ElectricMotorLever();
+        this.warningLightLever = new WarningLightLever();
+        this.blueLightLever = new BlueLightLever();
+        this.frontlightsLever = new FrontlightsLever();
+        this.roofHeadLightsLever = new RoofHeadlightsLever();
+        this.sideLightsLever = new SideLightsLever();
+        this.frontExtinguisherKnob = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
+        this.roofExtinguisherKnob = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
+        this.centralUnit = centralUnit;
     }
 
-    public void motorFlip(){
-        this.elektromotor.flip();
+    public void motorLeverFlip(){
+        this.electricMotorLever.flip();
     }
 
-    public void warnlichtFlip(){
-        this.warnlicht.flip();
+    public void warningLightLeverFlip(){
+        this.warningLightLever.flip();
     }
 
-    public void blaulichFlip(){
-        this.blaulicht.flip();
+    public void blueLightLeverFlip(){
+        this.blueLightLever.flip();
     }
 
-    public void frontleuchtenFlip(){
-        this.frontleuchten.flip();
+    public void frontlightsLeverFlip(){
+        this.frontlightsLever.flip();
     }
 
-    public void dachscheinwerferFlip(){
-        this.dachscheinwerfer.flip();
+    public void roofHeadLightsLeverFlip(){
+        this.roofHeadLightsLever.flip();
     }
 
-    public void seitenleuchtenFlip(){
-        this.seitenleuchten.flip();
+    public void sideLightsLeverFlip(){
+        this.sideLightsLever.flip();
     }
 }

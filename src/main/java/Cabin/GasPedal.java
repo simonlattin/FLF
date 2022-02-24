@@ -1,18 +1,15 @@
 package Cabin;
 
+import Controls.CentralUnit;
+
 public class GasPedal {
+    private final CentralUnit centralUnit;
 
-    private int amount;
-
-    public GasPedal(){
-
+    public GasPedal(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
     }
 
-    public void StepOnGas(int amount){
-        this.amount = amount;
-    }
-
-    public int getAmount() {
-        return amount;
+    public void StepOnGas(){
+        centralUnit.speedUp();
     }
 }

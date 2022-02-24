@@ -1,18 +1,15 @@
 package Cabin;
 
+import Controls.CentralUnit;
+
 public class BreakPedal {
+    private final CentralUnit centralUnit;
 
-    private int amount;
-
-    public BreakPedal(){
-
+    public BreakPedal(CentralUnit centralUnit){
+        this.centralUnit = centralUnit;
     }
 
-    public void StepOnBrake(int amount){
-        this.amount = amount;
-    }
-
-    public int getAmount() {
-        return amount;
+    public void StepOnBrake() {
+        centralUnit.brake();
     }
 }

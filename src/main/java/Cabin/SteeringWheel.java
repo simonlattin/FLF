@@ -5,15 +5,16 @@ import Controls.CentralUnit;
 public class SteeringWheel {
 
     private int steeringDegree;
-    private CentralUnit unit;
+    private final CentralUnit centralUnit;
 
-    public SteeringWheel(){
+    public SteeringWheel(CentralUnit centralUnit){
         this.steeringDegree = 0;
+        this.centralUnit = centralUnit;
     }
 
     public void turnRight(int winkel){
         steeringDegree = steeringDegree + winkel;
-        unit.turn(steeringDegree);
+        centralUnit.turn(steeringDegree);
     }
 
     public void turnleft(int winkel){

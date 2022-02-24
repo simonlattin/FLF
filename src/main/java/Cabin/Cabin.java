@@ -1,5 +1,6 @@
 package Cabin;
 
+import Controls.CentralUnit;
 import Extinguisher.*;
 
 public class Cabin {
@@ -18,8 +19,9 @@ public class Cabin {
     private final SpeedDisplay speedDisplay;
     private final BreakPedal breakPedal;
     private final GasPedal gaspedal;
+    private final CentralUnit centralUnit;
 
-    public Cabin(){
+    public Cabin(CentralUnit centralUnit){
         this.doorLeft =  new BusDoor(Position.LEFT);
         this.doorRight = new BusDoor(Position.RIGHT);
         this.seat01 = new Seat(Position.FRONTLEFT);
@@ -28,12 +30,13 @@ public class Cabin {
         this.seat04 = new Seat(Position.BACKRIGHT);
         this.joystickFront = new JoystickFrontExtinguisher();//Löscharm anpassen
         this.joystickRoof = new JoystickRoofExtinguisher();//Löscharm anpassen
-        this.controlPanel = new ControlPanel();
-        this.steeringWheel = new SteeringWheel();
+        this.centralUnit = centralUnit;
+        this.controlPanel = new ControlPanel(centralUnit);
+        this.steeringWheel = new SteeringWheel(centralUnit);
         this.energyDisplay = new EnergyDisplay();
         this.speedDisplay = new SpeedDisplay();
-        this.breakPedal = new BreakPedal();
-        this.gaspedal = new GasPedal();
+        this.breakPedal = new BreakPedal(centralUnit);
+        this.gaspedal = new GasPedal(centralUnit);
     }
 
     public BusDoor getDoorLeft() {
