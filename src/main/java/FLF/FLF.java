@@ -388,5 +388,7 @@ public class FLF {
     public void park() {
         this.cabin.getDoorLeft().pressButton();
         this.cabin.getDoorRight().pressButton();
+        this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
+        this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
     }
 }

@@ -26,6 +26,42 @@ public class ControlPanel {
         this.centralUnit = centralUnit;
     }
 
+    public ElectricMotorLever getElectricMotorLever() {
+        return electricMotorLever;
+    }
+
+    public WarningLightLever getWarningLightLever() {
+        return warningLightLever;
+    }
+
+    public BlueLightLever getBlueLightLever() {
+        return blueLightLever;
+    }
+
+    public FrontlightsLever getFrontlightsLever() {
+        return frontlightsLever;
+    }
+
+    public RoofHeadlightsLever getRoofHeadLightsLever() {
+        return roofHeadLightsLever;
+    }
+
+    public SideLightsLever getSideLightsLever() {
+        return sideLightsLever;
+    }
+
+    public TurnKnob getFrontExtinguisherKnob() {
+        return frontExtinguisherKnob;
+    }
+
+    public TurnKnob getRoofExtinguisherKnob() {
+        return roofExtinguisherKnob;
+    }
+
+    public CentralUnit getCentralUnit() {
+        return centralUnit;
+    }
+
     public void motorLeverFlip(){
         this.electricMotorLever.flip();
     }
@@ -48,5 +84,13 @@ public class ControlPanel {
 
     public void sideLightsLeverFlip(){
         this.sideLightsLever.flip();
+    }
+    
+    public void turnFrontExtingushierKnob(char stufe){
+        this.frontExtinguisherKnob.turn(stufe);
+    }
+
+    public void turnRoofExtingushierKnob(char stufe){
+        this.roofExtinguisherKnob.turn(stufe);
     }
 }

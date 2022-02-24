@@ -11,6 +11,7 @@ public class TurnKnob {
     }
 
     public void turn(char state){
+        this.state = state;
         if (this.turnKnobFunction == TurnKnobFunction.ROOFEXTINGUISHER){
             switch (state) {
                 case 'A' -> {

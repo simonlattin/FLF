@@ -34,6 +34,7 @@ public class Tank {
                 }
             }
         }
+        this.percentageFull = 100;
     }
 
     public char[][][] getCapacity() {
