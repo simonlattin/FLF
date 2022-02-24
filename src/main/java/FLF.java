@@ -92,6 +92,174 @@ public class FLF {
         leftSide5 = builder.sideLightLeft;
     }
 
+    public Spotlight getSpotlight01() {
+        return spotlight01;
+    }
+
+    public Spotlight getSpotlight02() {
+        return spotlight02;
+    }
+
+    public Spotlight getSpotlight03() {
+        return spotlight03;
+    }
+
+    public Spotlight getSpotlight04() {
+        return spotlight04;
+    }
+
+    public Spotlight getSpotlight05() {
+        return spotlight05;
+    }
+
+    public Spotlight getSpotlight06() {
+        return spotlight06;
+    }
+
+    public Spotlight getSpotlight07() {
+        return spotlight07;
+    }
+
+    public Spotlight getSpotlight08() {
+        return spotlight08;
+    }
+
+    public Spotlight getSpotlight09() {
+        return spotlight09;
+    }
+
+    public Spotlight getSpotlight10() {
+        return spotlight10;
+    }
+
+    public Indicator getIndicator01() {
+        return indicator01;
+    }
+
+    public Indicator getIndicator02() {
+        return indicator02;
+    }
+
+    public Indicator getIndicator03() {
+        return indicator03;
+    }
+
+    public Indicator getIndicator04() {
+        return indicator04;
+    }
+
+    public BreakLight getBreakLight01() {
+        return breakLight01;
+    }
+
+    public BreakLight getBreakLight02() {
+        return breakLight02;
+    }
+
+    public BlueLight getBlueLight01() {
+        return blueLight01;
+    }
+
+    public BlueLight getBlueLight02() {
+        return blueLight02;
+    }
+
+    public BlueLight getBlueLight03() {
+        return blueLight03;
+    }
+
+    public BlueLight getBlueLight04() {
+        return blueLight04;
+    }
+
+    public BlueLight getBlueLight05() {
+        return blueLight05;
+    }
+
+    public BlueLight getBlueLight06() {
+        return blueLight06;
+    }
+
+    public BlueLight getBlueLight07() {
+        return blueLight07;
+    }
+
+    public BlueLight getBlueLight08() {
+        return blueLight08;
+    }
+
+    public BlueLight getBlueLight09() {
+        return blueLight09;
+    }
+
+    public BlueLight getBlueLight10() {
+        return blueLight10;
+    }
+
+    public WarningLight getWarningLight() {
+        return warningLight;
+    }
+
+    public Cabin getCabin() {
+        return cabin;
+    }
+
+    public Axis getAxis01() {
+        return axis01;
+    }
+
+    public Axis getAxis02() {
+        return axis02;
+    }
+
+    public Axis getAxis03() {
+        return axis03;
+    }
+
+    public Axis getAxis04() {
+        return axis04;
+    }
+
+    public SideLight getRightSide1() {
+        return rightSide1;
+    }
+
+    public SideLight getRightSide2() {
+        return rightSide2;
+    }
+
+    public SideLight getRightSide3() {
+        return rightSide3;
+    }
+
+    public SideLight getRightSide4() {
+        return rightSide4;
+    }
+
+    public SideLight getRightSide5() {
+        return rightSide5;
+    }
+
+    public SideLight getLeftSide1() {
+        return leftSide1;
+    }
+
+    public SideLight getLeftSide2() {
+        return leftSide2;
+    }
+
+    public SideLight getLeftSide3() {
+        return leftSide3;
+    }
+
+    public SideLight getLeftSide4() {
+        return leftSide4;
+    }
+
+    public SideLight getLeftSide5() {
+        return leftSide5;
+    }
+
     public static class Builder{
 
         private final Spotlight spotlight01;
@@ -135,6 +303,10 @@ public class FLF {
             this.axis02 = new Axis(Axes.Position.BACK);
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
+        }
+
+        public FLF build(){
+            return new FLF(this);
         }
     }
 }

@@ -4,10 +4,10 @@ import Extinguisher.FrontExtinguisher;
 
 public class JoystickFrontExtinguisher extends Joystick{
 
-    private FrontExtinguisher frontExtinguisher;
+    private final FrontExtinguisher frontExtinguisher;
 
     public JoystickFrontExtinguisher(FrontExtinguisher frontExtinguisher){
-
+        this.frontExtinguisher = frontExtinguisher;
     }
 
     public void pushLeftButton(){
