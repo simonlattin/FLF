@@ -6,9 +6,9 @@ import Cabin.Seat;
 public class Driver extends Firefighter{
     private final Driverseat seat;
 
-    public Driver(Driverseat seat){
+    public Driver(Seat seat){
         this.setFunction(Function.DRIVER);
-        this.seat = seat;
+        this.seat =(Driverseat) seat;
     }
 
     public void stepOnGas(){

@@ -1,13 +1,14 @@
 package Actors;
 
 import Cabin.Operatorseat;
+import Cabin.Seat;
 
 public class Operator extends Firefighter{
     private final Operatorseat seat;
 
-    public Operator(Operatorseat seat){
+    public Operator(Seat seat){
         this.setFunction(Function.OPERATOR);
-        this.seat = seat;
+        this.seat = (Operatorseat) seat;
     }
 
     public void flipMotorLever(){

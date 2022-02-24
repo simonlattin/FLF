@@ -1,5 +1,7 @@
 package FLF;
 
+import Actors.Driver;
+import Actors.Operator;
 import Axes.Axis;
 import Cabin.Cabin;
 import Controls.CentralUnit;
@@ -455,7 +457,8 @@ public class FLF {
     
     public void testDrive() {
         engineOn();
-        //Fahrer, Operator hinsetzen
+        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
+        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
         turnOnFrontLight();
         this.warningLight.On();
         this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
