@@ -40,7 +40,9 @@ public class JoystickRoofExtinguisher extends Joystick{
         }
     }
 
-    public void pushCaliper(){
+    public void pushCaliper(TurnKnob turnKnob){
         this.caliper.press();
+        roofExtinguisher.setOutputAmount(turnKnob.getAmount());
+        roofExtinguisher.extiguish();
     }
 }

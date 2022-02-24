@@ -11,7 +11,7 @@ public class Tank {
     public Tank(TankKind tankKind){
         this.tankKind = tankKind;
         switch (tankKind) {
-            case WASSER -> {
+            case WATER -> {
                 this.capacity = new char[50][25][10];
                 for (int i = 0; i < 50; i++){
                     for (int j = 0; j < 25; j++){
@@ -22,7 +22,7 @@ public class Tank {
                     }
                 }
             }
-            case SCHAUMPULVER -> {
+            case FOAM -> {
                 this.capacity = new char[25][10][10];
                 for (int i = 0; i < 25; i++){
                     for (int j = 0; j < 10; j++){
@@ -48,7 +48,7 @@ public class Tank {
         int i1 = 0;
         int j1 = 0;
         int k1 = 20;
-        if (this.tankKind == TankKind.WASSER) {
+        if (this.tankKind == TankKind.WATER) {
             this.availableUnits = 0;
             for (int i = 0; i < 50; i++) {
                 for (int j = 0; j < 25; j++) {
@@ -145,7 +145,7 @@ public class Tank {
             }
 
             this.percentageFull = this.availableUnits / 12500;
-        } else if (this.tankKind == TankKind.SCHAUMPULVER) {
+        } else if (this.tankKind == TankKind.FOAM) {
             this.availableUnits = 0;
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 10; j++) {
@@ -249,7 +249,7 @@ public class Tank {
         int i1 = 0;
         int j1 = 0;
         int k1 = 20;
-        if (this.tankKind == TankKind.WASSER) {
+        if (this.tankKind == TankKind.WATER) {
             this.availableUnits = 0;
             for (int i = 0; i < 50; i++) {
                 for (int j = 0; j < 25; j++) {
@@ -346,7 +346,7 @@ public class Tank {
             }
 
             this.percentageFull = this.availableUnits / 12500;
-        } else if (this.tankKind == TankKind.SCHAUMPULVER) {
+        } else if (this.tankKind == TankKind.FOAM) {
             this.availableUnits = 0;
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 10; j++) {

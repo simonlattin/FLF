@@ -42,7 +42,9 @@ public class JoystickFrontExtinguisher extends Joystick{
 
     }
 
-    public void pushCaliper(){
+    public void pushCaliper(TurnKnob turnKnob){
         this.caliper.press();
+        frontExtinguisher.setOutputAmount(turnKnob.getAmount());
+        frontExtinguisher.extiguish();
     }
 }

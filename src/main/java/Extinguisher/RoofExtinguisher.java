@@ -10,6 +10,8 @@ public class RoofExtinguisher {
     private final Segment segment1;
     private final Segment segment2;
     private int mixingRatio;
+    private final int maxRange;
+    private String extinguishingAgent;
 
     public RoofExtinguisher(MixingUnit mixingUnit) {
         this.maxCapacity = 10000;
@@ -18,6 +20,7 @@ public class RoofExtinguisher {
         this.mixingUnit = mixingUnit;
         this.segment1 = new Segment(0,true,false);
         this.segment2 = new Segment(17,false,true);
+        this.maxRange = 90;
     }
 
     public void setOutputAmount(int outputAmount) {
@@ -77,5 +80,18 @@ public class RoofExtinguisher {
 
     public Segment getSegment2() {
         return segment2;
+    }
+
+    public int getMaxRange() {
+        return maxRange;
+    }
+
+    public String getExtinguishingAgent() {
+        return extinguishingAgent;
+    }
+
+    public void extiguish(){
+        mixingUnit.mix(this.outputAmount);
+        this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
     }
 }

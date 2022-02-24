@@ -7,6 +7,7 @@ public class FrontExtinguisher {
     private int outputAmount;
     private final MixingUnit mixingUnit;
     private int mixingRatio;
+    private String extinguishingAgent;
 
     public FrontExtinguisher(MixingUnit mixingUnit){
         this.maxCapacity = 3500;
@@ -42,5 +43,14 @@ public class FrontExtinguisher {
 
     public int getMixingRatio() {
         return mixingRatio;
+    }
+
+    public String getExtinguishingAgent() {
+        return extinguishingAgent;
+    }
+
+    public void extiguish(){
+        mixingUnit.mix(this.outputAmount);
+        this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
     }
 }

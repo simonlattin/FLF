@@ -23,7 +23,14 @@ public class MixingUnit {
         this.waterAmount = amount - this.foamPowderAmount;
         watertank.takeOut((int) waterAmount);
         foamtank.takeOut((int) foamPowderAmount);
-
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < waterAmount; i++){
+            sb.append('w');
+        }
+        for (int j = 0; j < foamPowderAmount; j++){
+            sb.append('s');
+        }
+        this.extinguishingAgent = sb.toString();
     }
 
     public double getFoamPowderAmount() {
@@ -40,5 +47,9 @@ public class MixingUnit {
 
     public int getMixingRatio() {
         return mixingRatio;
+    }
+
+    public String getExtinguishingAgent() {
+        return extinguishingAgent;
     }
 }
