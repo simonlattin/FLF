@@ -422,6 +422,26 @@ public class FLF {
         this.spotlight10.Off();
     }
 
+    public void speedUp(int amount) {
+        for (int i = 0; i < amount; i++) {
+            this.cabin.getGaspedal().StepOnGas();
+        }
+    }
+
+    public void speedDown(int amount){
+        for (int i = 0; i < amount; i++) {
+            this.cabin.getBreakPedal().StepOnBrake();
+        }
+    }
+
+    public void drive(){
+        this.centralUnit.drive();
+    }
+
+    public void steer(int angle){
+        this.cabin.getSteeringWheel().turn(angle);
+    }
+
     public void park() {
         this.cabin.getDoorLeft().pressButton();
         this.cabin.getDoorRight().pressButton();
@@ -433,5 +453,6 @@ public class FLF {
         engineOn();
         //Fahrer, Operator hinsetzen
         turnOnFrontLight();
+        this.warningLight.On();
     }
 }

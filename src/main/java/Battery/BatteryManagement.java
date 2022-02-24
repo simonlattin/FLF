@@ -3,7 +3,6 @@ package Battery;
 public enum BatteryManagement {
     instance;
     private final Battery[][] batteries = new Battery[2][2];
-    private int percentageFull;
 
     BatteryManagement(){
         batteries[0][0] = new Battery();
@@ -44,7 +43,15 @@ public enum BatteryManagement {
         int b4 = batteries[1][1].getLoadedCells();
         int b5 = b1 + b2 + b3 + b4;
         b5 = b5 * 100;
-        percentageFull = b5 / 400000;
-        return percentageFull;
+        return b5 / 400000;
+    }
+
+    public int getLoadedCells() {
+        int b1 = batteries[0][0].getLoadedCells();
+        int b2 = batteries[0][1].getLoadedCells();
+        int b3 = batteries[1][0].getLoadedCells();
+        int b4 = batteries[1][1].getLoadedCells();
+
+        return b1 + b2 + b3 + b4;
     }
 }

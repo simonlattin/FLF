@@ -68,8 +68,8 @@ public class Park { //test s01
 
         Assertions.assertEquals(100, BatteryManagement.instance.getPercentageFull());//Batterie geladen
 
-        Assertions.assertEquals(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState(),'1');
+        Assertions.assertEquals(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState(),'1'); //Frontwerfer Stufe 1
 
-        Assertions.assertEquals(flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState(),'A');
+        Assertions.assertEquals(flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState(),'A');//Dachlöscharm Stufe 1
     }
 }
