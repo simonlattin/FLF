@@ -62,35 +62,36 @@ public class ControlPanel {
         return centralUnit;
     }
 
-    public void motorLeverFlip(){
-        this.electricMotorLever.flip();
+    public void flip(int option){
+        switch (option) {
+            case 1:
+                this.electricMotorLever.flip();
+            case 2:
+                this.warningLightLever.flip();
+            case 3:
+                this.blueLightLever.flip();
+            case 4:
+                this.frontlightsLever.flip();
+            case 5:
+                this.roofHeadLightsLever.flip();
+            case 6:
+                this.sideLightsLever.flip();
+        }
     }
 
-    public void warningLightLeverFlip(){
-        this.warningLightLever.flip();
+    public void turnKnob(int option, char state){
+        if(option == 1){
+            turnFrontExtingushierKnob(state);
+        } else {
+            turnRoofExtingushierKnob(state);
+        }
     }
 
-    public void blueLightLeverFlip(){
-        this.blueLightLever.flip();
+    public void turnFrontExtingushierKnob(char state){
+        this.frontExtinguisherKnob.turn(state);
     }
 
-    public void frontlightsLeverFlip(){
-        this.frontlightsLever.flip();
-    }
-
-    public void roofHeadLightsLeverFlip(){
-        this.roofHeadLightsLever.flip();
-    }
-
-    public void sideLightsLeverFlip(){
-        this.sideLightsLever.flip();
-    }
-    
-    public void turnFrontExtingushierKnob(char stufe){
-        this.frontExtinguisherKnob.turn(stufe);
-    }
-
-    public void turnRoofExtingushierKnob(char stufe){
-        this.roofExtinguisherKnob.turn(stufe);
+    public void turnRoofExtingushierKnob(char state){
+        this.roofExtinguisherKnob.turn(state);
     }
 }

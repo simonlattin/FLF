@@ -367,7 +367,7 @@ public class FLF {
             this.blueLight04 = new BlueLight(Size.MEDIUM, Position.BACKLEFT);
             this.warningLight = new WarningLight();
             this.centralUnit = new CentralUnit();
-            this.cabin = new Cabin(centralUnit);
+            this.cabin = new Cabin(new Cabin.CabinBuilder().withCentralUnit(centralUnit));
             this.axis01 = new Axis(Axes.Position.FRONT);
             this.axis02 = new Axis(Axes.Position.BACK);
             this.sideLightLeft = new SideLight(Position.LEFT);

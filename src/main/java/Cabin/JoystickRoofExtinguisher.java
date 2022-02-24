@@ -3,10 +3,10 @@ package Cabin;
 import Extinguisher.RoofExtinguisher;
 
 public class JoystickRoofExtinguisher extends Joystick{
+    private final ControlPanel controlPanel;
 
-
-    public JoystickRoofExtinguisher(){
-
+    public JoystickRoofExtinguisher(ControlPanel controlPanel){
+        this.controlPanel = controlPanel;
     }
 
     public void pushLeftButton(){
@@ -39,9 +39,11 @@ public class JoystickRoofExtinguisher extends Joystick{
         }
     }
 
-    public void pushCaliper(TurnKnob turnKnob){
+    public void pushCaliper(){
         this.caliper.press();
-        roofExtinguisher.setOutputAmount(turnKnob.getAmount());
-        roofExtinguisher.extiguish();
+        if(isActive) {
+            roofExtinguisher.setOutputAmount(controlPanel.getRoofExtinguisherKnob().getAmount());
+            roofExtinguisher.extiguish();
+        }
     }
 }

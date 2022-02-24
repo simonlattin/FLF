@@ -2,17 +2,11 @@ package Cabin;
 
 import Actors.Firefighter;
 
-public class Seat {
+public abstract class Seat {
 
-    private final Respirator respirator;
-    private final Position position;
-    private Firefighter firefighter;
-
-    public Seat(Position position){
-        this.respirator = new Respirator();
-        this.position = position;
-        this.firefighter = null;
-    }
+    protected Respirator respirator;
+    protected Position position;
+    protected Firefighter firefighter;
 
     public Position getPosition() {
         return position;
