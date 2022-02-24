@@ -70,6 +70,9 @@ public class ControlDrive {
 
         Assertions.assertEquals('A',flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());//Dachlöscharm Stufe 1
 
+        System.out.println(flf.getAxis01().getSteeringDegree());
+        System.out.println(flf.getAxis02().getSteeringDegree());
+
         flf.speedUp(7);
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
 
