@@ -1,5 +1,10 @@
+package FLF;
+
 import Axes.Axis;
 import Cabin.Cabin;
+import Controls.CentralUnit;
+import Drive.ElectricMotor;
+import Extinguisher.*;
 import Lights.*;
 
 public class FLF {
@@ -46,6 +51,14 @@ public class FLF {
     private final SideLight leftSide3;
     private final SideLight leftSide4;
     private final SideLight leftSide5;
+    private final ElectricMotor motor01;
+    private final ElectricMotor motor02;
+    private final CentralUnit centralUnit;
+    private final Tank waterTank;
+    private final Tank foamTank;
+    private final MixingUnit mixingUnit;
+    private final FrontExtinguisher frontExtinguisher;
+    private final RoofExtinguisher roofExtinguisher;
 
     public FLF(Builder builder){
         spotlight01 = builder.spotlight01;//VORNELINKS
@@ -90,6 +103,22 @@ public class FLF {
         leftSide3 = builder.sideLightLeft;
         leftSide4 = builder.sideLightLeft;
         leftSide5 = builder.sideLightLeft;
+        motor01 = builder.motor;
+        motor02 = builder.motor;
+        centralUnit = builder.centralUnit;
+        waterTank = builder.waterTank;
+        foamTank = builder.foamTank;
+        mixingUnit = builder.mixingUnit;
+        frontExtinguisher = builder.frontExtinguisher;
+        roofExtinguisher = builder.roofExtinguisher;
+
+        mixingUnit.setFoamtank(foamTank);
+        mixingUnit.setWatertank(waterTank);
+        centralUnit.setFLF(this);
+        frontExtinguisher.setMixingUnit(mixingUnit);
+        roofExtinguisher.setMixingUnit(mixingUnit);
+        cabin.getjoystickFront().setExtinguisher(frontExtinguisher, roofExtinguisher);
+        cabin.getjoystickRoof().setExtinguisher(frontExtinguisher, roofExtinguisher);
     }
 
     public Spotlight getSpotlight01() {
@@ -260,6 +289,38 @@ public class FLF {
         return leftSide5;
     }
 
+    public ElectricMotor getMotor01() {
+        return motor01;
+    }
+
+    public ElectricMotor getMotor02() {
+        return motor02;
+    }
+
+    public CentralUnit getCentralUnit() {
+        return centralUnit;
+    }
+
+    public Tank getWaterTank() {
+        return waterTank;
+    }
+
+    public Tank getFoamTank() {
+        return foamTank;
+    }
+
+    public MixingUnit getMixingUnit() {
+        return mixingUnit;
+    }
+
+    public FrontExtinguisher getFrontExtinguisher() {
+        return frontExtinguisher;
+    }
+
+    public RoofExtinguisher getRoofExtinguisher() {
+        return roofExtinguisher;
+    }
+
     public static class Builder{
 
         private final Spotlight spotlight01;
@@ -281,6 +342,13 @@ public class FLF {
         private final Axis axis02;
         private final SideLight sideLightRight;
         private final SideLight sideLightLeft;
+        private final ElectricMotor motor;
+        private final CentralUnit centralUnit;
+        private final Tank waterTank;
+        private final Tank foamTank;
+        private final MixingUnit mixingUnit;
+        private final FrontExtinguisher frontExtinguisher;
+        private final RoofExtinguisher roofExtinguisher;
 
 
         public Builder(){
@@ -303,10 +371,22 @@ public class FLF {
             this.axis02 = new Axis(Axes.Position.BACK);
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
+            this.motor = new ElectricMotor(this.cabin.getSpeedDisplay());
+            this.centralUnit = new CentralUnit();
+            this.waterTank = new Tank(TankKind.WATER);
+            this.foamTank = new Tank(TankKind.FOAM);
+            this.mixingUnit = new MixingUnit();
+            this.frontExtinguisher = new FrontExtinguisher();
+            this.roofExtinguisher = new RoofExtinguisher();
         }
 
         public FLF build(){
             return new FLF(this);
         }
+    }
+
+    public void park() {
+        this.cabin.getDoorLeft().pressButton();
+        this.cabin.getDoorRight().pressButton();
     }
 }

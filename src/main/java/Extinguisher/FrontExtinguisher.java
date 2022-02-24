@@ -5,15 +5,16 @@ public class FrontExtinguisher {
     private final int maxCapacity;
     private int turnAngle;
     private int outputAmount;
-    private final MixingUnit mixingUnit;
+    private MixingUnit mixingUnit;
     private int mixingRatio;
     private String extinguishingAgent;
+    private boolean isActive;
 
-    public FrontExtinguisher(MixingUnit mixingUnit){
+    public FrontExtinguisher(){
         this.maxCapacity = 3500;
         this.turnAngle = 0;
-        this.mixingUnit = mixingUnit;
         this.mixingRatio = 0;
+        this.isActive = false;
     }
 
     public void setTurnAngle(int turnAngle) {
@@ -27,6 +28,14 @@ public class FrontExtinguisher {
     public void setMixingRatio(int ratio){
         this.mixingUnit.setMixingRatio(ratio);
         this.mixingRatio = ratio;
+    }
+
+    public void activate() {
+        isActive = true;
+    }
+
+    public void deactivate() {
+        isActive = false;
     }
 
     public int getTurnAngle() {
@@ -49,8 +58,16 @@ public class FrontExtinguisher {
         return extinguishingAgent;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
     public void extiguish(){
         mixingUnit.mix(this.outputAmount);
         this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
+    }
+
+    public void setMixingUnit(MixingUnit mixingUnit) {
+        this.mixingUnit = mixingUnit;
     }
 }

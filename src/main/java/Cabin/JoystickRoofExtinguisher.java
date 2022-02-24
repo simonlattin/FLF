@@ -4,10 +4,9 @@ import Extinguisher.RoofExtinguisher;
 
 public class JoystickRoofExtinguisher extends Joystick{
 
-    private final RoofExtinguisher roofExtinguisher;
 
-    public JoystickRoofExtinguisher(RoofExtinguisher roofExtinguisher){
-        this.roofExtinguisher = roofExtinguisher;
+    public JoystickRoofExtinguisher(){
+
     }
 
     public void pushLeftButton(){

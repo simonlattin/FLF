@@ -7,13 +7,11 @@ public class MixingUnit {
     private double waterAmount;
     private String foamPowder;
     private double foamPowderAmount;
-    private final Tank watertank;
-    private final Tank foamtank;
+    private Tank watertank;
+    private Tank foamtank;
     private int mixingRatio;
 
-    public MixingUnit(Tank waterTank, Tank foamTank){
-        this.watertank = waterTank;
-        this.foamtank = foamTank;
+    public MixingUnit(){
         this.mixingRatio = 0;
     }
 
@@ -51,5 +49,13 @@ public class MixingUnit {
 
     public String getExtinguishingAgent() {
         return extinguishingAgent;
+    }
+
+    public void setWatertank(Tank watertank) {
+        this.watertank = watertank;
+    }
+
+    public void setFoamtank(Tank foamtank) {
+        this.foamtank = foamtank;
     }
 }

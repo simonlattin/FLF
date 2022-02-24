@@ -25,4 +25,8 @@ public class ElectricMotor {
         int energy = speed * 25 / 2;
         BatteryManagement.instance.takeOut(energy);
     }
+
+    public boolean isOn() {
+        return isOn;
+    }
 }

@@ -4,19 +4,21 @@ import Extinguisher.FrontExtinguisher;
 
 public class JoystickFrontExtinguisher extends Joystick{
 
-    private final FrontExtinguisher frontExtinguisher;
 
-    public JoystickFrontExtinguisher(FrontExtinguisher frontExtinguisher){
-        this.frontExtinguisher = frontExtinguisher;
+
+    public JoystickFrontExtinguisher(){
+
     }
 
     public void pushLeftButton(){
         this.leftButton.press();
         if (!isActive){
             this.isActive = true;
+            frontExtinguisher.activate();
             frontExtinguisher.setTurnAngle(90);
         } else {
             this.isActive = false;
+            frontExtinguisher.deactivate();
             frontExtinguisher.setTurnAngle(0);
         }
     }

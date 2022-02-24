@@ -13,17 +13,17 @@ public class BlueLight {
         this.position = position;
 
         switch (size) {
-            case GROSS -> {
+            case BIG -> {
                 this.led01 = new LED();
                 this.led02 = new LED();
                 this.led03 = new LED();
                 this.led04 = new LED();
             }
-            case MITTEL -> {
+            case MEDIUM -> {
                 this.led01 = new LED();
                 this.led02 = new LED();
             }
-            case KLEIN -> this.led01 = new LED();
+            case SMALL -> this.led01 = new LED();
         }
     }
 

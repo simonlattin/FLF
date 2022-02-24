@@ -6,18 +6,18 @@ public class RoofExtinguisher {
     private double extendLength;
     private final int maxExtendLength;
     private int outputAmount;
-    private final MixingUnit mixingUnit;
+    private MixingUnit mixingUnit;
     private final Segment segment1;
     private final Segment segment2;
     private int mixingRatio;
     private final int maxRange;
     private String extinguishingAgent;
+    private boolean isExtended;
 
-    public RoofExtinguisher(MixingUnit mixingUnit) {
+    public RoofExtinguisher() {
         this.maxCapacity = 10000;
         this.extendLength = 0;
         this.maxExtendLength = 17;
-        this.mixingUnit = mixingUnit;
         this.segment1 = new Segment(0,true,false);
         this.segment2 = new Segment(17,false,true);
         this.maxRange = 90;
@@ -93,5 +93,17 @@ public class RoofExtinguisher {
     public void extiguish(){
         mixingUnit.mix(this.outputAmount);
         this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
+    }
+
+    public void setMixingUnit(MixingUnit mixingUnit) {
+        this.mixingUnit = mixingUnit;
+    }
+
+    public boolean isExtended() {
+        if (this.segment1.isExtended() || this.segment2.isExtended()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

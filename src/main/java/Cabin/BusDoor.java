@@ -17,4 +17,8 @@ public class BusDoor {
     public void pressButton(){
         isOpen = !isOpen;
     }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
 }
