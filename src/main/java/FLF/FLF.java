@@ -384,11 +384,54 @@ public class FLF {
             return new FLF(this);
         }
     }
+    
+    public void engineOn() {
+        this.motor01.turnOn();
+        this.motor02.turnOn();
+    }
+    
+    public void turnOnFrontLight() {
+        this.spotlight01.On();
+        this.spotlight02.On();
+        this.spotlight03.On();
+        this.spotlight04.On();
+        this.spotlight05.On();
+        this.spotlight06.On();
+    }
+
+    public void turnOffFrontLight() {
+        this.spotlight01.Off();
+        this.spotlight02.Off();
+        this.spotlight03.Off();
+        this.spotlight04.Off();
+        this.spotlight05.Off();
+        this.spotlight06.Off();
+    }
+
+    public void turnOnRoofLight() {
+        this.spotlight07.On();
+        this.spotlight08.On();
+        this.spotlight09.On();
+        this.spotlight10.On();
+    }
+
+    public void turnOffRoofLight() {
+        this.spotlight07.Off();
+        this.spotlight08.Off();
+        this.spotlight09.Off();
+        this.spotlight10.Off();
+    }
 
     public void park() {
         this.cabin.getDoorLeft().pressButton();
         this.cabin.getDoorRight().pressButton();
         this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
         this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
+    }
+    
+    public void testDrive() {
+        engineOn();
+        //Fahrer, Operator hinsetzen
+        turnOnFrontLight();
     }
 }

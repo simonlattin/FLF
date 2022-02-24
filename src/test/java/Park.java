@@ -12,6 +12,7 @@ public class Park { //test s01
     public void testParking(){
         flf.park();
         Assertions.assertFalse(flf.getMotor01().isOn()); //Motor aus
+        Assertions.assertFalse(flf.getMotor02().isOn()); //Motor aus
 
         Assertions.assertNull(flf.getCabin().getSeat01().getFirefighter());//Sitzplatz unbesetzt
         Assertions.assertNull(flf.getCabin().getSeat02().getFirefighter());//Sitzplatz unbesetzt
