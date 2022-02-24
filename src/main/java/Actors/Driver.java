@@ -1,10 +1,37 @@
 package Actors;
 
-public class Driver extends Firefighter{
+import Cabin.Driverseat;
+import Cabin.Seat;
 
-    public Driver(){
+public class Driver extends Firefighter{
+    private final Driverseat seat;
+
+    public Driver(Driverseat seat){
         this.setFunction(Function.DRIVER);
+        this.seat = seat;
     }
 
+    public void stepOnGas(){
+        seat.accelerate();
+    }
 
+    public void stepOnBrake(){
+        seat.brake();
+    }
+
+    public void turn(int degree){
+        seat.turn(degree);
+    }
+
+    public void pressLeftJoystickButton(){
+        seat.pressLeftJoystickButton();
+    }
+
+    public void pressRightJoystickButton(){
+        seat.pressRightJoystickButton();
+    }
+
+    public void pressJoystickCaliper(){
+        seat.pressJoystickCaliper();
+    }
 }

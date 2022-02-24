@@ -23,7 +23,7 @@ public abstract class Joystick {
 
     public abstract void pushRightButton();
 
-    public abstract void pushCaliper(TurnKnob turnKnob);
+    public abstract void pushCaliper();
 
     public void setExtinguisher(FrontExtinguisher frontExtinguisher, RoofExtinguisher roofExtinguisher){
         this.frontExtinguisher = frontExtinguisher;

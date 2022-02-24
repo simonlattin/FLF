@@ -114,17 +114,17 @@ public class Cabin {
         public CabinBuilder withCentralUnit(CentralUnit getCentralUnit){
                 doorLeft = new BusDoor(Position.LEFT);
                 doorRight = new BusDoor(Position.RIGHT);
-                joystickFront = new JoystickFrontExtinguisher();
-                joystickRoof = new JoystickRoofExtinguisher();
                 controlPanel = new ControlPanel(getCentralUnit);
+                joystickFront = new JoystickFrontExtinguisher(controlPanel);
+                joystickRoof = new JoystickRoofExtinguisher(controlPanel);
                 steeringWheel = new SteeringWheel(getCentralUnit);
                 energyDisplay = new EnergyDisplay();
                 speedDisplay = new SpeedDisplay();
                 brakePedal = new BrakePedal(getCentralUnit);
                 gaspedal = new GasPedal(getCentralUnit);
                 centralUnit = getCentralUnit;
-                seat01 = new Driverseat(Position.FRONTLEFT, gaspedal, brakePedal, steeringWheel);
-                seat02 = new Operatorseat(Position.FRONTRIGHT);
+                seat01 = new Driverseat(Position.FRONTLEFT, gaspedal, brakePedal, steeringWheel, joystickFront);
+                seat02 = new Operatorseat(Position.FRONTRIGHT, controlPanel, joystickRoof);
                 seat03 = new Backseat(Position.BACKLEFT);
                 seat04 = new Backseat(Position.BACKRIGHT);
                 return this;

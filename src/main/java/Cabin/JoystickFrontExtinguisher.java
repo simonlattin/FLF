@@ -3,9 +3,10 @@ package Cabin;
 import Extinguisher.FrontExtinguisher;
 
 public class JoystickFrontExtinguisher extends Joystick{
+    private final ControlPanel controlPanel;
 
-    public JoystickFrontExtinguisher(){
-
+    public JoystickFrontExtinguisher(ControlPanel controlPanel){
+        this.controlPanel = controlPanel;
     }
 
     public void pushLeftButton(){
@@ -42,9 +43,11 @@ public class JoystickFrontExtinguisher extends Joystick{
 
     }
 
-    public void pushCaliper(TurnKnob turnKnob){
+    public void pushCaliper(){
         this.caliper.press();
-        frontExtinguisher.setOutputAmount(turnKnob.getAmount());
-        frontExtinguisher.extiguish();
+        if(isActive) {
+            frontExtinguisher.setOutputAmount(controlPanel.getFrontExtinguisherKnob().getAmount());
+            frontExtinguisher.extiguish();
+        }
     }
 }
