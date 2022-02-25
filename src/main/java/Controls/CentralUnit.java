@@ -26,30 +26,26 @@ public class CentralUnit {
 
         flf.getBreakLight01().Off();
         flf.getBreakLight02().Off();
-        System.out.println("The speed is now " + flf.getCabin().getSpeedDisplay().getSpeed() + " km/h.");
     }
 
     public void speedUp(){
         flf.getCabin().getSpeedDisplay().speedUp();
-        System.out.println("The speed is now " + flf.getCabin().getSpeedDisplay().getSpeed() + " km/h.");
     }
 
     public void drive(){
-        System.out.println("Driving one iteration");
         flf.getMotor01().drive();
         flf.getMotor02().drive();
     }
 
-    public void turn(int winkel){
-        flf.getAxis01().turn(winkel);
-        flf.getAxis02().turn(winkel);
-        System.out.println("w"+winkel);
-        if(winkel < 0){
+    public void turn(int degree){
+        flf.getAxis01().turn(degree);
+        flf.getAxis02().turn(degree);
+        if(degree < 0){
             flf.getIndicator01().On();
             flf.getIndicator03().On();
             flf.getIndicator02().Off();
             flf.getIndicator04().Off();
-        } else if(winkel > 0){
+        } else if(degree > 0){
             flf.getIndicator01().Off();
             flf.getIndicator03().Off();
             flf.getIndicator02().On();
@@ -60,7 +56,6 @@ public class CentralUnit {
             flf.getIndicator02().Off();
             flf.getIndicator04().Off();
         }
-        System.out.println("The steering degree is " + flf.getAxis02().getSteeringDegree() + "°.");
     }
 
     public void flipLever(int leverId, boolean state){
