@@ -1,6 +1,7 @@
 package FLF;
 
 import Actors.Driver;
+import Actors.Firefighter;
 import Actors.Operator;
 import Axes.Axis;
 import Cabin.Cabin;
@@ -61,6 +62,8 @@ public class FLF {
     private final MixingUnit mixingUnit;
     private final FrontExtinguisher frontExtinguisher;
     private final RoofExtinguisher roofExtinguisher;
+    private Driver driver;
+    private Operator operator;
 
     public FLF(Builder builder){
         spotlight01 = builder.spotlight01;//VORNELINKS
@@ -536,6 +539,52 @@ public class FLF {
         turnOnRoofLight();
         turnOnFrontLight();
         this.warningLight.On();
+        turnOnBlueLight();
+        turnOnSideLights();
+    }
+
+    public void airplaneOnFirePrepare(){
+        engineOn();
+        driver = new Driver(cabin.getSeat01());
+        cabin.getSeat01().setFirefighter(driver);
+        operator = new Operator(cabin.getSeat02());
+        cabin.getSeat02().setFirefighter(operator);
+        if(!cabin.getDoorRight().isOpen()){
+            cabin.getInnerRight().push();
+        }
+        if(!cabin.getDoorLeft().isOpen()){
+            cabin.getInnerLeft().push();
+        }
+        turnOnRoofLight();
+        turnOnFrontLight();
+        warningLight.On();
+        turnOnBlueLight();
+        turnOnSideLights();
+    }
+
+    public Driver getDriver(){
+        return driver;
+    }
+
+    public Operator getOperator(){
+        return operator;
+    }
+
+    public void fireInEnginePrepare(){
+        engineOn();
+        driver = new Driver(cabin.getSeat01());
+        cabin.getSeat01().setFirefighter(driver);
+        operator = new Operator(cabin.getSeat02());
+        cabin.getSeat02().setFirefighter(operator);
+        if(!cabin.getDoorRight().isOpen()){
+            cabin.getInnerRight().push();
+        }
+        if(!cabin.getDoorLeft().isOpen()){
+            cabin.getInnerLeft().push();
+        }
+        turnOnRoofLight();
+        turnOnFrontLight();
+        warningLight.On();
         turnOnBlueLight();
         turnOnSideLights();
     }

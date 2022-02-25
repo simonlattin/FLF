@@ -102,6 +102,22 @@ public class Cabin {
         return gaspedal;
     }
 
+    public DoorButton getInnerLeft(){
+        return innerLeft;
+    }
+
+    public DoorButton getOuterLeft(){
+        return outerLeft;
+    }
+
+    public DoorButton getInnerRight(){
+        return innerRight;
+    }
+
+    public DoorButton getOuterRight(){
+        return outerRight;
+    }
+
     public static class CabinBuilder{
         private BusDoor doorLeft;
         private BusDoor doorRight;

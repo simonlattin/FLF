@@ -12,10 +12,10 @@ public class Tank {
         this.tankKind = tankKind;
         switch (tankKind) {
             case WATER -> {
-                this.capacity = new char[50][25][10];
-                for (int i = 0; i < 50; i++){
-                    for (int j = 0; j < 25; j++){
-                        for (int k = 0; k < 10; k++){
+                this.capacity = new char[75][45][30];
+                for (int i = 0; i < 75; i++){
+                    for (int j = 0; j < 45; j++){
+                        for (int k = 0; k < 30; k++){
                             this.capacity[i][j][k] = 'w';
                             this.availableUnits++;
                         }
@@ -23,9 +23,9 @@ public class Tank {
                 }
             }
             case FOAM -> {
-                this.capacity = new char[25][10][10];
-                for (int i = 0; i < 25; i++){
-                    for (int j = 0; j < 10; j++){
+                this.capacity = new char[75][45][10];
+                for (int i = 0; i < 75; i++){
+                    for (int j = 0; j < 45; j++){
                         for (int k = 0; k < 10; k++){
                             this.capacity[i][j][k] = 's';
                             this.availableUnits++;
@@ -48,21 +48,21 @@ public class Tank {
     public void fill(int amount){
         int i1 = 0;
         int j1 = 0;
-        int k1 = 20;
+        int k1 = 40;
         if (this.tankKind == TankKind.WATER) {
             this.availableUnits = 0;
-            for (int i = 0; i < 50; i++) {
-                for (int j = 0; j < 25; j++) {
-                    for (int k = 0; k < 10; k++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
+                    for (int k = 0; k < 30; k++) {
                         if (this.capacity[i][j][k] == 'w') {
                             this.availableUnits++;
                         }
                     }
                 }
             }
-            for (int i = 49; i >= 0; i--) {
-                for (int j = 24; j >= 0; j--) {
-                    for (int k = 9; k >= 0; k--) {
+            for (int i = 74; i >= 0; i--) {
+                for (int j = 44; j >= 0; j--) {
+                    for (int k = 29; k >= 0; k--) {
                         if (this.capacity[i][j][k] == '-') {
                             i1 = i;
                             j1 = j;
@@ -73,11 +73,11 @@ public class Tank {
                             break;
                         }
                     }
-                    if (k1 != 20){
+                    if (k1 != 40){
                         break;
                     }
                 }
-                if (k1 != 20){
+                if (k1 != 40){
                     break;
                 }
             }
@@ -85,17 +85,17 @@ public class Tank {
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
-                for (int i = 49; i >= 0; i--) {
-                    for (int j = 24; j >= 0; j--) {
-                        for (int k = 9; k >= 0; k--) {
+                for (int i = 74; i >= 0; i--) {
+                    for (int j = 44; j >= 0; j--) {
+                        for (int k = 29; k >= 0; k--) {
                             this.capacity[i][j][k] = '-';
                         }
                     }
                 }
                 this.availableUnits = 0;
-                for (int i = 0; i < 50; i++) {
-                    for (int j = 0; j < 25; j++) {
-                        for (int k = 0; k < 10; k++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
+                        for (int k = 0; k < 30; k++) {
                             if (this.capacity[i][j][k] == 'w') {
                                 this.availableUnits++;
                             }
@@ -122,7 +122,7 @@ public class Tank {
                         }
                     }
                     for (int i = i1 - 1; i >= 0; i--) {
-                        for (int j = 24; j >= 0; j--) {
+                        for (int j = 44; j >= 0; j--) {
                             for (int k = 9; k >= 0; k--) {
                                 if (z < 0){
                                     break;
@@ -133,8 +133,8 @@ public class Tank {
                         }
                     }
                     this.availableUnits = 0;
-                    for (int i = 0; i < 50; i++) {
-                        for (int j = 0; j < 25; j++) {
+                    for (int i = 0; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
                             for (int k = 0; k < 10; k++) {
                                 if (this.capacity[i][j][k] == 'w') {
                                     this.availableUnits++;
@@ -145,11 +145,11 @@ public class Tank {
                 }
             }
 
-            this.percentageFull = this.availableUnits / 12500;
+            this.percentageFull = this.availableUnits / 101250;
         } else if (this.tankKind == TankKind.FOAM) {
             this.availableUnits = 0;
-            for (int i = 0; i < 25; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
                     for (int k = 0; k < 10; k++) {
                         if (this.capacity[i][j][k] == 's') {
                             this.availableUnits++;
@@ -158,7 +158,7 @@ public class Tank {
                 }
             }
 
-            for (int i = 24; i >= 0; i--) {
+            for (int i = 74; i >= 0; i--) {
                 for (int j = 9; j >= 0; j--) {
                     for (int k = 9; k >= 0; k--) {
                         if (this.capacity[i][j][k] == '-') {
@@ -171,11 +171,11 @@ public class Tank {
                             break;
                         }
                     }
-                    if (k1 != 20){
+                    if (k1 != 40){
                         break;
                     }
                 }
-                if (k1 != 20){
+                if (k1 != 40){
                     break;
                 }
             }
@@ -183,7 +183,7 @@ public class Tank {
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
-                for (int i = 24; i >= 0; i--) {
+                for (int i = 74; i >= 0; i--) {
                     for (int j = 9; j >= 0; j--) {
                         for (int k = 9; k >= 0; k--) {
                             this.capacity[i][j][k] = '-';
@@ -191,8 +191,8 @@ public class Tank {
                     }
                 }
                 this.availableUnits = 0;
-                for (int i = 0; i < 25; i++) {
-                    for (int j = 0; j < 10; j++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
                         for (int k = 0; k < 10; k++) {
                             if (this.capacity[i][j][k] == 's') {
                                 this.availableUnits++;
@@ -231,8 +231,8 @@ public class Tank {
                         }
                     }
                     this.availableUnits = 0;
-                    for (int i = 0; i < 25; i++) {
-                        for (int j = 0; j < 10; j++) {
+                    for (int i = 0; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
                             for (int k = 0; k < 10; k++) {
                                 if (this.capacity[i][j][k] == 's') {
                                     this.availableUnits++;
@@ -242,43 +242,43 @@ public class Tank {
                     }
                 }
             }
-            this.percentageFull = this.availableUnits / 2500;
+            this.percentageFull = this.availableUnits / 33750;
         }
     }
     public void takeOut(int amount) {
 
         int i1 = 0;
         int j1 = 0;
-        int k1 = 20;
+        int k1 = 40;
         if (this.tankKind == TankKind.WATER) {
             this.availableUnits = 0;
-            for (int i = 0; i < 50; i++) {
-                for (int j = 0; j < 25; j++) {
-                    for (int k = 0; k < 10; k++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
+                    for (int k = 0; k < 30; k++) {
                         if (this.capacity[i][j][k] == 'w') {
                             this.availableUnits++;
                         }
                     }
                 }
             }
-            for (int i = 0; i < 50; i++) {
-                for (int j = 0; j < 25; j++) {
-                    for (int k = 0; k < 10; k++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
+                    for (int k = 0; k < 30; k++) {
                         if (this.capacity[i][j][k] == 'w') {
                             i1 = i;
                             j1 = j;
                             k1 = k;
                             break;
                         }
-                        if (this.capacity[49][24][9] != 'w') {
+                        if (this.capacity[74][44][29] != 'w') {
                             break;
                         }
                     }
-                    if (k1 != 20){
+                    if (k1 != 40){
                         break;
                     }
                 }
-                if (k1 != 20){
+                if (k1 != 40){
                     break;
                 }
             }
@@ -286,17 +286,17 @@ public class Tank {
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
-                for (int i = 0; i < 50; i++) {
-                    for (int j = 0; j < 25; j++) {
-                        for (int k = 0; k < 10; k++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
+                        for (int k = 0; k < 30; k++) {
                             this.capacity[i][j][k] = '-';
                         }
                     }
                 }
                 this.availableUnits = 0;
-                for (int i = 0; i < 50; i++) {
-                    for (int j = 0; j < 25; j++) {
-                        for (int k = 0; k < 10; k++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
+                        for (int k = 0; k < 30; k++) {
                             if (this.capacity[i][j][k] == 'w') {
                                 this.availableUnits++;
                             }
@@ -306,15 +306,15 @@ public class Tank {
             } else {
                 int z = amount -1;
                 while (z > 0 && availableUnits != 0) {
-                    for (int k = k1; k < 10; k++) {
+                    for (int k = k1; k < 30; k++) {
                         if (z < 0){
                             break;
                         }
                         this.capacity[i1][j1][k] = '-';
                         z--;
                     }
-                    for (int j = j1 + 1; j < 25; j++) {
-                        for (int k = 0; k < 10; k++) {
+                    for (int j = j1 + 1; j < 45; j++) {
+                        for (int k = 0; k < 30; k++) {
                             if (z < 0){
                                 break;
                             }
@@ -322,9 +322,9 @@ public class Tank {
                             z--;
                         }
                     }
-                    for (int i = i1 + 1; i < 50; i++) {
-                        for (int j = 0; j < 25; j++) {
-                            for (int k = 0; k < 10; k++) {
+                    for (int i = i1 + 1; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
+                            for (int k = 0; k < 30; k++) {
                                 if (z < 0){
                                     break;
                                 }
@@ -334,9 +334,9 @@ public class Tank {
                         }
                     }
                     this.availableUnits = 0;
-                    for (int i = 0; i < 50; i++) {
-                        for (int j = 0; j < 25; j++) {
-                            for (int k = 0; k < 10; k++) {
+                    for (int i = 0; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
+                            for (int k = 0; k < 30; k++) {
                                 if (this.capacity[i][j][k] == 'w') {
                                     this.availableUnits++;
                                 }
@@ -346,11 +346,11 @@ public class Tank {
                 }
             }
 
-            this.percentageFull = this.availableUnits / 12500;
+            this.percentageFull = this.availableUnits / 101250;
         } else if (this.tankKind == TankKind.FOAM) {
             this.availableUnits = 0;
-            for (int i = 0; i < 25; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
                     for (int k = 0; k < 10; k++) {
                         if (this.capacity[i][j][k] == 's') {
                             this.availableUnits++;
@@ -359,8 +359,8 @@ public class Tank {
                 }
             }
 
-            for (int i = 0; i < 25; i++) {
-                for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 75; i++) {
+                for (int j = 0; j < 45; j++) {
                     for (int k = 0; k < 10; k++) {
                         if (this.capacity[i][j][k] == 's') {
                             i1 = i;
@@ -368,15 +368,15 @@ public class Tank {
                             k1 = k;
                             break;
                         }
-                        if (this.capacity[24][9][9] != 's') {
+                        if (this.capacity[74][44][9] != 's') {
                             break;
                         }
                     }
-                    if (k1 != 20){
+                    if (k1 != 40){
                         break;
                     }
                 }
-                if (k1 != 20){
+                if (k1 != 40){
                     break;
                 }
             }
@@ -384,16 +384,16 @@ public class Tank {
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 2499) {
-                for (int i = 0; i < 25; i++) {
-                    for (int j = 0; j < 10; j++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
                         for (int k = 0; k < 10; k++) {
                             this.capacity[i][j][k] = '-';
                         }
                     }
                 }
                 this.availableUnits = 0;
-                for (int i = 0; i < 25; i++) {
-                    for (int j = 0; j < 10; j++) {
+                for (int i = 0; i < 75; i++) {
+                    for (int j = 0; j < 45; j++) {
                         for (int k = 0; k < 10; k++) {
                             if (this.capacity[i][j][k] == 's') {
                                 this.availableUnits++;
@@ -411,7 +411,7 @@ public class Tank {
                         this.capacity[i1][j1][k] = '-';
                         z--;
                     }
-                    for (int j = j1 + 1; j < 10; j++) {
+                    for (int j = j1 + 1; j < 45; j++) {
                         for (int k = 0; k < 10; k++) {
                             if (z < 0){
                                 break;
@@ -420,8 +420,8 @@ public class Tank {
                             z--;
                         }
                     }
-                    for (int i = i1 + 1; i < 25; i++) {
-                        for (int j = 0; j < 10; j++) {
+                    for (int i = i1 + 1; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
                             for (int k = 0; k < 10; k++) {
                                 if (z < 0){
                                     break;
@@ -432,8 +432,8 @@ public class Tank {
                         }
                     }
                     this.availableUnits = 0;
-                    for (int i = 0; i < 25; i++) {
-                        for (int j = 0; j < 10; j++) {
+                    for (int i = 0; i < 75; i++) {
+                        for (int j = 0; j < 45; j++) {
                             for (int k = 0; k < 10; k++) {
                                 if (this.capacity[i][j][k] == 's') {
                                     this.availableUnits++;
@@ -443,7 +443,7 @@ public class Tank {
                     }
                 }
             }
-            this.percentageFull = this.availableUnits / 2500;
+            this.percentageFull = this.availableUnits / 33570;
         }
     }
 

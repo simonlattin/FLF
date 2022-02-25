@@ -1,5 +1,7 @@
 package Cabin;
 
+import Actors.Firefighter;
+
 public class Driverseat extends Seat{
     private final GasPedal gasPedal;
     private final BrakePedal brakePedal;

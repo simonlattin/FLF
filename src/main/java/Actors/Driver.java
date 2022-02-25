@@ -34,4 +34,8 @@ public class Driver extends Firefighter{
     public void pressJoystickCaliper(){
         seat.pressJoystickCaliper();
     }
+
+    public String getName(){
+        return "Joe";
+    }
 }
