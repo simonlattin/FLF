@@ -64,12 +64,15 @@ public class FireInEngine {
         Assertions.assertEquals(90,flf.getFrontExtinguisher().getTurnAngle());//Frontextinguisher active and turned
 
         while (flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getAmount() != 3500){
-            flf.getCabin().getControlPanel().getFrontExtinguisherKnob().turn(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState());
+            flf.getOperator().turnTurnKnobFrontExtinguisher();
         }
 
         while(flf.getFrontExtinguisher().getMixingRatio() != 10){
             flf.getDriver().pressRightJoystickButton();
         }
+
+
+        System.out.println("-");
 
         flf.getDriver().pressJoystickCaliper();
         flf.getDriver().pressJoystickCaliper();
@@ -80,13 +83,19 @@ public class FireInEngine {
         Assertions.assertEquals(85500,flf.getWaterTank().getAvailableUnits());//Mixingratio and usage right for watertank in Frontextinguisher
         Assertions.assertEquals(32000,flf.getFoamTank().getAvailableUnits());//Mixingratio and usage right for foamtank in Frontextinguisher
 
-        while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
-            flf.getCabin().getControlPanel().getRoofExtinguisherKnob().turn(flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());
+        if (!flf.getRoofExtinguisher().isExtended()){
+            flf.getOperator().pressLeftJoystickButton();
         }
 
-        while(flf.getRoofExtinguisher().getMixingRatio() != 5){
-            flf.getOperator().pressRightJoystickButton();
+        Assertions.assertTrue(flf.getRoofExtinguisher().isExtended());//Frontextinguisher active and extended
+
+        while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
+            flf.getOperator().turnTurnKnobRoofExtinguisher();
         }
+
+         while(flf.getRoofExtinguisher().getMixingRatio() != 10){
+             flf.getOperator().pressRightJoystickButton();
+         }
 
         flf.getOperator().pressJoystickCaliper();
         flf.getOperator().pressJoystickCaliper();
@@ -96,6 +105,14 @@ public class FireInEngine {
 
         Assertions.assertEquals(74250,flf.getWaterTank().getAvailableUnits());//Mixingratio and usage right for watertank in Roofextinguisher
         Assertions.assertEquals(30750,flf.getFoamTank().getAvailableUnits());//Mixingratio and usage right for foamtank in Roofextinguisher
+
+        while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
+            flf.getOperator().turnTurnKnobRoofExtinguisher();
+        }
+
+        while(flf.getRoofExtinguisher().getMixingRatio() != 10){
+            flf.getOperator().pressRightJoystickButton();
+        }
 
         flf.getOperator().pressJoystickCaliper();
         flf.getOperator().pressJoystickCaliper();

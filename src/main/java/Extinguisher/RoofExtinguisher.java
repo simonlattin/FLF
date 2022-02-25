@@ -21,6 +21,7 @@ public class RoofExtinguisher {
         this.segment1 = new Segment(0,true,false);
         this.segment2 = new Segment(17,false,true);
         this.maxRange = 90;
+        this.mixingRatio = 0;
     }
 
     public void setOutputAmount(int outputAmount) {
