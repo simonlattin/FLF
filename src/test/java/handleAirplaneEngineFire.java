@@ -1,9 +1,8 @@
-import Battery.BatteryManagement;
 import FLF.FLF;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AirplaneOnFire {
+public class handleAirplaneEngineFire {
 
     private final FLF flf = new FLF.Builder().build();
 

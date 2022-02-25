@@ -2,7 +2,7 @@ import FLF.FLF;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class FireInEngine {
+public class handlePushbackVehicleOnFire {
     private final FLF flf = new FLF.Builder().build();
 
     @Test
