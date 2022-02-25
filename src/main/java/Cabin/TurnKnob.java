@@ -24,15 +24,12 @@ public class TurnKnob {
             switch (state) {
                 case 'A' -> {
                     this.amount = 500;
-                    this.state = 'A';
                 }
                 case 'B' -> {
                     this.amount = 1000;
-                    this.state = 'B';
                 }
                 case 'C' -> {
                     this.amount = 2500;
-                    this.state = 'C';
                 }
             }
         }
@@ -40,31 +37,24 @@ public class TurnKnob {
             switch (state) {
                 case '1' -> {
                     this.amount = 500;
-                    this.state = '1';
                 }
                 case '2' -> {
                     this.amount = 1000;
-                    this.state = '2';
                 }
                 case '3' -> {
                     this.amount = 1500;
-                    this.state = '3';
                 }
                 case '4' -> {
                     this.amount = 2000;
-                    this.state = '4';
                 }
                 case '5' -> {
                     this.amount = 2500;
-                    this.state = '5';
                 }
                 case '6' -> {
                     this.amount = 3000;
-                    this.state = '6';
                 }
                 case '7' -> {
                     this.amount = 3500;
-                    this.state = '7';
                 }
             }
         }
