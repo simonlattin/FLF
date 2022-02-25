@@ -1,16 +1,16 @@
-import Battery.BatteryManagement;
 import FLF.FLF;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class OperationDrive {
-
+public class handleFuelTruckOnFire {
+    
     private FLF flf = new FLF.Builder().build();
-
+    
     @Test
-    public void testOperationDrive(){
-
-        flf.operationDrive();
+    public void testTankVehicle() {
+        flf.tankVehicle();
+        flf.getCabin().getControlPanel().turnFrontExtingushierKnob('6');
+        flf.getCabin().getControlPanel().turnRoofExtingushierKnob('C');
 
         Assertions.assertTrue(flf.getMotor01().isOn()); //Motor an
         Assertions.assertTrue(flf.getMotor02().isOn()); //Motor an
@@ -32,16 +32,16 @@ public class OperationDrive {
         Assertions.assertTrue(flf.getSpotlight09().isOn());//Dachscheinwerfer ein
         Assertions.assertTrue(flf.getSpotlight10().isOn());//Dachscheinwerfer ein
 
-        Assertions.assertFalse(flf.getLeftSide1().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getLeftSide2().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getLeftSide3().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getLeftSide4().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getLeftSide5().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getRightSide1().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getRightSide2().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getRightSide3().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getRightSide4().isOn());//Seitenleuchten aus
-        Assertions.assertFalse(flf.getRightSide5().isOn());//Seitenleuchten aus
+        Assertions.assertTrue(flf.getLeftSide1().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getLeftSide2().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getLeftSide3().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getLeftSide4().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getLeftSide5().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getRightSide1().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getRightSide2().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getRightSide3().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getRightSide4().isOn());//Seitenleuchten ein
+        Assertions.assertTrue(flf.getRightSide5().isOn());//Seitenleuchten ein
 
         Assertions.assertTrue(flf.getSpotlight01().isOn());//Frontscheinwerfer ein
         Assertions.assertTrue(flf.getSpotlight02().isOn());//Frontscheinwerfer ein
@@ -67,27 +67,34 @@ public class OperationDrive {
 
         Assertions.assertEquals(100, flf.getFoamTank().getPercentageFull());//Schaumpulvertank voll
 
-        Assertions.assertEquals('1',flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState());//Frontwerfer Stufe 1
+        flf.activateFloorSprayNuzzles();
+        Assertions.assertEquals(100550, flf.getWaterTank().getAvailableUnits());
 
-        Assertions.assertEquals('A',flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());//Dachlöscharm Stufe 1
+        flf.getDriver().pressLeftJoystickButton();
+        flf.getDriver().pressRightJoystickButton();
+        flf.getDriver().pressRightJoystickButton();
+        flf.getDriver().pressJoystickCaliper();
+        flf.getDriver().pressJoystickCaliper();
+        flf.getDriver().pressJoystickCaliper();
+        Assertions.assertTrue(flf.getFrontExtinguisher().isActive());//Frontwerfer aktiviert
+        Assertions.assertEquals(5, flf.getFrontExtinguisher().getMixingRatio());//Mischverhältnis 5 %
+        Assertions.assertEquals(90, flf.getFrontExtinguisher().getTurnAngle());//Frontwerfer um 90% gedreht
+        Assertions.assertEquals(3000, flf.getFrontExtinguisher().getOutputAmount());//Ausbringungsmenge korrekt
 
-        flf.speedUp(20);
-        Assertions.assertEquals(80, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
+        Assertions.assertEquals(92000, flf.getWaterTank().getAvailableUnits());//korrekter Verbrauch Wasser
+        Assertions.assertEquals(33300, flf.getFoamTank().getAvailableUnits());//korrekter Verbrauch Schaumpulver
 
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        Assertions.assertEquals(80, flf.getCabin().getSpeedDisplay().getSpeed());
-        Assertions.assertEquals(0, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree()); //10 Iterationen konstant geradeaus
 
-        Assertions.assertEquals(380000, BatteryManagement.instance.getLoadedCells());
+        flf.getOperator().pressLeftJoystickButton();
+        flf.getOperator().pressRightJoystickButton();
+        flf.getOperator().pressJoystickCaliper();
+        flf.getOperator().pressJoystickCaliper();
+        flf.getOperator().pressJoystickCaliper();
+        Assertions.assertTrue(flf.getRoofExtinguisher().isExtended());//Dachlöscharm ist ausgefahren
+        Assertions.assertEquals(3, flf.getRoofExtinguisher().getMixingRatio());//Mischverältnis 3%
+        Assertions.assertEquals(2500, flf.getRoofExtinguisher().getOutputAmount());//Ausbringunsmenge korrekt
+
+        Assertions.assertEquals(84725, flf.getWaterTank().getAvailableUnits());//korrekter Verbrauch Wasser
+        Assertions.assertEquals(33075, flf.getFoamTank().getAvailableUnits());//korrekter Verbrauch Schaumpulver
     }
 }

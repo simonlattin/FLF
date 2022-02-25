@@ -3,13 +3,14 @@ import FLF.FLF;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ControlDrive {
-    
+public class handleEmergencyService {
+
     private FLF flf = new FLF.Builder().build();
-    
+
     @Test
-    public void testDrive(){
-        flf.testDrive();
+    public void testOperationDrive(){
+
+        flf.operationDrive();
 
         Assertions.assertTrue(flf.getMotor01().isOn()); //Motor an
         Assertions.assertTrue(flf.getMotor02().isOn()); //Motor an
@@ -26,10 +27,10 @@ public class ControlDrive {
 
         Assertions.assertFalse(flf.getFrontExtinguisher().isActive());//Frontlöscharm deaktiviert
 
-        Assertions.assertFalse(flf.getSpotlight07().isOn());//Dachscheinwerfer aus
-        Assertions.assertFalse(flf.getSpotlight08().isOn());//Dachscheinwerfer aus
-        Assertions.assertFalse(flf.getSpotlight09().isOn());//Dachscheinwerfer aus
-        Assertions.assertFalse(flf.getSpotlight10().isOn());//Dachscheinwerfer aus
+        Assertions.assertTrue(flf.getSpotlight07().isOn());//Dachscheinwerfer ein
+        Assertions.assertTrue(flf.getSpotlight08().isOn());//Dachscheinwerfer ein
+        Assertions.assertTrue(flf.getSpotlight09().isOn());//Dachscheinwerfer ein
+        Assertions.assertTrue(flf.getSpotlight10().isOn());//Dachscheinwerfer ein
 
         Assertions.assertFalse(flf.getLeftSide1().isOn());//Seitenleuchten aus
         Assertions.assertFalse(flf.getLeftSide2().isOn());//Seitenleuchten aus
@@ -51,16 +52,16 @@ public class ControlDrive {
 
         Assertions.assertTrue(flf.getWarningLight().isOn());//Warnlicht ein
 
-        Assertions.assertFalse(flf.getBlueLight01().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight02().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight03().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight04().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight05().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight06().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight07().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight08().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight09().isOn());//Blaulicht aus
-        Assertions.assertFalse(flf.getBlueLight10().isOn());//Blaulicht aus
+        Assertions.assertTrue(flf.getBlueLight01().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight02().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight03().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight04().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight05().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight06().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight07().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight08().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight09().isOn());//Blaulicht ein
+        Assertions.assertTrue(flf.getBlueLight10().isOn());//Blaulicht ein
 
         Assertions.assertEquals(100, flf.getWaterTank().getPercentageFull());//Wassertank voll
 
@@ -70,53 +71,23 @@ public class ControlDrive {
 
         Assertions.assertEquals('A',flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());//Dachlöscharm Stufe 1
 
-        System.out.println(flf.getAxis01().getSteeringDegree());
-        System.out.println(flf.getAxis02().getSteeringDegree());
-
-        flf.speedUp(7);
-        Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
+        flf.speedUp(20);
+        Assertions.assertEquals(80, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
 
         flf.drive();
         flf.drive();
         flf.drive();
         flf.drive();
         flf.drive();
-        Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
+        flf.drive();
+        flf.drive();
+        flf.drive();
+        flf.drive();
+        flf.drive();
+        Assertions.assertEquals(80, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(0, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree()); //5 Iterationen konstant geradeaus
+        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree()); //10 Iterationen konstant geradeaus
 
-        flf.steer(-5);
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
-        Assertions.assertEquals(-5, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(-5, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant mit 5° nach links
-
-        flf.steer(5);
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
-        Assertions.assertEquals(0, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(0, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant geradeaus
-
-        flf.steer(5);
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        flf.drive();
-        Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());
-        Assertions.assertEquals(5, flf.getAxis01().getSteeringDegree());
-        Assertions.assertEquals(5, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant mit 5° nach rechts
-
-        flf.speedDown(7);
-        Assertions.assertEquals(0, flf.getCabin().getSpeedDisplay().getSpeed());
-        Assertions.assertEquals(386000, BatteryManagement.instance.getLoadedCells());
+        Assertions.assertEquals(380000, BatteryManagement.instance.getLoadedCells());
     }
 }
