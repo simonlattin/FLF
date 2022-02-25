@@ -35,12 +35,12 @@ public class Operator extends Firefighter{
         seat.flipLever(6);
     }
 
-    public void turnTurnKnobFrontExtinguisher(){
-        seat.getControlPanel().turnFrontExtingushierKnob(seat.getControlPanel().getFrontExtinguisherKnob().getState());
+    public void turnTurnKnobFrontExtinguisher(char state){
+        seat.getControlPanel().turnKnob(1,state);
     }
 
-    public void turnTurnKnobRoofExtinguisher(){
-        seat.getControlPanel().turnRoofExtingushierKnob(seat.getControlPanel().getRoofExtinguisherKnob().getState());
+    public void turnTurnKnobRoofExtinguisher(char state){
+        seat.getControlPanel().turnKnob(2,state);
     }
 
     public void pressLeftJoystickButton(){

@@ -22,50 +22,30 @@ public class TurnKnob {
         this.state = state;
         if (this.turnKnobFunction == TurnKnobFunction.ROOFEXTINGUISHER){
             switch (state) {
-                case 'A' -> {
+                case 'A' ->
                     this.amount = 500;
-                    this.state = 'B';
-                }
-                case 'B' -> {
+                case 'B' ->
                     this.amount = 1000;
-                    this.state = 'C';
-                }
-                case 'C' -> {
+                case 'C' ->
                     this.amount = 2500;
-                    this.state = 'A';
-                }
             }
         }
         if (this.turnKnobFunction == TurnKnobFunction.FRONTEXTINGUISHER){
             switch (state) {
-                case '1' -> {
+                case '1' ->
                     this.amount = 500;
-                    this.state = '2';
-                }
-                case '2' -> {
+                case '2' ->
                     this.amount = 1000;
-                    this.state = '3';
-                }
-                case '3' -> {
+                case '3' ->
                     this.amount = 1500;
-                    this.state = '4';
-                }
-                case '4' -> {
+                case '4' ->
                     this.amount = 2000;
-                    this.state = '5';
-                }
-                case '5' -> {
+                case '5' ->
                     this.amount = 2500;
-                    this.state = '6';
-                }
-                case '6' -> {
+                case '6' ->
                     this.amount = 3000;
-                    this.state = '7';
-                }
-                case '7' -> {
+                case '7' ->
                     this.amount = 3500;
-                    this.state = '1';
-                }
             }
         }
     }

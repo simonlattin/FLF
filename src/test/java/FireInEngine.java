@@ -64,7 +64,7 @@ public class FireInEngine {
         Assertions.assertEquals(90,flf.getFrontExtinguisher().getTurnAngle());//Frontextinguisher active and turned
 
         while (flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getAmount() != 3500){
-            flf.getOperator().turnTurnKnobFrontExtinguisher();
+            flf.getOperator().turnTurnKnobFrontExtinguisher('7');
         }
 
         while(flf.getFrontExtinguisher().getMixingRatio() != 10){
@@ -90,7 +90,7 @@ public class FireInEngine {
         Assertions.assertTrue(flf.getRoofExtinguisher().isExtended());//Frontextinguisher active and extended
 
         while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
-            flf.getOperator().turnTurnKnobRoofExtinguisher();
+            flf.getOperator().turnTurnKnobRoofExtinguisher('C');
         }
 
          while(flf.getRoofExtinguisher().getMixingRatio() != 10){
@@ -107,7 +107,7 @@ public class FireInEngine {
         Assertions.assertEquals(30750,flf.getFoamTank().getAvailableUnits());//Mixingratio and usage right for foamtank in Roofextinguisher
 
         while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
-            flf.getOperator().turnTurnKnobRoofExtinguisher();
+            flf.getOperator().turnTurnKnobRoofExtinguisher('C');
         }
 
         while(flf.getRoofExtinguisher().getMixingRatio() != 10){
@@ -123,9 +123,7 @@ public class FireInEngine {
         Assertions.assertEquals(63000,flf.getWaterTank().getAvailableUnits());//Mixingratio and usage right for watertank in Roofextinguisher
         Assertions.assertEquals(29500,flf.getFoamTank().getAvailableUnits());//Mixingratio and usage right for foamtank in Roofextinguisher
 
-        while (flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getAmount() != 1000){
-            flf.getCabin().getControlPanel().getFrontExtinguisherKnob().turn(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState());
-        }
+        flf.getOperator().turnTurnKnobFrontExtinguisher('2');
 
         while(flf.getFrontExtinguisher().getMixingRatio() != 3){
             flf.getDriver().pressRightJoystickButton();

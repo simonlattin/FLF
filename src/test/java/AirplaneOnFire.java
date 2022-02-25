@@ -65,9 +65,7 @@ public class AirplaneOnFire {
 
         Assertions.assertEquals(90,flf.getFrontExtinguisher().getTurnAngle());//Frontextinguisher active and turned
 
-        while (flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getAmount() != 3500){
-            flf.getCabin().getControlPanel().getFrontExtinguisherKnob().turn(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState());
-        }
+        flf.getOperator().turnTurnKnobFrontExtinguisher('7');
 
         while(flf.getFrontExtinguisher().getMixingRatio() != 10){
             flf.getDriver().pressRightJoystickButton();
@@ -86,9 +84,7 @@ public class AirplaneOnFire {
 
         Assertions.assertTrue(flf.getRoofExtinguisher().isExtended());//Frontextinguisher active and extended
 
-        while (flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getAmount() != 2500){
-            flf.getCabin().getControlPanel().getRoofExtinguisherKnob().turn(flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());
-        }
+        flf.getOperator().turnTurnKnobRoofExtinguisher('C');
 
         while(flf.getRoofExtinguisher().getMixingRatio() != 5){
             flf.getOperator().pressRightJoystickButton();
@@ -103,9 +99,7 @@ public class AirplaneOnFire {
         Assertions.assertEquals(79925,flf.getWaterTank().getAvailableUnits());//Mixingratio and usage right for watertank in Roofextinguisher
         Assertions.assertEquals(32075,flf.getFoamTank().getAvailableUnits());//Mixingratio and usage right for foamtank in Roofextinguisher
 
-        while (flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getAmount() != 1000){
-            flf.getCabin().getControlPanel().getFrontExtinguisherKnob().turn(flf.getCabin().getControlPanel().getFrontExtinguisherKnob().getState());
-        }
+        flf.getOperator().turnTurnKnobFrontExtinguisher('2');
 
         while(flf.getFrontExtinguisher().getMixingRatio() != 3){
             flf.getDriver().pressRightJoystickButton();
