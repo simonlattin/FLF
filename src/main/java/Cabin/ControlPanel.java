@@ -66,16 +66,22 @@ public class ControlPanel {
         switch (option) {
             case 1:
                 this.electricMotorLever.flip();
+                break;
             case 2:
                 this.warningLightLever.flip();
+                break;
             case 3:
                 this.blueLightLever.flip();
+                break;
             case 4:
                 this.frontlightsLever.flip();
+                break;
             case 5:
                 this.roofHeadLightsLever.flip();
+                break;
             case 6:
                 this.sideLightsLever.flip();
+                break;
         }
     }
 

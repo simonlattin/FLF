@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class handleEmergencyService {
 
-    private FLF flf = new FLF.Builder().build();
+    private final FLF flf = new FLF.Builder().build();
 
     @Test
     public void testOperationDrive(){
@@ -71,7 +71,27 @@ public class handleEmergencyService {
 
         Assertions.assertEquals('A',flf.getCabin().getControlPanel().getRoofExtinguisherKnob().getState());//Dachlöscharm Stufe 1
 
-        flf.speedUp(20);
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+
         Assertions.assertEquals(80, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
 
         flf.drive();

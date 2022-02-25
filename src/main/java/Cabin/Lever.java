@@ -1,5 +1,8 @@
 package Cabin;
 
 public abstract class Lever{
-    protected boolean state;
+
+    public abstract void flip();
+
+    public abstract boolean getState();
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class handleInspectionDrive {
     
-    private FLF flf = new FLF.Builder().build();
+    private final FLF flf = new FLF.Builder().build();
     
     @Test
     public void testDrive(){
@@ -73,7 +73,14 @@ public class handleInspectionDrive {
         System.out.println(flf.getAxis01().getSteeringDegree());
         System.out.println(flf.getAxis02().getSteeringDegree());
 
-        flf.speedUp(7);
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+        flf.getDriver().stepOnGas();
+
         Assertions.assertEquals(28, flf.getCabin().getSpeedDisplay().getSpeed());//Beschleunigen auf 28 km/h
 
         flf.drive();
@@ -115,7 +122,14 @@ public class handleInspectionDrive {
         Assertions.assertEquals(5, flf.getAxis01().getSteeringDegree());
         Assertions.assertEquals(5, flf.getAxis02().getSteeringDegree());//5 Iterationen konstant mit 5° nach rechts
 
-        flf.speedDown(7);
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+        flf.getDriver().stepOnBrake();
+
         Assertions.assertEquals(0, flf.getCabin().getSpeedDisplay().getSpeed());
         Assertions.assertEquals(386000, BatteryManagement.instance.getLoadedCells());
     }

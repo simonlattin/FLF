@@ -580,8 +580,10 @@ public class FLF {
     
     public void testDrive() {
         engineOn();
-        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
-        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
+        driver = new Driver(this.cabin.getSeat01());
+        this.cabin.getSeat01().setFirefighter(driver);
+        operator = new Operator(this.cabin.getSeat02());
+        this.cabin.getSeat02().setFirefighter(operator);
         turnOnFrontLight();
         this.warningLight.On();
         this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
@@ -590,8 +592,10 @@ public class FLF {
     
     public void operationDrive() {
         engineOn();
-        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
-        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
+        driver = new Driver(this.cabin.getSeat01());
+        this.cabin.getSeat01().setFirefighter(driver);
+        operator = new Operator(this.cabin.getSeat02());
+        this.cabin.getSeat02().setFirefighter(operator);
         turnOnRoofLight();
         turnOnFrontLight();
         this.warningLight.On();
@@ -657,5 +661,10 @@ public class FLF {
         warningLight.On();
         turnOnBlueLight();
         turnOnSideLights();
+    }
+
+    public void usageControlPanelPrepare(){
+        operator = new Operator(cabin.getSeat02());
+        cabin.getSeat02().setFirefighter(operator);
     }
 }

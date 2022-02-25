@@ -49,47 +49,38 @@ public class CentralUnit {
             flf.getIndicator03().On();
             flf.getIndicator02().Off();
             flf.getIndicator04().Off();
-            System.out.println("Turn left");
         } else if(winkel > 0){
             flf.getIndicator01().Off();
             flf.getIndicator03().Off();
             flf.getIndicator02().On();
             flf.getIndicator04().On();
-            System.out.println("Turn right");
         } else {
             flf.getIndicator01().Off();
             flf.getIndicator03().Off();
             flf.getIndicator02().Off();
             flf.getIndicator04().Off();
-            System.out.println("Straight");
         }
         System.out.println("The steering degree is " + flf.getAxis02().getSteeringDegree() + "°.");
     }
 
-    public boolean flipLever(int leverId, boolean state){
+    public void flipLever(int leverId, boolean state){
         switch(leverId){
             case 1:
                 if(state){
-                    flf.getMotor01().turnOn();
-                    flf.getMotor02().turnOn();
-                    System.out.println("Motor off");
-                    return false;
-                } else {
                     flf.getMotor01().turnOff();
                     flf.getMotor02().turnOff();
-                    System.out.println("Motor on");
-                    return true;
+                } else {
+                    flf.getMotor01().turnOn();
+                    flf.getMotor02().turnOn();
                 }
+                break;
             case 2:
                 if(state){
                     flf.getWarningLight().Off();
-                    System.out.println("warning light off");
-                    return false;
                 } else {
                     flf.getWarningLight().On();
-                    System.out.println("warning light on");
-                    return true;
                 }
+                break;
             case 3:
                 if(state){
                     flf.getBlueLight01().Off();
@@ -102,8 +93,6 @@ public class CentralUnit {
                     flf.getBlueLight08().Off();
                     flf.getBlueLight09().Off();
                     flf.getBlueLight10().Off();
-                    System.out.println("blue light off");
-                    return false;
                 } else {
                     flf.getBlueLight01().On();
                     flf.getBlueLight02().On();
@@ -115,9 +104,8 @@ public class CentralUnit {
                     flf.getBlueLight08().On();
                     flf.getBlueLight09().On();
                     flf.getBlueLight10().On();
-                    System.out.println("blue light on");
-                    return true;
                 }
+                break;
             case 4:
                 if(state){
                     flf.getSpotlight01().Off();
@@ -126,8 +114,6 @@ public class CentralUnit {
                     flf.getSpotlight04().Off();
                     flf.getSpotlight05().Off();
                     flf.getSpotlight06().Off();
-                    System.out.println("spotlight off");
-                    return false;
                 } else {
                     flf.getSpotlight01().On();
                     flf.getSpotlight02().On();
@@ -135,25 +121,21 @@ public class CentralUnit {
                     flf.getSpotlight04().On();
                     flf.getSpotlight05().On();
                     flf.getSpotlight06().On();
-                    System.out.println("spotlight on");
-                    return true;
                 }
+                break;
             case 5:
                 if(state){
                     flf.getSpotlight07().Off();
                     flf.getSpotlight08().Off();
                     flf.getSpotlight09().Off();
                     flf.getSpotlight10().Off();
-                    System.out.println("rooflight off");
-                    return false;
                 } else {
                     flf.getSpotlight07().On();
                     flf.getSpotlight08().On();
                     flf.getSpotlight09().On();
                     flf.getSpotlight10().On();
-                    System.out.println("rooflight on");
-                    return true;
                 }
+                break;
             case 6:
                 if(state){
                     flf.getRightSide1().Off();
@@ -166,8 +148,6 @@ public class CentralUnit {
                     flf.getLeftSide3().Off();
                     flf.getLeftSide4().Off();
                     flf.getLeftSide5().Off();
-                    System.out.println("Sideligths off");
-                    return false;
                 } else {
                     flf.getRightSide1().On();
                     flf.getRightSide2().On();
@@ -179,11 +159,8 @@ public class CentralUnit {
                     flf.getLeftSide3().On();
                     flf.getLeftSide4().On();
                     flf.getLeftSide5().On();
-                    System.out.println("Sideligths on");
-                    return true;
                 }
-
+                break;
         }
-        return false;
     }
 }
