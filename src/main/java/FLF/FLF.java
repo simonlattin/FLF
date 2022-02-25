@@ -62,6 +62,13 @@ public class FLF {
     private final MixingUnit mixingUnit;
     private final FrontExtinguisher frontExtinguisher;
     private final RoofExtinguisher roofExtinguisher;
+    private final FloorSprayNozzle floorSprayNozzle1;
+    private final FloorSprayNozzle floorSprayNozzle2;
+    private final FloorSprayNozzle floorSprayNozzle3;
+    private final FloorSprayNozzle floorSprayNozzle4;
+    private final FloorSprayNozzle floorSprayNozzle5;
+    private final FloorSprayNozzle floorSprayNozzle6;
+    private final FloorSprayNozzle floorSprayNozzle7;
     private Driver driver;
     private Operator operator;
 
@@ -116,6 +123,13 @@ public class FLF {
         mixingUnit = builder.mixingUnit;
         frontExtinguisher = builder.frontExtinguisher;
         roofExtinguisher = builder.roofExtinguisher;
+        floorSprayNozzle1 = builder.floorSprayNozzle1;
+        floorSprayNozzle2 = builder.floorSprayNozzle2;
+        floorSprayNozzle3 = builder.floorSprayNozzle3;
+        floorSprayNozzle4 = builder.floorSprayNozzle4;
+        floorSprayNozzle5 = builder.floorSprayNozzle5;
+        floorSprayNozzle6 = builder.floorSprayNozzle6;
+        floorSprayNozzle7 = builder.floorSprayNozzle7;
 
         mixingUnit.setFoamtank(foamTank);
         mixingUnit.setWatertank(waterTank);
@@ -326,6 +340,34 @@ public class FLF {
         return roofExtinguisher;
     }
 
+    public FloorSprayNozzle getFloorSprayNozzle1() {
+        return floorSprayNozzle1;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle2() {
+        return floorSprayNozzle2;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle3() {
+        return floorSprayNozzle3;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle4() {
+        return floorSprayNozzle4;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle5() {
+        return floorSprayNozzle5;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle6() {
+        return floorSprayNozzle6;
+    }
+
+    public FloorSprayNozzle getFloorSprayNozzle7() {
+        return floorSprayNozzle7;
+    }
+
     public static class Builder{
 
         private final Spotlight spotlight01;
@@ -356,6 +398,13 @@ public class FLF {
         private final MixingUnit mixingUnit;
         private final FrontExtinguisher frontExtinguisher;
         private final RoofExtinguisher roofExtinguisher;
+        private final FloorSprayNozzle floorSprayNozzle1;
+        private final FloorSprayNozzle floorSprayNozzle2;
+        private final FloorSprayNozzle floorSprayNozzle3;
+        private final FloorSprayNozzle floorSprayNozzle4;
+        private final FloorSprayNozzle floorSprayNozzle5;
+        private final FloorSprayNozzle floorSprayNozzle6;
+        private final FloorSprayNozzle floorSprayNozzle7;
 
 
         public Builder(){
@@ -387,6 +436,15 @@ public class FLF {
             this.mixingUnit = new MixingUnit();
             this.frontExtinguisher = new FrontExtinguisher();
             this.roofExtinguisher = new RoofExtinguisher();
+            this.floorSprayNozzle1 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle2 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle3 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle4 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle5 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle6 = new FloorSprayNozzle(waterTank);
+            this.floorSprayNozzle7 = new FloorSprayNozzle(waterTank);
+
+
         }
 
         public FLF build(){
@@ -503,6 +561,16 @@ public class FLF {
         this.cabin.getSteeringWheel().turn(angle);
     }
 
+    public void activateFloorSprayNuzzles() {
+        this.floorSprayNozzle1.spray();
+        this.floorSprayNozzle2.spray();
+        this.floorSprayNozzle3.spray();
+        this.floorSprayNozzle4.spray();
+        this.floorSprayNozzle5.spray();
+        this.floorSprayNozzle6.spray();
+        this.floorSprayNozzle7.spray();
+    }
+
     public void park() {
         this.cabin.getDoorLeft().pressButton();
         this.cabin.getDoorRight().pressButton();
@@ -534,10 +602,12 @@ public class FLF {
     
     public void tankVehicle() {
         engineOn();
-        this.cabin.getSeat01().setFirefighter(new Driver(this.cabin.getSeat01()));
-        this.cabin.getSeat02().setFirefighter(new Operator(this.cabin.getSeat02()));
         turnOnRoofLight();
         turnOnFrontLight();
+        driver = new Driver(cabin.getSeat01());
+        operator = new Operator(cabin.getSeat02());
+        this.cabin.getSeat01().setFirefighter(driver);
+        this.cabin.getSeat02().setFirefighter(operator);
         this.warningLight.On();
         turnOnBlueLight();
         turnOnSideLights();

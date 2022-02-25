@@ -4,9 +4,11 @@ public class FloorSprayNozzle {
 
     private final int maxCapacity;
     private int outputAmount;
+    private final Tank waterTank;
 
-    public FloorSprayNozzle(){
+    public FloorSprayNozzle(Tank waterTank){
         this.maxCapacity = 100;
+        this.waterTank = waterTank;
     }
 
     public void setOutputAmount(int outputAmount) {
@@ -19,5 +21,9 @@ public class FloorSprayNozzle {
 
     public int getOutputAmount() {
         return outputAmount;
+    }
+
+    public void spray(){
+        this.waterTank.takeOut(100);
     }
 }

@@ -81,7 +81,6 @@ public class Tank {
                     break;
                 }
             }
-            System.out.println("i1:"+i1+" j1:"+j1+" k1:"+k1);
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
@@ -179,7 +178,6 @@ public class Tank {
                     break;
                 }
             }
-            System.out.println("i1:"+i1+" j1:"+j1+" k1:"+k1);
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
@@ -282,7 +280,6 @@ public class Tank {
                     break;
                 }
             }
-            System.out.println("i1:"+i1+" j1:"+j1+" k1:"+k1);
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 12499) {
@@ -380,7 +377,6 @@ public class Tank {
                     break;
                 }
             }
-            System.out.println("i1:"+i1+" j1:"+j1+" k1:"+k1);
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
             } else if (amount > 2499) {

@@ -1,3 +1,6 @@
+import Actors.Driver;
+import Actors.Firefighter;
+import Actors.Operator;
 import Battery.BatteryManagement;
 import FLF.FLF;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +12,9 @@ public class TankVehicleBurning {
     
     @Test
     public void testTankVehicle() {
-        flf.operationDrive();
+        flf.tankVehicle();
+        flf.getCabin().getControlPanel().turnFrontExtingushierKnob('6');
+        flf.getCabin().getControlPanel().turnRoofExtingushierKnob('C');
 
         Assertions.assertTrue(flf.getMotor01().isOn()); //Motor an
         Assertions.assertTrue(flf.getMotor02().isOn()); //Motor an
@@ -65,5 +70,35 @@ public class TankVehicleBurning {
         Assertions.assertEquals(100, flf.getWaterTank().getPercentageFull());//Wassertank voll
 
         Assertions.assertEquals(100, flf.getFoamTank().getPercentageFull());//Schaumpulvertank voll
+
+        flf.activateFloorSprayNuzzles();
+        Assertions.assertEquals(100550, flf.getWaterTank().getAvailableUnits());
+
+        flf.getDriver().pressLeftJoystickButton();
+        flf.getDriver().pressRightJoystickButton();
+        flf.getDriver().pressRightJoystickButton();
+        flf.getDriver().pressJoystickCaliper();
+        flf.getDriver().pressJoystickCaliper();
+        flf.getDriver().pressJoystickCaliper();
+        Assertions.assertTrue(flf.getFrontExtinguisher().isActive());//Frontwerfer aktiviert
+        Assertions.assertEquals(5, flf.getFrontExtinguisher().getMixingRatio());//Mischverhältnis 5 %
+        Assertions.assertEquals(90, flf.getFrontExtinguisher().getTurnAngle());//Frontwerfer um 90% gedreht
+        Assertions.assertEquals(3000, flf.getFrontExtinguisher().getOutputAmount());//Ausbringungsmenge korrekt
+
+        Assertions.assertEquals(92000, flf.getWaterTank().getAvailableUnits());//korrekter Verbrauch Wasser
+        Assertions.assertEquals(33300, flf.getFoamTank().getAvailableUnits());//korrekter Verbrauch Schaumpulver
+
+
+        flf.getOperator().pressLeftJoystickButton();
+        flf.getOperator().pressRightJoystickButton();
+        flf.getOperator().pressJoystickCaliper();
+        flf.getOperator().pressJoystickCaliper();
+        flf.getOperator().pressJoystickCaliper();
+        Assertions.assertTrue(flf.getRoofExtinguisher().isExtended());//Dachlöscharm ist ausgefahren
+        Assertions.assertEquals(3, flf.getRoofExtinguisher().getMixingRatio());//Mischverältnis 3%
+        Assertions.assertEquals(2500, flf.getRoofExtinguisher().getOutputAmount());//Ausbringunsmenge korrekt
+
+        Assertions.assertEquals(84725, flf.getWaterTank().getAvailableUnits());//korrekter Verbrauch Wasser
+        Assertions.assertEquals(33075, flf.getFoamTank().getAvailableUnits());//korrekter Verbrauch Schaumpulver
     }
 }
