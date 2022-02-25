@@ -83,7 +83,7 @@ public class Tank {
             }
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
-            } else if (amount > 12499) {
+            } else if (amount > 101249) {
                 for (int i = 74; i >= 0; i--) {
                     for (int j = 44; j >= 0; j--) {
                         for (int k = 29; k >= 0; k--) {
@@ -122,7 +122,7 @@ public class Tank {
                     }
                     for (int i = i1 - 1; i >= 0; i--) {
                         for (int j = 44; j >= 0; j--) {
-                            for (int k = 9; k >= 0; k--) {
+                            for (int k = 29; k >= 0; k--) {
                                 if (z < 0){
                                     break;
                                 }
@@ -158,7 +158,7 @@ public class Tank {
             }
 
             for (int i = 74; i >= 0; i--) {
-                for (int j = 9; j >= 0; j--) {
+                for (int j = 44; j >= 0; j--) {
                     for (int k = 9; k >= 0; k--) {
                         if (this.capacity[i][j][k] == '-') {
                             i1 = i;
@@ -180,9 +180,9 @@ public class Tank {
             }
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
-            } else if (amount > 12499) {
+            } else if (amount > 33749) {
                 for (int i = 74; i >= 0; i--) {
-                    for (int j = 9; j >= 0; j--) {
+                    for (int j = 45; j >= 0; j--) {
                         for (int k = 9; k >= 0; k--) {
                             this.capacity[i][j][k] = '-';
                         }
@@ -218,7 +218,7 @@ public class Tank {
                         }
                     }
                     for (int i = i1 - 1; i >= 0; i--) {
-                        for (int j = 9; j >= 0; j--) {
+                        for (int j = 44; j >= 0; j--) {
                             for (int k = 9; k >= 0; k--) {
                                 if (z < 0){
                                     break;
@@ -282,7 +282,7 @@ public class Tank {
             }
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
-            } else if (amount > 12499) {
+            } else if (amount > 101249) {
                 for (int i = 0; i < 75; i++) {
                     for (int j = 0; j < 45; j++) {
                         for (int k = 0; k < 30; k++) {
@@ -379,7 +379,7 @@ public class Tank {
             }
             if (amount <= -1) {
                 System.out.println("You cannot take a negative amount!");
-            } else if (amount > 2499) {
+            } else if (amount > 33749) {
                 for (int i = 0; i < 75; i++) {
                     for (int j = 0; j < 45; j++) {
                         for (int k = 0; k < 10; k++) {
