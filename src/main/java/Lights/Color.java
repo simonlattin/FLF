@@ -1,5 +1,5 @@
 package Lights;
 
 public enum Color {
-    BLUE, ORANGE
+    BLUE, ORANGE, RED, YELLOW, INACTIVE
 }

@@ -450,4 +450,8 @@ public class Tank {
     public int getAvailableUnits() {
         return availableUnits;
     }
+
+    public TankKind getTankKind(){
+        return tankKind;
+    }
 }

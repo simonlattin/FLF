@@ -1,6 +1,11 @@
 package Lights;
 
 public class LED {
+    private Color color;
+
+    public LED(Color color){
+
+    }
 
     private boolean isOn;
 
@@ -18,6 +23,14 @@ public class LED {
 
     public boolean isOn(){
         return this.isOn;
+    }
+
+    public void setColor(Color newColor){
+        color = newColor;
+    }
+
+    public Color getColor(){
+        return color;
     }
 
 }

@@ -1,6 +1,14 @@
 package Cabin;
 
 import Controls.CentralUnit;
+import Extinguisher.ITankSensor;
+import Extinguisher.Tank;
+import Extinguisher.TankKind;
+import Extinguisher.TankSensor;
+import Lights.Color;
+import Lights.LED;
+
+import java.util.ArrayList;
 
 public class ControlPanel {
 
@@ -13,8 +21,11 @@ public class ControlPanel {
     private final TurnKnob frontExtinguisherKnob;
     private final TurnKnob roofExtinguisherKnob;
     private final CentralUnit centralUnit;
+    private final LED tankLightWater;
+    private final LED tankLightFoam;
+    private final ArrayList<ITankSensor> sensors;
 
-    public ControlPanel(CentralUnit centralUnit){
+    public ControlPanel(CentralUnit centralUnit, Tank waterTank, Tank foamTank){
         this.electricMotorLever = new ElectricMotorLever(centralUnit);
         this.warningLightLever = new WarningLightLever(centralUnit);
         this.blueLightLever = new BlueLightLever(centralUnit);
@@ -24,6 +35,11 @@ public class ControlPanel {
         this.frontExtinguisherKnob = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
         this.roofExtinguisherKnob = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
         this.centralUnit = centralUnit;
+        this.tankLightFoam = new LED(Color.INACTIVE);
+        this.tankLightWater = new LED(Color.INACTIVE);
+        sensors = new ArrayList<>();
+        sensors.add(new TankSensor(waterTank));
+        sensors.add(new TankSensor(foamTank));
     }
 
     public ElectricMotorLever getElectricMotorLever() {
@@ -60,6 +76,36 @@ public class ControlPanel {
 
     public CentralUnit getCentralUnit() {
         return centralUnit;
+    }
+
+    public void addSensor(ITankSensor newSensor){
+        sensors.add(newSensor);
+    }
+
+    public void removeSensor(ITankSensor sensor){
+        sensors.remove(sensor);
+    }
+
+    public void checkTanks(){
+        for(ITankSensor sensor : sensors){
+            if(sensor.getTankKind() == TankKind.WATER){
+                switch(sensor.checkContents()){
+                    case 2 -> tankLightWater.setColor(Color.YELLOW);
+                    case 3 -> tankLightWater.setColor(Color.ORANGE);
+                    case 4 -> tankLightWater.setColor(Color.RED);
+                    default -> tankLightWater.setColor(Color.INACTIVE);
+                }
+            }
+            if(sensor.getTankKind() == TankKind.FOAM){
+                switch(sensor.checkContents()){
+                    case 2 -> tankLightFoam.setColor(Color.YELLOW);
+                    case 3 -> tankLightFoam.setColor(Color.ORANGE);
+                    case 4 -> tankLightFoam.setColor(Color.RED);
+                    default -> tankLightFoam.setColor(Color.INACTIVE);
+                }
+            }
+            
+        }
     }
 
     public void flip(int option){

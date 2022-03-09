@@ -423,7 +423,9 @@ public class FLF {
             this.blueLight04 = new BlueLight(Size.MEDIUM, Position.BACKLEFT);
             this.warningLight = new WarningLight();
             this.centralUnit = new CentralUnit();
-            this.cabin = new Cabin(new Cabin.CabinBuilder().withCentralUnit(centralUnit));
+            this.waterTank = new Tank(TankKind.WATER);
+            this.foamTank = new Tank(TankKind.FOAM);
+            this.cabin = new Cabin(new Cabin.CabinBuilder().withCentralUnitAndTankSensors(centralUnit,waterTank,foamTank));
             this.axis01 = new Axis(Axes.Position.FRONT);
             this.axis02 = new Axis(Axes.Position.FRONT);
             this.axis03 = new Axis(Axes.Position.BACK);
@@ -431,8 +433,6 @@ public class FLF {
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
             this.motor = new ElectricMotor(this.cabin.getSpeedDisplay());
-            this.waterTank = new Tank(TankKind.WATER);
-            this.foamTank = new Tank(TankKind.FOAM);
             this.mixingUnit = new MixingUnit();
             this.frontExtinguisher = new FrontExtinguisher();
             this.roofExtinguisher = new RoofExtinguisher();

@@ -1,6 +1,8 @@
 package Cabin;
 
 import Controls.CentralUnit;
+import Extinguisher.ITankSensor;
+import Extinguisher.Tank;
 
 public class Cabin {
 
@@ -139,10 +141,10 @@ public class Cabin {
         private DoorButton outerLeft;
         private DoorButton outerRight;
 
-        public CabinBuilder withCentralUnit(CentralUnit getCentralUnit){
+        public CabinBuilder withCentralUnitAndTankSensors(CentralUnit getCentralUnit, Tank waterTank,Tank foamTank){
                 doorLeft = new BusDoor(Position.LEFT);
                 doorRight = new BusDoor(Position.RIGHT);
-                controlPanel = new ControlPanel(getCentralUnit);
+                controlPanel = new ControlPanel(getCentralUnit,waterTank,foamTank);
                 joystickFront = new JoystickFrontExtinguisher(controlPanel);
                 joystickRoof = new JoystickRoofExtinguisher(controlPanel);
                 steeringWheel = new SteeringWheel(getCentralUnit);
