@@ -3,6 +3,7 @@ package Cabin;
 import Controls.*;
 
 public class SidelightsButton extends ControlButton{
+    private final CentralUnit unit;
 
     public SidelightsButton(CentralUnit unit){
         state = new Inactive();

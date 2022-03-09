@@ -3,6 +3,7 @@ package Cabin;
 import Controls.*;
 
 public class WarninglightsButton extends ControlButton{
+    private final CentralUnit unit;
 
     public WarninglightsButton(CentralUnit unit){
         state = new Inactive();

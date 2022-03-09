@@ -3,6 +3,7 @@ package Cabin;
 import Controls.*;
 
 public class RooflightsButton extends ControlButton{
+    private final CentralUnit unit;
 
     public RooflightsButton(CentralUnit unit){
         state = new Inactive();

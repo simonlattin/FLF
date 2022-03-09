@@ -3,6 +3,7 @@ package Cabin;
 import Controls.*;
 
 public class BluelightsButton extends ControlButton{
+    private final CentralUnit unit;
 
     public BluelightsButton(CentralUnit unit){
         state = new Inactive();
