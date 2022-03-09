@@ -11,13 +11,18 @@ public class CentralUnit {
 
     private FLF flf;
     private ICommand command;
+    private final IFunctionVisitor visitor;
 
     public CentralUnit(){
-
+        visitor = new FunctionVisitor();
     }
 
     public void setFLF(FLF flf){
         this.flf = flf;
+    }
+
+    public FLF getFLF(){
+        return flf;
     }
 
     public void brake(){
@@ -282,5 +287,17 @@ public class CentralUnit {
 
     public void setCommand(ICommand newCommand){
         command = newCommand;
+    }
+
+    public void sendVisitor(){
+        if(!visitor.visit(flf.getFrontExtinguisher())){
+            System.out.println("Front Extinguishing Arm isn't working properly");
+        }
+        if(!visitor.visit(flf.getRoofExtinguisher())){
+            System.out.println("Roof Extinguishing Arm isn't working properly");
+        }
+        if(!visitor.visit(flf.getFloorSprayNozzle1(),flf.getFloorSprayNozzle2(),flf.getFloorSprayNozzle3(),flf.getFloorSprayNozzle4(),flf.getFloorSprayNozzle5(),flf.getFloorSprayNozzle6(),flf.getFloorSprayNozzle7())){
+            System.out.println("Floor Spray Nozzles aren't working properly");
+        }
     }
 }

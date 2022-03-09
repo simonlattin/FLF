@@ -1,5 +1,7 @@
 package Extinguisher;
 
+import Controls.IFunctionVisitor;
+
 public class RoofExtinguisher {
 
     private final int maxCapacity;
@@ -106,5 +108,24 @@ public class RoofExtinguisher {
         } else {
             return false;
         }
+    }
+
+    public boolean acceptVisitor(IFunctionVisitor visitor){
+        return testFunctionality();
+    }
+
+    public boolean testFunctionality(){
+        int i = getMixingRatio();
+        int j = getOutputAmount();
+        setMixingRatio(3);
+        setOutputAmount(1000);
+        if(getMixingRatio() == 3 && getOutputAmount() == 1000){
+            setMixingRatio(i);
+            setOutputAmount(j);
+            return true;
+        }
+        setMixingRatio(i);
+        setOutputAmount(j);
+        return false;
     }
 }
