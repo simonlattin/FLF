@@ -10,6 +10,7 @@ import Lights.*;
 public class CentralUnit {
 
     private FLF flf;
+    private ICommand command;
 
     public CentralUnit(){
 
@@ -157,5 +158,129 @@ public class CentralUnit {
                 }
                 break;
         }
+    }
+
+    public void executeCommand(){
+        switch(command.execute()){
+            case 1 -> turnOnMotor();
+            case 2 -> turnOffMotor();
+            case 3 -> turnOnWarninglight();
+            case 4 -> turnOffWarninglight();
+            case 5 -> turnOnBluelights();
+            case 6 -> turnOffBluelights();
+            case 7 -> turnOnHeadlights();
+            case 8 -> turnOffHeadlights();
+            case 9 -> turnOnRooflights();
+            case 10 -> turnOffRooflights();
+            case 11 -> turnOnSidelights();
+            case 12 -> turnOffSidelights();
+            default -> System.out.println("invalid Command");
+        }
+    }
+    
+    public void turnOnMotor(){
+        flf.getMotor01().turnOn();
+        flf.getMotor02().turnOn();
+    }
+
+    public void turnOffMotor(){
+        flf.getMotor01().turnOff();
+        flf.getMotor02().turnOff();
+    }
+
+    public void turnOnWarninglight(){
+        flf.getWarningLight().On();
+    }
+
+    public void turnOffWarninglight(){
+        flf.getWarningLight().Off();
+    }
+
+    public void turnOnBluelights(){
+        flf.getBlueLight01().On();
+        flf.getBlueLight02().On();
+        flf.getBlueLight03().On();
+        flf.getBlueLight04().On();
+        flf.getBlueLight05().On();
+        flf.getBlueLight06().On();
+        flf.getBlueLight07().On();
+        flf.getBlueLight08().On();
+        flf.getBlueLight09().On();
+        flf.getBlueLight10().On();
+    }
+    
+    public void turnOffBluelights(){
+        flf.getBlueLight01().Off();
+        flf.getBlueLight02().Off();
+        flf.getBlueLight03().Off();
+        flf.getBlueLight04().Off();
+        flf.getBlueLight05().Off();
+        flf.getBlueLight06().Off();
+        flf.getBlueLight07().Off();
+        flf.getBlueLight08().Off();
+        flf.getBlueLight09().Off();
+        flf.getBlueLight10().Off();
+    }
+    
+    public void turnOnHeadlights(){
+        flf.getSpotlight01().On();
+        flf.getSpotlight02().On();
+        flf.getSpotlight03().On();
+        flf.getSpotlight04().On();
+        flf.getSpotlight05().On();
+        flf.getSpotlight06().On();
+    }
+
+    public void turnOffHeadlights(){
+        flf.getSpotlight01().Off();
+        flf.getSpotlight02().Off();
+        flf.getSpotlight03().Off();
+        flf.getSpotlight04().Off();
+        flf.getSpotlight05().Off();
+        flf.getSpotlight06().Off();
+    }
+    
+    public void turnOnRooflights(){
+        flf.getSpotlight07().On();
+        flf.getSpotlight08().On();
+        flf.getSpotlight09().On();
+        flf.getSpotlight10().On();
+    }
+
+    public void turnOffRooflights(){
+        flf.getSpotlight07().Off();
+        flf.getSpotlight08().Off();
+        flf.getSpotlight09().Off();
+        flf.getSpotlight10().Off();
+    }
+    
+    public void turnOnSidelights(){
+        flf.getRightSide1().On();
+        flf.getRightSide2().On();
+        flf.getRightSide3().On();
+        flf.getRightSide4().On();
+        flf.getRightSide5().On();
+        flf.getLeftSide1().On();
+        flf.getLeftSide2().On();
+        flf.getLeftSide3().On();
+        flf.getLeftSide4().On();
+        flf.getLeftSide5().On();
+    }
+
+    public void turnOffSidelights(){
+        flf.getRightSide1().Off();
+        flf.getRightSide2().Off();
+        flf.getRightSide3().Off();
+        flf.getRightSide4().Off();
+        flf.getRightSide5().Off();
+        flf.getLeftSide1().Off();
+        flf.getLeftSide2().Off();
+        flf.getLeftSide3().Off();
+        flf.getLeftSide4().Off();
+        flf.getLeftSide5().Off();
+    }
+
+    public void setCommand(ICommand newCommand){
+        command = newCommand;
     }
 }
