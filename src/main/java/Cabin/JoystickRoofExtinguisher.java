@@ -45,5 +45,6 @@ public class JoystickRoofExtinguisher extends Joystick{
             roofExtinguisher.setOutputAmount(controlPanel.getRoofExtinguisherKnob().getAmount());
             roofExtinguisher.extiguish();
         }
+        controlPanel.checkTanks();
     }
 }

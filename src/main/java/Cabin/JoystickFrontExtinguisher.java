@@ -49,5 +49,6 @@ public class JoystickFrontExtinguisher extends Joystick{
             frontExtinguisher.setOutputAmount(controlPanel.getFrontExtinguisherKnob().getAmount());
             frontExtinguisher.extiguish();
         }
+        controlPanel.checkTanks();
     }
 }
