@@ -5,6 +5,7 @@ import Controls.MotorOffCommand;
 import Controls.MotorOnCommand;
 
 public class MotorButton extends ControlButton{
+    private final CentralUnit unit;
 
     public MotorButton(CentralUnit unit){
         state = new Inactive();
@@ -14,12 +15,15 @@ public class MotorButton extends ControlButton{
     public void press() {
         if(state.isActive()){
             state = new Inactive();
-            unit.setCommand(new MotorOffCommand());
-            unit.executeCommand();
+            MotorOffCommand command = new MotorOffCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         } else {
-            state = new Active();
-            unit.setCommand(new MotorOnCommand());
-            unit.executeCommand();
+            state = new Inactive();
+            MotorOnCommand command = new MotorOnCommand(unit);
+            unit.setCommand(command);
+            command.execute();
+
         }
     }
 }

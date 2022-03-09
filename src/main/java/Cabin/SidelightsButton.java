@@ -1,8 +1,6 @@
 package Cabin;
 
-import Controls.CentralUnit;
-import Controls.SidelightsOffCommand;
-import Controls.SidelightsOnCommand;
+import Controls.*;
 
 public class SidelightsButton extends ControlButton{
 
@@ -14,12 +12,15 @@ public class SidelightsButton extends ControlButton{
     public void press() {
         if(state.isActive()){
             state = new Inactive();
-            unit.setCommand(new SidelightsOffCommand());
-            unit.executeCommand();
+            SidelightsOffCommand command = new SidelightsOffCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         } else {
-            state = new Active();
-            unit.setCommand(new SidelightsOnCommand());
-            unit.executeCommand();
+            state = new Inactive();
+            SidelightsOnCommand command = new SidelightsOnCommand(unit);
+            unit.setCommand(command);
+            command.execute();
+
         }
     }
 }

@@ -1,9 +1,13 @@
 package Controls;
 
 public class BluelightsOnCommand implements ICommand{
-    private final int id = 5;
+    private final CentralUnit unit;
 
-    public int execute(){
-        return id;
+    public BluelightsOnCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute() {
+        unit.executeCommand(5);
     }
 }

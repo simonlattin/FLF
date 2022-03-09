@@ -1,8 +1,6 @@
 package Cabin;
 
-import Controls.CentralUnit;
-import Controls.WarninglightsOffCommand;
-import Controls.WarninglightsOnCommand;
+import Controls.*;
 
 public class WarninglightsButton extends ControlButton{
 
@@ -14,12 +12,15 @@ public class WarninglightsButton extends ControlButton{
     public void press() {
         if(state.isActive()){
             state = new Inactive();
-            unit.setCommand(new WarninglightsOffCommand());
-            unit.executeCommand();
+            WarninglightsOffCommand command = new WarninglightsOffCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         } else {
-            state = new Active();
-            unit.setCommand(new WarninglightsOnCommand());
-            unit.executeCommand();
+            state = new Inactive();
+            WarninglightsOnCommand command = new WarninglightsOnCommand(unit);
+            unit.setCommand(command);
+            command.execute();
+
         }
     }
 }

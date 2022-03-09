@@ -1,9 +1,13 @@
 package Controls;
 
 public class RooflightsOnCommand implements ICommand{
-    private final int id = 9;
+    private final CentralUnit unit;
 
-    public int execute(){
-        return id;
+    public RooflightsOnCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute(){
+        unit.executeCommand(9);
     }
 }

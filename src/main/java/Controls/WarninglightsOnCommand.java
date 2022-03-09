@@ -1,9 +1,13 @@
 package Controls;
 
 public class WarninglightsOnCommand implements ICommand{
-    private final int id = 3;
+    private final CentralUnit unit;
 
-    public int execute(){
-        return id;
+    public WarninglightsOnCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute(){
+        unit.executeCommand(3);
     }
 }

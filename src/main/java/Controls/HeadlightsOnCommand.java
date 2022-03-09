@@ -1,9 +1,13 @@
 package Controls;
 
 public class HeadlightsOnCommand implements ICommand{
-    private final int id = 7;
+    private final CentralUnit unit;
 
-    public int execute() {
-        return id;
+    public HeadlightsOnCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute() {
+        unit.executeCommand(7);
     }
 }

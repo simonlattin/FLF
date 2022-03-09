@@ -165,8 +165,8 @@ public class CentralUnit {
         }
     }
 
-    public void executeCommand(){
-        switch(command.execute()){
+    public void executeCommand(int id){
+        switch(id){
             case 1 -> turnOnMotor();
             case 2 -> turnOffMotor();
             case 3 -> turnOnWarninglight();

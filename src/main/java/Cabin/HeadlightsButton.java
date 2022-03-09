@@ -1,8 +1,6 @@
 package Cabin;
 
-import Controls.CentralUnit;
-import Controls.HeadlightsOffCommand;
-import Controls.HeadlightsOnCommand;
+import Controls.*;
 
 public class HeadlightsButton extends ControlButton{
 
@@ -14,12 +12,14 @@ public class HeadlightsButton extends ControlButton{
     public void press() {
         if(state.isActive()){
             state = new Inactive();
-            unit.setCommand(new HeadlightsOffCommand());
-            unit.executeCommand();
+            HeadlightsOffCommand command = new HeadlightsOffCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         } else {
-            state = new Active();
-            unit.setCommand(new HeadlightsOnCommand());
-            unit.executeCommand();
+            state = new Inactive();
+            HeadlightsOnCommand command = new HeadlightsOnCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         }
     }
 }

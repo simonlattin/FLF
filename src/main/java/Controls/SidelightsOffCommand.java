@@ -1,9 +1,13 @@
 package Controls;
 
 public class SidelightsOffCommand implements ICommand{
-    private final int id = 12;
+    private final CentralUnit unit;
 
-    public int execute(){
-        return id;
+    public SidelightsOffCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute(){
+        unit.executeCommand(12);
     }
 }

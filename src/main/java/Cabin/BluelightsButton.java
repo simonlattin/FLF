@@ -1,8 +1,6 @@
 package Cabin;
 
-import Controls.BluelightsOffCommand;
-import Controls.BluelightsOnCommand;
-import Controls.CentralUnit;
+import Controls.*;
 
 public class BluelightsButton extends ControlButton{
 
@@ -14,12 +12,14 @@ public class BluelightsButton extends ControlButton{
     public void press() {
         if(state.isActive()){
             state = new Inactive();
-            unit.setCommand(new BluelightsOffCommand());
-            unit.executeCommand();
+            BluelightsOffCommand command = new BluelightsOffCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         } else {
-            state = new Active();
-            unit.setCommand(new BluelightsOnCommand());
-            unit.executeCommand();
+            state = new Inactive();
+            BluelightsOnCommand command = new BluelightsOnCommand(unit);
+            unit.setCommand(command);
+            command.execute();
         }
     }
 }

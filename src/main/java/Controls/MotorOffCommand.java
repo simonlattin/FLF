@@ -1,9 +1,13 @@
 package Controls;
 
 public class MotorOffCommand implements ICommand {
-    private final int id = 2;
+    private final CentralUnit unit;
 
-    public int execute(){
-        return id;
+    public MotorOffCommand(CentralUnit unit){
+        this.unit = unit;
+    }
+
+    public void execute(){
+        unit.executeCommand(2);
     }
 }
