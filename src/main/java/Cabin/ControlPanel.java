@@ -12,12 +12,6 @@ import java.util.ArrayList;
 
 public class ControlPanel {
 
-    /*private final ElectricMotorLever electricMotorLever;
-    private final WarningLightLever warningLightLever;
-    private final BlueLightLever blueLightLever;
-    private final FrontlightsLever frontlightsLever;
-    private final RoofHeadlightsLever roofHeadLightsLever;
-    private final SideLightsLever sideLightsLever;*/
     private final TurnKnob frontExtinguisherKnob;
     private final TurnKnob roofExtinguisherKnob;
     private final ControlButton motorButton;
@@ -38,45 +32,15 @@ public class ControlPanel {
         this.sidelightsButton = new SidelightsButton(centralUnit);
         this.rooflightsButton = new RooflightsButton(centralUnit);
         this.headlightsButton = new HeadlightsButton(centralUnit);
-        /*this.electricMotorLever = new ElectricMotorLever(centralUnit);
-        this.warningLightLever = new WarningLightLever(centralUnit);
-        this.blueLightLever = new BlueLightLever(centralUnit);
-        this.frontlightsLever = new FrontlightsLever(centralUnit);
-        this.roofHeadLightsLever = new RoofHeadlightsLever(centralUnit);
-        this.sideLightsLever = new SideLightsLever(centralUnit);*/
         this.frontExtinguisherKnob = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
         this.roofExtinguisherKnob = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
         this.centralUnit = centralUnit;
         this.tankLightFoam = new LED(Color.INACTIVE);
         this.tankLightWater = new LED(Color.INACTIVE);
         sensors = new ArrayList<>();
-        sensors.add(new TankSensor(waterTank));
-        sensors.add(new TankSensor(foamTank));
+        addSensor(new TankSensor(waterTank));
+        addSensor(new TankSensor(foamTank));
     }
-
-    /*public ElectricMotorLever getElectricMotorLever() {
-        return electricMotorLever;
-    }
-
-    public WarningLightLever getWarningLightLever() {
-        return warningLightLever;
-    }
-
-    public BlueLightLever getBlueLightLever() {
-        return blueLightLever;
-    }
-
-    public FrontlightsLever getFrontlightsLever() {
-        return frontlightsLever;
-    }
-
-    public RoofHeadlightsLever getRoofHeadLightsLever() {
-        return roofHeadLightsLever;
-    }
-
-    public SideLightsLever getSideLightsLever() {
-        return sideLightsLever;
-    }*/
 
     public TurnKnob getFrontExtinguisherKnob() {
         return frontExtinguisherKnob;
@@ -120,29 +84,6 @@ public class ControlPanel {
         }
     }
 
-    /*public void flip(int option){
-        switch (option) {
-            case 1:
-                this.electricMotorLever.flip();
-                break;
-            case 2:
-                this.warningLightLever.flip();
-                break;
-            case 3:
-                this.blueLightLever.flip();
-                break;
-            case 4:
-                this.frontlightsLever.flip();
-                break;
-            case 5:
-                this.roofHeadLightsLever.flip();
-                break;
-            case 6:
-                this.sideLightsLever.flip();
-                break;
-        }
-    }*/
-
     public void pressButton(int id){
         switch(id){
             case 1 -> motorButton.press();
@@ -176,5 +117,29 @@ public class ControlPanel {
 
     public LED getTankLightFoam(){
         return tankLightFoam;
+    }
+
+    public ControlButton getMotorButton(){
+        return motorButton;
+    }
+
+    public ControlButton getBluelightsButton(){
+        return bluelightsButton;
+    }
+
+    public ControlButton getHeadlightsButton(){
+        return headlightsButton;
+    }
+
+    public ControlButton getWarninglightButton(){
+        return warninglightButton;
+    }
+
+    public ControlButton getSidelightsButton(){
+        return sidelightsButton;
+    }
+
+    public ControlButton getRooflightsButton(){
+        return rooflightsButton;
     }
 }

@@ -12,4 +12,8 @@ public abstract class ControlButton {
     }
 
     public abstract void press();
+
+    public boolean getState(){
+        return state.isActive();
+    }
 }

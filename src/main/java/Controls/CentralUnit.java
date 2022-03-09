@@ -186,6 +186,7 @@ public class CentralUnit {
     public void turnOnMotor(){
         flf.getMotor01().turnOn();
         flf.getMotor02().turnOn();
+        sendVisitor();
     }
 
     public void turnOffMotor(){
@@ -299,5 +300,6 @@ public class CentralUnit {
         if(!visitor.visit(flf.getFloorSprayNozzle1(),flf.getFloorSprayNozzle2(),flf.getFloorSprayNozzle3(),flf.getFloorSprayNozzle4(),flf.getFloorSprayNozzle5(),flf.getFloorSprayNozzle6(),flf.getFloorSprayNozzle7())){
             System.out.println("Floor Spray Nozzles aren't working properly");
         }
+        System.out.println("Visitor checked everything");
     }
 }
