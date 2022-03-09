@@ -4,7 +4,7 @@ public class LED {
     private Color color;
 
     public LED(Color color){
-
+        this.color = color;
     }
 
     private boolean isOn;

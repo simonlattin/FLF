@@ -11,28 +11,28 @@ public class Operator extends Firefighter{
         this.seat = (Operatorseat) seat;
     }
 
-    public void flipMotorLever(){
-        seat.flipLever(1);
+    public void pressMotorButton(){
+        seat.pressButton(1);
     }
 
-    public void flipWarningLightLever(){
-        seat.flipLever(2);
+    public void pressWarninglightButton(){
+        seat.pressButton(2);
     }
 
-    public void flipBlueLightLever(){
-        seat.flipLever(3);
+    public void pressBluelightButton(){
+        seat.pressButton(3);
     }
 
-    public void flipHeadLightLever(){
-        seat.flipLever(4);
+    public void pressHeadlightsButton(){
+        seat.pressButton(4);
     }
 
-    public void flipRoofLightLever(){
-        seat.flipLever(5);
+    public void pressRooflightsButton(){
+        seat.pressButton(5);
     }
 
-    public void flipSideLightLever(){
-        seat.flipLever(6);
+    public void pressSidelightsButton(){
+        seat.pressButton(6);
     }
 
     public void turnTurnKnobFrontExtinguisher(char state){

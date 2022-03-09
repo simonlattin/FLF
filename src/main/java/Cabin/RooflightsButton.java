@@ -1,9 +1,15 @@
 package Cabin;
 
+import Controls.CentralUnit;
 import Controls.RooflightsOffCommand;
 import Controls.RooflightsOnCommand;
 
 public class RooflightsButton extends ControlButton{
+
+    public RooflightsButton(CentralUnit unit){
+        state = new Inactive();
+        this.unit = unit;
+    }
 
     public void press() {
         if(state.isActive()){

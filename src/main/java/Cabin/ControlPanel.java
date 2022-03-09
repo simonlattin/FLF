@@ -12,26 +12,38 @@ import java.util.ArrayList;
 
 public class ControlPanel {
 
-    private final ElectricMotorLever electricMotorLever;
+    /*private final ElectricMotorLever electricMotorLever;
     private final WarningLightLever warningLightLever;
     private final BlueLightLever blueLightLever;
     private final FrontlightsLever frontlightsLever;
     private final RoofHeadlightsLever roofHeadLightsLever;
-    private final SideLightsLever sideLightsLever;
+    private final SideLightsLever sideLightsLever;*/
     private final TurnKnob frontExtinguisherKnob;
     private final TurnKnob roofExtinguisherKnob;
+    private final ControlButton motorButton;
+    private final ControlButton headlightsButton;
+    private final ControlButton rooflightsButton;
+    private final ControlButton sidelightsButton;
+    private final ControlButton bluelightsButton;
+    private final ControlButton warninglightButton;
     private final CentralUnit centralUnit;
     private final LED tankLightWater;
     private final LED tankLightFoam;
     private final ArrayList<ITankSensor> sensors;
 
     public ControlPanel(CentralUnit centralUnit, Tank waterTank, Tank foamTank){
-        this.electricMotorLever = new ElectricMotorLever(centralUnit);
+        this.motorButton = new MotorButton(centralUnit);
+        this.bluelightsButton = new BluelightsButton(centralUnit);
+        this.warninglightButton = new WarninglightsButton(centralUnit);
+        this.sidelightsButton = new SidelightsButton(centralUnit);
+        this.rooflightsButton = new RooflightsButton(centralUnit);
+        this.headlightsButton = new HeadlightsButton(centralUnit);
+        /*this.electricMotorLever = new ElectricMotorLever(centralUnit);
         this.warningLightLever = new WarningLightLever(centralUnit);
         this.blueLightLever = new BlueLightLever(centralUnit);
         this.frontlightsLever = new FrontlightsLever(centralUnit);
         this.roofHeadLightsLever = new RoofHeadlightsLever(centralUnit);
-        this.sideLightsLever = new SideLightsLever(centralUnit);
+        this.sideLightsLever = new SideLightsLever(centralUnit);*/
         this.frontExtinguisherKnob = new TurnKnob(TurnKnobFunction.FRONTEXTINGUISHER);
         this.roofExtinguisherKnob = new TurnKnob(TurnKnobFunction.ROOFEXTINGUISHER);
         this.centralUnit = centralUnit;
@@ -42,7 +54,7 @@ public class ControlPanel {
         sensors.add(new TankSensor(foamTank));
     }
 
-    public ElectricMotorLever getElectricMotorLever() {
+    /*public ElectricMotorLever getElectricMotorLever() {
         return electricMotorLever;
     }
 
@@ -64,7 +76,7 @@ public class ControlPanel {
 
     public SideLightsLever getSideLightsLever() {
         return sideLightsLever;
-    }
+    }*/
 
     public TurnKnob getFrontExtinguisherKnob() {
         return frontExtinguisherKnob;
@@ -108,7 +120,7 @@ public class ControlPanel {
         }
     }
 
-    public void flip(int option){
+    /*public void flip(int option){
         switch (option) {
             case 1:
                 this.electricMotorLever.flip();
@@ -129,6 +141,17 @@ public class ControlPanel {
                 this.sideLightsLever.flip();
                 break;
         }
+    }*/
+
+    public void pressButton(int id){
+        switch(id){
+            case 1 -> motorButton.press();
+            case 2 -> warninglightButton.press();
+            case 3 -> bluelightsButton.press();
+            case 4 -> headlightsButton.press();
+            case 5 -> rooflightsButton.press();
+            case 6 -> sidelightsButton.press();
+        }
     }
 
     public void turnKnob(int option, char state){
@@ -145,5 +168,13 @@ public class ControlPanel {
 
     public void turnRoofExtingushierKnob(char state){
         this.roofExtinguisherKnob.turn(state);
+    }
+
+    public LED getTankLightWater(){
+        return tankLightWater;
+    }
+
+    public LED getTankLightFoam(){
+        return tankLightFoam;
     }
 }

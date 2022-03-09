@@ -11,8 +11,8 @@ public class Operatorseat extends Seat{
         this.controlPanel = controlPanel;
     }
 
-    public void flipLever(int option){
-        controlPanel.flip(option);
+    public void pressButton(int option){
+        controlPanel.pressButton(option);
     }
 
     public void turnKnob(int option, char state){

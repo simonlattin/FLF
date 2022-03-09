@@ -1,9 +1,15 @@
 package Cabin;
 
+import Controls.CentralUnit;
 import Controls.SidelightsOffCommand;
 import Controls.SidelightsOnCommand;
 
 public class SidelightsButton extends ControlButton{
+
+    public SidelightsButton(CentralUnit unit){
+        state = new Inactive();
+        this.unit = unit;
+    }
 
     public void press() {
         if(state.isActive()){

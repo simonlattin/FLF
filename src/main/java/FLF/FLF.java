@@ -1,7 +1,6 @@
 package FLF;
 
 import Actors.Driver;
-import Actors.Firefighter;
 import Actors.Operator;
 import Axes.Axis;
 import Cabin.Cabin;
@@ -576,6 +575,13 @@ public class FLF {
         this.cabin.getDoorRight().pressButton();
         this.cabin.getControlPanel().turnRoofExtingushierKnob('A');
         this.cabin.getControlPanel().turnFrontExtingushierKnob('1');
+    }
+
+    public void setFirefighters(){
+        driver = new Driver(this.cabin.getSeat01());
+        this.cabin.getSeat01().setFirefighter(driver);
+        operator = new Operator(this.cabin.getSeat02());
+        this.cabin.getSeat02().setFirefighter(operator);
     }
     
     public void testDrive() {

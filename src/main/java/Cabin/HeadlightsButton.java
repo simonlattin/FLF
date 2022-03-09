@@ -1,9 +1,15 @@
 package Cabin;
 
+import Controls.CentralUnit;
 import Controls.HeadlightsOffCommand;
 import Controls.HeadlightsOnCommand;
 
 public class HeadlightsButton extends ControlButton{
+
+    public HeadlightsButton(CentralUnit unit){
+        state = new Inactive();
+        this.unit = unit;
+    }
 
     public void press() {
         if(state.isActive()){
