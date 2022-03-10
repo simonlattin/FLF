@@ -17,7 +17,7 @@ public class BluelightsButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             BluelightsOnCommand command = new BluelightsOnCommand(unit);
             unit.setCommand(command);
             command.execute();

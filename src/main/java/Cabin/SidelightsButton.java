@@ -17,7 +17,7 @@ public class SidelightsButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             SidelightsOnCommand command = new SidelightsOnCommand(unit);
             unit.setCommand(command);
             command.execute();

@@ -17,7 +17,7 @@ public class RooflightsButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             RooflightsOnCommand command = new RooflightsOnCommand(unit);
             unit.setCommand(command);
             command.execute();

@@ -17,7 +17,7 @@ public class WarninglightsButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             WarninglightsOnCommand command = new WarninglightsOnCommand(unit);
             unit.setCommand(command);
             command.execute();

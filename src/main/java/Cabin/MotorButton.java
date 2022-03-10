@@ -19,7 +19,7 @@ public class MotorButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             MotorOnCommand command = new MotorOnCommand(unit);
             unit.setCommand(command);
             command.execute();

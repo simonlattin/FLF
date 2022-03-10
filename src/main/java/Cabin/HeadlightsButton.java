@@ -17,7 +17,7 @@ public class HeadlightsButton extends ControlButton{
             unit.setCommand(command);
             command.execute();
         } else {
-            state = new Inactive();
+            state = new Active();
             HeadlightsOnCommand command = new HeadlightsOnCommand(unit);
             unit.setCommand(command);
             command.execute();
