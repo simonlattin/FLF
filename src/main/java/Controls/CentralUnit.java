@@ -16,6 +16,7 @@ public class CentralUnit {
     private final IFunctionVisitor visitor;
     private final EventBus eventBus;
     private int eventId;
+    private boolean visitorFinished = false;
 
     public CentralUnit(){
         visitor = new FunctionVisitor();
@@ -300,6 +301,7 @@ public class CentralUnit {
             System.out.println("Floor Spray Nozzles aren't working properly");
         }
         System.out.println("Visitor checked everything");
+        visitorFinished = true;
     }
 
     public EventBus getEventBus() {
@@ -308,5 +310,17 @@ public class CentralUnit {
 
     public void addSubscriber(Subscriber subscriber){
         eventBus.register(subscriber);
+    }
+
+    public ICommand getCommand(){
+        return command;
+    }
+
+    public IFunctionVisitor getVisitor(){
+        return visitor;
+    }
+
+    public boolean getVisitorFinished(){
+        return visitorFinished;
     }
 }

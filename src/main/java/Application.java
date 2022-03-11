@@ -2,7 +2,6 @@ import Actors.Driver;
 import Actors.Firefighter;
 import Cabin.Joystick;
 import Cabin.JoystickFrontExtinguisher;
-import Chip.RFIDChip;
 import FLF.FLF;
 
 public class Application {
