@@ -186,6 +186,7 @@ public class FLF {
         centralUnit.addSubscriber(rightSide3);
         centralUnit.addSubscriber(rightSide4);
         centralUnit.addSubscriber(rightSide5);
+        centralUnit.sendVisitor();
     }
 
     public Spotlight getSpotlight01() {

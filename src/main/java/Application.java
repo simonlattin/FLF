@@ -11,11 +11,24 @@ public class Application {
         FLF flf = new FLF.Builder().build();
 
         flf.setFirefighters();
-        System.out.println(flf.getMotor01().isOn());
-        flf.getOperator().pressMotorButton();
-        System.out.println(flf.getMotor01().isOn());
-        flf.getOperator().pressMotorButton();
-        System.out.println(flf.getMotor01().isOn());
+
+        if (!flf.getFrontExtinguisher().isActive()){
+            flf.getDriver().pressLeftJoystickButton();
+        }
+
+        flf.getOperator().turnTurnKnobFrontExtinguisher('7');
+
+        while(flf.getFrontExtinguisher().getMixingRatio() != 0){
+            flf.getDriver().pressRightJoystickButton();
+        }
+
+        for(int i = 0;i<28;i++){
+            flf.getDriver().pressJoystickCaliper();
+            System.out.println(flf.getCabin().getControlPanel().getTankLightWater().getColor());
+            System.out.println(flf.getWaterTank().getAvailableUnits());
+        }
+
+
     }
 
 }
