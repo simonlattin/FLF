@@ -111,7 +111,7 @@ public class RoofExtinguisher {
             Method method = clazz.getDeclaredMethod("mix", int.class);
             String version = (String) method.invoke(mixingUnit, outputAmount);
             Method method2 = clazz.getDeclaredMethod("getExtinguishingAgent");
-            this.extinguishingAgent = (String) method.invoke(mixingUnit, outputAmount);
+            this.extinguishingAgent = (String) method2.invoke(mixingUnit);
         } catch (Exception e) {
             e.printStackTrace();
         }
