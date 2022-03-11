@@ -1,6 +1,10 @@
 package Lights;
 
-public class BlueLight {
+import Actors.Subscriber;
+import Controls.BlueLightEvent;
+import com.google.common.eventbus.Subscribe;
+
+public class BlueLight extends Subscriber {
 
     private LED led01;
     private LED led02;
@@ -54,5 +58,15 @@ public class BlueLight {
 
     public boolean isOn() {
         return isOn;
+    }
+
+    @Subscribe
+    public void recieve(BlueLightEvent motorEvent){
+        isOn = !isOn;
+        if (isOn){
+            On();
+        } else {
+            Off();
+        }
     }
 }

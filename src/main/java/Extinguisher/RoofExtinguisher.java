@@ -1,6 +1,13 @@
 package Extinguisher;
 
+import Config.Configuration;
 import Controls.IFunctionVisitor;
+import FLF.FLF;
+
+import java.io.File;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 public class RoofExtinguisher {
 
@@ -8,12 +15,13 @@ public class RoofExtinguisher {
     private double extendLength;
     private final int maxExtendLength;
     private int outputAmount;
-    private MixingUnit mixingUnit;
+    private Object mixingUnit;
     private final Segment segment1;
     private final Segment segment2;
     private int mixingRatio;
     private final int maxRange;
     private String extinguishingAgent;
+    private Class clazz;
     private boolean isExtended;
 
     public RoofExtinguisher() {
@@ -53,7 +61,12 @@ public class RoofExtinguisher {
     }
 
     public void setMixingRatio(int ratio){
-        this.mixingUnit.setMixingRatio(ratio);
+        try {
+            Method method = clazz.getDeclaredMethod("setMixingRatio", int.class);
+            String version = (String) method.invoke(mixingUnit, ratio);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.mixingRatio = ratio;
     }
 
@@ -94,11 +107,17 @@ public class RoofExtinguisher {
     }
 
     public void extiguish(){
-        mixingUnit.mix(this.outputAmount);
-        this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
+        try {
+            Method method = clazz.getDeclaredMethod("mix", int.class);
+            String version = (String) method.invoke(mixingUnit, outputAmount);
+            Method method2 = clazz.getDeclaredMethod("getExtinguishingAgent");
+            this.extinguishingAgent = (String) method.invoke(mixingUnit, outputAmount);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setMixingUnit(MixingUnit mixingUnit) {
+    public void setMixingUnit(Object mixingUnit) {
         this.mixingUnit = mixingUnit;
     }
 
@@ -128,4 +147,19 @@ public class RoofExtinguisher {
         setOutputAmount(j);
         return false;
     }
+
+    public void setClazz(Class clazz){
+        this.clazz = clazz;
+    }
+
+//    public void loadClazzFromJavaArchive() {
+//        try {
+//            URL[] urls = {new File(Configuration.instance.subFolderPathOfJarArchive).toURI().toURL()};
+//            URLClassLoader urlClassLoader = new URLClassLoader(urls, FLF.class.getClassLoader());
+//            clazz = Class.forName(Configuration.instance.nameOfClass, true, urlClassLoader);
+////            System.out.println("class    | " + clazz + " - " + clazz.hashCode());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

@@ -1,6 +1,10 @@
 package Lights;
 
-public class WarningLight {
+import Actors.Subscriber;
+import com.google.common.eventbus.Subscribe;
+import Controls.WarningLightEvent;
+
+public class WarningLight extends Subscriber {
 
     private final LED led;
     private final Color color;
@@ -29,5 +33,10 @@ public class WarningLight {
 
     public boolean isOn() {
         return isOn;
+    }
+
+    @Subscribe
+    public void recieve(WarningLightEvent motorEvent){
+        isOn = !isOn;
     }
 }

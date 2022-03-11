@@ -4,10 +4,16 @@ import Actors.Driver;
 import Actors.Operator;
 import Axes.Axis;
 import Cabin.Cabin;
+import Config.Configuration;
 import Controls.CentralUnit;
 import Drive.ElectricMotor;
 import Extinguisher.*;
 import Lights.*;
+
+import java.io.File;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 public class FLF {
 
@@ -58,7 +64,7 @@ public class FLF {
     private final CentralUnit centralUnit;
     private final Tank waterTank;
     private final Tank foamTank;
-    private final MixingUnit mixingUnit;
+    private final Object mixingUnit;
     private final FrontExtinguisher frontExtinguisher;
     private final RoofExtinguisher roofExtinguisher;
     private final FloorSprayNozzle floorSprayNozzle1;
@@ -70,6 +76,8 @@ public class FLF {
     private final FloorSprayNozzle floorSprayNozzle7;
     private Driver driver;
     private Operator operator;
+    private Object instance;
+    private Class clazz;
 
     public FLF(Builder builder){
         spotlight01 = builder.spotlight01;//VORNELINKS
@@ -119,7 +127,9 @@ public class FLF {
         motor02 = builder.motor;
         waterTank = builder.waterTank;
         foamTank = builder.foamTank;
-        mixingUnit = builder.mixingUnit;
+        loadClazzFromJavaArchive();
+        provideInstanceOfClass();
+        mixingUnit = instance;
         frontExtinguisher = builder.frontExtinguisher;
         roofExtinguisher = builder.roofExtinguisher;
         floorSprayNozzle1 = builder.floorSprayNozzle1;
@@ -130,13 +140,52 @@ public class FLF {
         floorSprayNozzle6 = builder.floorSprayNozzle6;
         floorSprayNozzle7 = builder.floorSprayNozzle7;
 
-        mixingUnit.setFoamtank(foamTank);
-        mixingUnit.setWatertank(waterTank);
+        setTank("setFoamtank", foamTank);
+        setTank("setWatertank", waterTank);
         centralUnit.setFLF(this);
         frontExtinguisher.setMixingUnit(mixingUnit);
         roofExtinguisher.setMixingUnit(mixingUnit);
+        roofExtinguisher.setClazz(clazz);
+        frontExtinguisher.setClazz(clazz);
         cabin.getjoystickFront().setExtinguisher(frontExtinguisher, roofExtinguisher);
         cabin.getjoystickRoof().setExtinguisher(frontExtinguisher, roofExtinguisher);
+        centralUnit.addSubscriber(motor01);
+        centralUnit.addSubscriber(motor02);
+        centralUnit.addSubscriber(spotlight01);
+        centralUnit.addSubscriber(spotlight02);
+        centralUnit.addSubscriber(spotlight03);
+        centralUnit.addSubscriber(spotlight04);
+        centralUnit.addSubscriber(spotlight05);
+        centralUnit.addSubscriber(spotlight06);
+        centralUnit.addSubscriber(spotlight07);
+        centralUnit.addSubscriber(spotlight08);
+        centralUnit.addSubscriber(spotlight09);
+        centralUnit.addSubscriber(spotlight10);
+        centralUnit.addSubscriber(indicator01);
+        centralUnit.addSubscriber(indicator02);
+        centralUnit.addSubscriber(indicator03);
+        centralUnit.addSubscriber(indicator04);
+        centralUnit.addSubscriber(blueLight01);
+        centralUnit.addSubscriber(blueLight02);
+        centralUnit.addSubscriber(blueLight03);
+        centralUnit.addSubscriber(blueLight04);
+        centralUnit.addSubscriber(blueLight05);
+        centralUnit.addSubscriber(blueLight06);
+        centralUnit.addSubscriber(blueLight07);
+        centralUnit.addSubscriber(blueLight08);
+        centralUnit.addSubscriber(blueLight09);
+        centralUnit.addSubscriber(blueLight10);
+        centralUnit.addSubscriber(warningLight);
+        centralUnit.addSubscriber(leftSide1);
+        centralUnit.addSubscriber(leftSide2);
+        centralUnit.addSubscriber(leftSide3);
+        centralUnit.addSubscriber(leftSide4);
+        centralUnit.addSubscriber(leftSide5);
+        centralUnit.addSubscriber(rightSide1);
+        centralUnit.addSubscriber(rightSide2);
+        centralUnit.addSubscriber(rightSide3);
+        centralUnit.addSubscriber(rightSide4);
+        centralUnit.addSubscriber(rightSide5);
     }
 
     public Spotlight getSpotlight01() {
@@ -327,7 +376,7 @@ public class FLF {
         return foamTank;
     }
 
-    public MixingUnit getMixingUnit() {
+    public Object getMixingUnit() {
         return mixingUnit;
     }
 
@@ -394,7 +443,6 @@ public class FLF {
         private final CentralUnit centralUnit;
         private final Tank waterTank;
         private final Tank foamTank;
-        private final MixingUnit mixingUnit;
         private final FrontExtinguisher frontExtinguisher;
         private final RoofExtinguisher roofExtinguisher;
         private final FloorSprayNozzle floorSprayNozzle1;
@@ -432,7 +480,6 @@ public class FLF {
             this.sideLightLeft = new SideLight(Position.LEFT);
             this.sideLightRight = new SideLight(Position.RIGHT);
             this.motor = new ElectricMotor(this.cabin.getSpeedDisplay());
-            this.mixingUnit = new MixingUnit();
             this.frontExtinguisher = new FrontExtinguisher();
             this.roofExtinguisher = new RoofExtinguisher();
             this.floorSprayNozzle1 = new FloorSprayNozzle(waterTank);
@@ -672,5 +719,48 @@ public class FLF {
     public void usageControlPanelPrepare(){
         operator = new Operator(cabin.getSeat02());
         cabin.getSeat02().setFirefighter(operator);
+    }
+
+    public void loadClazzFromJavaArchive() {
+        try {
+            URL[] urls = {new File(Configuration.instance.subFolderPathOfJarArchive).toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, FLF.class.getClassLoader());
+            clazz = Class.forName(Configuration.instance.nameOfClass, true, urlClassLoader);
+//            System.out.println("class    | " + clazz + " - " + clazz.hashCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void provideInstanceOfClass() {
+        try {
+            instance = clazz.getMethod("getInstance").invoke(null);
+//            System.out.println("instance | " + instance.toString() + " - " + instance.hashCode());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void executeMethodDirectlyWithoutPort(String method1) {
+
+        try {
+            Method method = clazz.getDeclaredMethod(method1);
+            String version = (String) method.invoke(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setTank(String method1, Tank tank) {
+
+        try {
+            Method method = clazz.getDeclaredMethod(method1, Tank.class);
+            String version = (String) method.invoke(instance, tank);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println();
     }
 }

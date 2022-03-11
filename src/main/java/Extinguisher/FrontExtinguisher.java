@@ -1,16 +1,24 @@
 package Extinguisher;
 
+import Config.Configuration;
 import Controls.IFunctionVisitor;
+import FLF.FLF;
+
+import java.io.File;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 public class FrontExtinguisher {
 
     private final int maxCapacity;
     private int turnAngle;
     private int outputAmount;
-    private MixingUnit mixingUnit;
+    private Object mixingUnit;
     private int mixingRatio;
     private String extinguishingAgent;
     private boolean isActive;
+    private Class clazz;
 
     public FrontExtinguisher(){
         this.maxCapacity = 3500;
@@ -28,7 +36,12 @@ public class FrontExtinguisher {
     }
 
     public void setMixingRatio(int ratio){
-        this.mixingUnit.setMixingRatio(ratio);
+        try {
+            Method method = clazz.getDeclaredMethod("setMixingRatio", int.class);
+            String version = (String) method.invoke(mixingUnit, ratio);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.mixingRatio = ratio;
     }
 
@@ -65,11 +78,17 @@ public class FrontExtinguisher {
     }
 
     public void extiguish(){
-        mixingUnit.mix(this.outputAmount);
-        this.extinguishingAgent = mixingUnit.getExtinguishingAgent();
+        try {
+            Method method = clazz.getDeclaredMethod("mix", int.class);
+            String version = (String) method.invoke(mixingUnit, outputAmount);
+            Method method2 = clazz.getDeclaredMethod("getExtinguishingAgent");
+            this.extinguishingAgent = (String) method.invoke(mixingUnit, outputAmount);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setMixingUnit(MixingUnit mixingUnit) {
+    public void setMixingUnit(Object mixingUnit) {
         this.mixingUnit = mixingUnit;
     }
 
@@ -91,4 +110,19 @@ public class FrontExtinguisher {
         setOutputAmount(j);
         return false;
     }
+
+    public void setClazz(Class clazz){
+        this.clazz = clazz;
+    }
+
+//    public void loadClazzFromJavaArchive() {
+//        try {
+//            URL[] urls = {new File(Configuration.instance.subFolderPathOfJarArchive).toURI().toURL()};
+//            URLClassLoader urlClassLoader = new URLClassLoader(urls, FLF.class.getClassLoader());
+//            clazz = Class.forName(Configuration.instance.nameOfClass, true, urlClassLoader);
+////            System.out.println("class    | " + clazz + " - " + clazz.hashCode());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

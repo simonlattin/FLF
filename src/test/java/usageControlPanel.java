@@ -10,49 +10,49 @@ public class usageControlPanel {
     public void checkFunctionControlPanel(){
         flf.usageControlPanelPrepare();
 
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getElectricMotorLever().getState());//Motor off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getWarningLightLever().getState());//Warninglight off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getBlueLightLever().getState());//Bluelight off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getFrontlightsLever().getState());//Frontlights off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getRoofHeadLightsLever().getState());//Rooflights off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getSideLightsLever().getState());//Sidelights on
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getMotorButton().getState());//Motor off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getWarninglightButton().getState());//Warninglight off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getBluelightsButton().getState());//Bluelight off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getHeadlightsButton().getState());//Frontlights off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getRooflightsButton().getState());//Rooflights off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getSidelightsButton().getState());//Sidelights on
 
-        flf.getOperator().flipMotorLever();
+        flf.getOperator().pressMotorButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getElectricMotorLever().getState());//Motor on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getMotorButton().getState());//Motor on
 
-        flf.getOperator().flipWarningLightLever();
+        flf.getOperator().pressWarninglightButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getWarningLightLever().getState());//Warninglight on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getWarninglightButton().getState());//Warninglight on
 
-        flf.getOperator().flipBlueLightLever();
+        flf.getOperator().pressBluelightButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getBlueLightLever().getState());//Bluelight on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getBluelightsButton().getState());//Bluelight on
 
-        flf.getOperator().flipHeadLightLever();
+        flf.getOperator().pressHeadlightsButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getFrontlightsLever().getState());//Frontlights on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getHeadlightsButton().getState());//Frontlights on
 
-        flf.getOperator().flipRoofLightLever();
+        flf.getOperator().pressRooflightsButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getRoofHeadLightsLever().getState());//Rooflights on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getRooflightsButton().getState());//Rooflights on
 
-        flf.getOperator().flipSideLightLever();
+        flf.getOperator().pressSidelightsButton();
 
-        Assertions.assertTrue(flf.getCabin().getControlPanel().getSideLightsLever().getState());//Sidelights on
+        Assertions.assertTrue(flf.getCabin().getControlPanel().getSidelightsButton().getState());//Sidelights on
 
-        flf.getOperator().flipMotorLever();
-        flf.getOperator().flipWarningLightLever();
-        flf.getOperator().flipBlueLightLever();
-        flf.getOperator().flipHeadLightLever();
-        flf.getOperator().flipRoofLightLever();
-        flf.getOperator().flipSideLightLever();
+        flf.getOperator().pressMotorButton();
+        flf.getOperator().pressWarninglightButton();
+        flf.getOperator().pressBluelightButton();
+        flf.getOperator().pressHeadlightsButton();
+        flf.getOperator().pressRooflightsButton();
+        flf.getOperator().pressSidelightsButton();
 
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getElectricMotorLever().getState());//Motor off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getWarningLightLever().getState());//Warninglight off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getBlueLightLever().getState());//Bluelight off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getFrontlightsLever().getState());//Frontlights off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getRoofHeadLightsLever().getState());//Rooflights off
-        Assertions.assertFalse(flf.getCabin().getControlPanel().getSideLightsLever().getState());//Sidelights on
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getMotorButton().getState());//Motor off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getWarninglightButton().getState());//Warninglight off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getBluelightsButton().getState());//Bluelight off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getHeadlightsButton().getState());//Frontlights off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getRooflightsButton().getState());//Rooflights off
+        Assertions.assertFalse(flf.getCabin().getControlPanel().getSidelightsButton().getState());//Sidelights on
     }
 }

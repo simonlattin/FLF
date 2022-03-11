@@ -11,6 +11,11 @@ public class Application {
         FLF flf = new FLF.Builder().build();
 
         flf.setFirefighters();
+        System.out.println(flf.getMotor01().isOn());
+        flf.getOperator().pressMotorButton();
+        System.out.println(flf.getMotor01().isOn());
+        flf.getOperator().pressMotorButton();
+        System.out.println(flf.getMotor01().isOn());
     }
 
 }

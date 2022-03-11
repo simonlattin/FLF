@@ -3,9 +3,7 @@ package Extinguisher;
 public class MixingUnit {
 
     private String extinguishingAgent;
-    private String water;
     private double waterAmount;
-    private String foamPowder;
     private double foamPowderAmount;
     private Tank watertank;
     private Tank foamtank;

@@ -1,6 +1,11 @@
 package Lights;
 
-public class SideLight {
+import Actors.Subscriber;
+import Controls.SideLightEvent;
+import com.google.common.eventbus.Subscribe;
+
+
+public class SideLight extends Subscriber {
     private final LED led;
     private final Position position;
     private boolean isOn;
@@ -23,5 +28,15 @@ public class SideLight {
 
     public boolean isOn() {
         return isOn;
+    }
+
+    @Subscribe
+    public void recieve(SideLightEvent motorEvent){
+        isOn = !isOn;
+        if (isOn) {
+            On();
+        } else {
+            Off();
+        }
     }
 }

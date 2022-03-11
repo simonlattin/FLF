@@ -1,14 +1,21 @@
 package Battery;
 
-public enum BatteryManagement {
+import java.util.ArrayList;
+import java.util.List;
+
+public enum BatteryManagement implements IBatteryManagement{
     instance;
     private final Battery[][] batteries = new Battery[2][2];
+    private final List<Pol> loadingPorts = new ArrayList<>();
 
     BatteryManagement(){
         batteries[0][0] = new Battery();
         batteries[0][1] = new Battery();
         batteries[1][0] = new Battery();
         batteries[1][1] = new Battery();
+        loadingPorts.add(new Pol());
+        loadingPorts.add(new Pol());
+        loadingPorts.add(new Pol());
     }
 
     public void chargeBatteries(int amount){
@@ -53,5 +60,14 @@ public enum BatteryManagement {
         int b4 = batteries[1][1].getLoadedCells();
 
         return b1 + b2 + b3 + b4;
+    }
+
+    public void chargeWithAdapter() {
+        loadingPorts.get(0).setChargignCurrent(400);
+        chargeBatteries(loadingPorts.get(0).getChargignCurrent());
+        loadingPorts.get(1).setChargignCurrent(300);
+        chargeBatteries(loadingPorts.get(1).getChargignCurrent());
+        loadingPorts.get(2).setChargignCurrent(300);
+        chargeBatteries(loadingPorts.get(2).getChargignCurrent());
     }
 }

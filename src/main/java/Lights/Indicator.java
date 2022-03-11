@@ -1,6 +1,8 @@
 package Lights;
 
-public class Indicator {
+import Actors.Subscriber;
+
+public class Indicator extends Subscriber {
 
     private final Position position;
     private final LED led;

@@ -5,6 +5,8 @@ import Axes.Position;
 import Drive.ElectricMotor;
 import Cabin.*;
 import FLF.FLF;
+import com.google.common.eventbus.EventBus;
+import Actors.Subscriber;
 import Lights.*;
 
 public class CentralUnit {
@@ -12,9 +14,12 @@ public class CentralUnit {
     private FLF flf;
     private ICommand command;
     private final IFunctionVisitor visitor;
+    private final EventBus eventBus;
+    private int eventId;
 
     public CentralUnit(){
         visitor = new FunctionVisitor();
+        this.eventBus = new EventBus();
     }
 
     public void setFLF(FLF flf){
@@ -167,18 +172,12 @@ public class CentralUnit {
 
     public void executeCommand(int id){
         switch(id){
-            case 1 -> turnOnMotor();
-            case 2 -> turnOffMotor();
-            case 3 -> turnOnWarninglight();
-            case 4 -> turnOffWarninglight();
-            case 5 -> turnOnBluelights();
-            case 6 -> turnOffBluelights();
-            case 7 -> turnOnHeadlights();
-            case 8 -> turnOffHeadlights();
-            case 9 -> turnOnRooflights();
-            case 10 -> turnOffRooflights();
-            case 11 -> turnOnSidelights();
-            case 12 -> turnOffSidelights();
+            case 1, 2 -> eventBus.post(new MotorEvent(eventId++));
+            case 3, 4 -> eventBus.post(new WarningLightEvent(eventId++));
+            case 5, 6 -> eventBus.post(new BlueLightEvent(eventId++));
+            case 7, 8 -> eventBus.post(new FrontLightEvent(eventId++));
+            case 9, 10 -> eventBus.post(new RoofLightEvent(eventId++));
+            case 11, 12 -> eventBus.post(new SideLightEvent(eventId++));
             default -> System.out.println("invalid Command");
         }
     }
@@ -301,5 +300,13 @@ public class CentralUnit {
             System.out.println("Floor Spray Nozzles aren't working properly");
         }
         System.out.println("Visitor checked everything");
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
+    }
+
+    public void addSubscriber(Subscriber subscriber){
+        eventBus.register(subscriber);
     }
 }

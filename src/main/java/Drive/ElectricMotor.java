@@ -1,9 +1,12 @@
 package Drive;
 
+import Actors.Subscriber;
 import Battery.BatteryManagement;
 import Cabin.SpeedDisplay;
+import Controls.MotorEvent;
+import com.google.common.eventbus.Subscribe;
 
-public class ElectricMotor {
+public class ElectricMotor extends Subscriber {
     private boolean isOn;
     private final SpeedDisplay speedDisplay;
 
@@ -32,5 +35,10 @@ public class ElectricMotor {
 
     public boolean isOn() {
         return isOn;
+    }
+
+    @Subscribe
+    public void recieve(MotorEvent motorEvent){
+        isOn = !isOn;
     }
 }
