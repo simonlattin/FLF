@@ -4,6 +4,7 @@ public class BusDoor {
 
     private final Position position;
     private boolean isOpen;
+    private boolean isLocked = false;
 
     public BusDoor(Position position){
         this.position = position;

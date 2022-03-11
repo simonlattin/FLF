@@ -1,5 +1,8 @@
 package Config;
 
+import Chip.AES;
+import Chip.ICipher;
+
 public enum Configuration {
     instance;
 
@@ -12,4 +15,6 @@ public enum Configuration {
     public final String nameOfSubFolder = "jar";
     public final String subFolderPathOfJarArchive = nameOfSubFolder+fileSeparator+nameOfJavaArchive;
     public final String fullPathToJar = userDirectory+subFolderPathOfJarArchive;
+
+    public final ICipher cipher = new AES();
 }

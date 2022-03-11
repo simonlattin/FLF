@@ -2,6 +2,7 @@ import Actors.Driver;
 import Actors.Firefighter;
 import Cabin.Joystick;
 import Cabin.JoystickFrontExtinguisher;
+import Chip.RFIDChip;
 import FLF.FLF;
 
 public class Application {
@@ -10,12 +11,8 @@ public class Application {
 
         FLF flf = new FLF.Builder().build();
 
-        flf.setFirefighters();
-        System.out.println(flf.getMotor01().isOn());
-        flf.getOperator().pressMotorButton();
-        System.out.println(flf.getMotor01().isOn());
-        flf.getOperator().pressMotorButton();
-        System.out.println(flf.getMotor01().isOn());
+        RFIDChip chip = new RFIDChip();
+        System.out.println(chip.encrypt("Hallo"));
     }
 
 }
