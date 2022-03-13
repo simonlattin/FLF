@@ -12,6 +12,7 @@ public class BlueLight extends Subscriber {
     private LED led04;
     private final Position position;
     private boolean isOn;
+    private int eventsHandled;
 
     public BlueLight(Size size, Position position){
 
@@ -63,10 +64,15 @@ public class BlueLight extends Subscriber {
     @Subscribe
     public void recieve(BlueLightEvent motorEvent){
         isOn = !isOn;
+        eventsHandled++;
         if (isOn){
             On();
         } else {
             Off();
         }
+    }
+
+    public int getEventsHandled() {
+        return eventsHandled;
     }
 }

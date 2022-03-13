@@ -63,11 +63,16 @@ public enum BatteryManagement implements IBatteryManagement{
     }
 
     public void chargeWithAdapter() {
-        loadingPorts.get(0).setChargignCurrent(400);
         chargeBatteries(loadingPorts.get(0).getChargignCurrent());
-        loadingPorts.get(1).setChargignCurrent(300);
         chargeBatteries(loadingPorts.get(1).getChargignCurrent());
-        loadingPorts.get(2).setChargignCurrent(300);
         chargeBatteries(loadingPorts.get(2).getChargignCurrent());
+    }
+
+    public List<Pol> getLoadingPorts() {
+        return loadingPorts;
+    }
+
+    public void splitChargingCurrent() {
+
     }
 }

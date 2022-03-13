@@ -1,5 +1,6 @@
 import Actors.Driver;
 import Actors.Firefighter;
+import Battery.Battery;
 import Cabin.Joystick;
 import Cabin.JoystickFrontExtinguisher;
 import Chip.RFIDChip;
@@ -9,10 +10,6 @@ public class Application {
 
     public static void main(String... args){
 
-        FLF flf = new FLF.Builder().build();
-
-        RFIDChip chip = new RFIDChip();
-        System.out.println(chip.encrypt("Hallo"));
     }
 
 }

@@ -4,7 +4,9 @@ public class Pol {
 
     private int chargignCurrent;
 
-    public Pol(){}
+    public Pol(){
+        this.chargignCurrent = 1000;
+    }
 
 
     public int getChargignCurrent() {

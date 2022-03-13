@@ -10,5 +10,8 @@ public interface IBatteryManagement {
 
     int getLoadedCells();
 
+    void splitChargingCurrent();
+
     void chargeWithAdapter();
+
 }

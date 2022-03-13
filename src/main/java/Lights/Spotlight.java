@@ -10,6 +10,7 @@ public class Spotlight extends Subscriber {
     private final Position position;
     private final LED led;
     private boolean isOn;
+    private int eventsHandled;
 
 
     public Spotlight(Position position){
@@ -40,6 +41,7 @@ public class Spotlight extends Subscriber {
     public void recieve(FrontLightEvent motorEvent){
         if (position == Position.FRONTLEFT || position == Position.FRONTRIGHT) {
             isOn = !isOn;
+            eventsHandled++;
         }
     }
 
@@ -47,6 +49,11 @@ public class Spotlight extends Subscriber {
     public void recieve(RoofLightEvent motorEvent){
         if (position == Position.ROOF) {
             isOn = !isOn;
+            eventsHandled++;
         }
+    }
+
+    public int getEventsHandled() {
+        return eventsHandled;
     }
 }

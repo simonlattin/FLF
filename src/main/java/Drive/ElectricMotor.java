@@ -9,6 +9,7 @@ import com.google.common.eventbus.Subscribe;
 public class ElectricMotor extends Subscriber {
     private boolean isOn;
     private final SpeedDisplay speedDisplay;
+    private int eventsHandled;
 
     public ElectricMotor(SpeedDisplay speedDisplay){
         isOn = false;
@@ -40,5 +41,10 @@ public class ElectricMotor extends Subscriber {
     @Subscribe
     public void recieve(MotorEvent motorEvent){
         isOn = !isOn;
+        eventsHandled++;
+    }
+
+    public int getEventsHandled() {
+        return eventsHandled;
     }
 }

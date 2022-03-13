@@ -10,6 +10,14 @@ public abstract class AbstractCell {
 
     public AbstractCell(){}
 
+    public List<AbstractCell> getCells() {
+        return cells;
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
     protected void charge(){}
 
     protected void discharge(){}

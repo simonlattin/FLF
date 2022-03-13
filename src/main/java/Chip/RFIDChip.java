@@ -7,7 +7,9 @@ import Config.Configuration;
 
 public class RFIDChip{
 
-    private final ICipher cipher;
+    //!!! Normalerweise wäre Cipher final und könnte nur in der config geändert werden.
+    //!!! Die Methode setCipher() wurde nur für den Test hinzugefügt!
+    private ICipher cipher;
 
     public RFIDChip(){
         cipher = Configuration.instance.cipher;
@@ -21,4 +23,7 @@ public class RFIDChip{
         }
     }
 
+    public void setCipher(ICipher cipher) {
+        this.cipher = cipher;
+    }
 }

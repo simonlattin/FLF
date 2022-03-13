@@ -4,6 +4,7 @@ public class BatteryAdapter extends ELoadingStation implements IBatteryManagemen
 
 
     public BatteryAdapter(){
+
     }
 
 
@@ -27,10 +28,15 @@ public class BatteryAdapter extends ELoadingStation implements IBatteryManagemen
     }
 
 
+    public void splitChargingCurrent() {
+        int chargingCurrent = getPol().getChargignCurrent();
+        BatteryManagement.instance.getLoadingPorts().get(0).setChargignCurrent(chargingCurrent-600);
+        BatteryManagement.instance.getLoadingPorts().get(1).setChargignCurrent(chargingCurrent-700);
+        BatteryManagement.instance.getLoadingPorts().get(2).setChargignCurrent(chargingCurrent-700);
+
+    }
+
     public void chargeWithAdapter() {
-        int chargingCurrent1 = chargingCurrent - 600;
-        int chargingCurrent2 = chargingCurrent - 300;
-        int chargingCurrent3 = chargingCurrent - 300;
 
     }
 }

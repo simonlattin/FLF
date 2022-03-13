@@ -381,6 +381,10 @@ public class FLF {
         return mixingUnit;
     }
 
+    public Class getClazz() {
+        return clazz;
+    }
+
     public FrontExtinguisher getFrontExtinguisher() {
         return frontExtinguisher;
     }

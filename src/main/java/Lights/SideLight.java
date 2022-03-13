@@ -9,6 +9,7 @@ public class SideLight extends Subscriber {
     private final LED led;
     private final Position position;
     private boolean isOn;
+    private int eventsHandled;
 
     public SideLight(Position position){
         this.position = position;
@@ -33,10 +34,15 @@ public class SideLight extends Subscriber {
     @Subscribe
     public void recieve(SideLightEvent motorEvent){
         isOn = !isOn;
+        eventsHandled++;
         if (isOn) {
             On();
         } else {
             Off();
         }
+    }
+
+    public int getEventsHandled() {
+        return eventsHandled;
     }
 }

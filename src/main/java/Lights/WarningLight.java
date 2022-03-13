@@ -9,6 +9,7 @@ public class WarningLight extends Subscriber {
     private final LED led;
     private final Color color;
     private boolean isOn;
+    private int eventsHandled;
 
 
     public WarningLight(){
@@ -38,5 +39,10 @@ public class WarningLight extends Subscriber {
     @Subscribe
     public void recieve(WarningLightEvent motorEvent){
         isOn = !isOn;
+        eventsHandled++;
+    }
+
+    public int getEventsHandled() {
+        return eventsHandled;
     }
 }
